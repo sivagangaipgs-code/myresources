@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brewster's Law — Interactive Physics Lab</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220;
+  --bg-2:#0e1526;
+  --panel:#131b2e;
+  --panel-2:#1a2438;
+  --panel-3:#202c46;
+  --line:rgba(255,255,255,0.09);
+  --line-2:rgba(255,255,255,0.15);
+  --ink:#eef2fb;
+  --ink-dim:#c3cce4;
+  --muted:#8b97b8;
+  --amber:#ffb454;
+  --amber-dim:#8a6a3a;
+  --teal:#5eead4;
+  --violet:#c9aeff;
+  --good:#5fd99a;
+  --bad:#ff7a7a;
+  --air:#101a30;
+  --glass:#182548;
+  --radius:14px;
+  --radius-sm:8px;
+  --maxw:920px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:96px;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+[lang-ta]{font-family:'Noto Sans Tamil','IBM Plex Sans',system-ui,sans-serif;}
+h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;color:var(--ink);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+p{color:var(--ink-dim);}
+a{color:inherit;}
+::selection{background:var(--amber);color:#1a1200;}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+.wide{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+/* ---------- HEADER ---------- */
+header.top{
+  position:sticky;top:0;z-index:50;
+  background:rgba(11,18,32,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
+}
+.top-inner{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brandmark{display:flex;align-items:center;gap:12px;min-width:0;}
+.brandmark svg{flex:none;}
+.brand-text h1{font-size:1.28rem;margin:0;line-height:1.15;}
+.brand-text .sub{font-size:0.78rem;color:var(--muted);margin-top:2px;letter-spacing:0.01em;}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+nav.tabs::-webkit-scrollbar{display:none;}
+nav.tabs a{
+  white-space:nowrap;padding:8px 13px;border-radius:99px;font-size:0.87rem;font-weight:500;
+  color:var(--ink-dim);text-decoration:none;border:1px solid transparent;
+}
+nav.tabs a:hover{color:var(--ink);background:var(--panel-2);}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.langtoggle{display:flex;border:1px solid var(--line-2);border-radius:99px;overflow:hidden;}
+.langtoggle button{
+  background:transparent;border:none;color:var(--muted);padding:6px 12px;font-size:0.82rem;font-weight:600;cursor:pointer;
+}
+.langtoggle button.active{background:var(--amber);color:#1a1200;}
+
+/* ---------- BUTTONS / CONTROLS ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--amber);color:#1a1200;border:none;border-radius:99px;
+  padding:11px 20px;font-size:0.92rem;font-weight:600;cursor:pointer;
+  font-family:inherit;transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,180,84,0.25);}
+.btn:active{transform:translateY(0);}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2);}
+.btn.ghost:hover{background:var(--panel-2);box-shadow:none;}
+.btn.small{padding:8px 14px;font-size:0.82rem;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* ---------- LAYOUT SECTIONS ---------- */
+main{padding-bottom:60px;}
+section{padding:56px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.eyebrow-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line-2);
+  font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--amber);margin-right:10px;flex:none;
+}
+.section-head{display:flex;align-items:baseline;gap:2px;margin-bottom:8px;}
+.section-head h2{font-size:1.7rem;margin:0;}
+.section-lede{color:var(--muted);font-size:0.98rem;max-width:640px;margin-top:6px;}
+
+/* ---------- HERO ---------- */
+.hero{padding:52px 0 46px;border-bottom:1px solid var(--line);background:
+  radial-gradient(ellipse 700px 380px at 78% -10%, rgba(255,180,84,0.14), transparent 60%),
+  radial-gradient(ellipse 500px 300px at 5% 110%, rgba(94,234,212,0.08), transparent 60%);}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:44px;align-items:center;}
+.hero h1.display{font-size:clamp(2.1rem,4.2vw,3.1rem);line-height:1.06;margin:0 0 16px;}
+.hero .kicker{color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:0.82rem;margin-bottom:14px;display:block;}
+.hero p.lede{font-size:1.08rem;color:var(--ink-dim);max-width:52ch;}
+.hero-cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
+.hero-visual{
+  background:linear-gradient(180deg,var(--air) 0 55%, var(--glass) 55% 100%);
+  border-radius:var(--radius);border:1px solid var(--line-2);
+  aspect-ratio:4/3;position:relative;overflow:hidden;
+}
+.hero-visual svg{width:100%;height:100%;}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;}.hero-visual{order:-1;}}
+
+/* ---------- CARDS ---------- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+.grid{display:grid;gap:16px;}
+.grid.cols-2{grid-template-columns:repeat(2,1fr);}
+.grid.cols-3{grid-template-columns:repeat(3,1fr);}
+@media(max-width:760px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr;}}
+
+.obj-list{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;}
+.obj-list li{display:flex;gap:10px;color:var(--ink-dim);font-size:0.96rem;}
+.obj-list li:before{content:"✓";color:var(--good);font-weight:700;flex:none;}
+
+/* concept cards */
+.ccard{cursor:pointer;transition:border-color .15s ease, transform .15s ease;position:relative;}
+.ccard:hover{border-color:var(--line-2);transform:translateY(-2px);}
+.ccard .icon{width:38px;height:38px;border-radius:10px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.2rem;}
+.ccard h3{font-size:1.05rem;margin:0 0 6px;}
+.ccard .key{font-size:0.8rem;color:var(--amber);margin-top:10px;font-weight:600;}
+.ccard .more{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:0.92rem;}
+.ccard.open .more{max-height:220px;margin-top:10px;}
+.ccard .toggle-hint{font-size:0.78rem;color:var(--muted);margin-top:12px;}
+
+/* ---------- SIMULATOR ---------- */
+.sim-shell{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;}
+@media(max-width:900px){.sim-shell{grid-template-columns:1fr;}}
+.sim-diagram{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;}
+.sim-diagram svg{width:100%;height:auto;display:block;}
+.sim-controls{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:18px;}
+.field{display:flex;flex-direction:column;gap:8px;}
+.field label{font-size:0.86rem;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;}
+.field label .val{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--amber);height:28px;}
+select, input[type=number]{
+  width:100%;background:var(--panel-2);border:1px solid var(--line-2);color:var(--ink);
+  padding:10px 12px;border-radius:var(--radius-sm);font-family:inherit;font-size:0.92rem;
+}
+.readout-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.readout{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;}
+.readout .lab{font-size:0.72rem;color:var(--muted);text-transform:none;}
+.readout .num{font-family:'IBM Plex Mono',monospace;font-size:1.15rem;color:var(--ink);margin-top:2px;}
+.status-pill{padding:10px 14px;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:600;border:1px solid var(--line-2);}
+.status-pill.warn{background:rgba(255,180,84,0.12);color:var(--amber);border-color:rgba(255,180,84,0.3);}
+.status-pill.good{background:rgba(95,217,154,0.12);color:var(--good);border-color:rgba(95,217,154,0.3);}
+.bars{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:flex;align-items:center;gap:10px;font-size:0.82rem;}
+.bar-row .bar-label{width:64px;flex:none;color:var(--muted);}
+.bar-track{flex:1;height:10px;background:var(--panel-2);border-radius:99px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;transition:width .2s ease;}
+.bar-row .bar-pct{width:44px;text-align:right;font-family:'IBM Plex Mono',monospace;flex:none;}
+
+/* ---------- CALCULATOR ---------- */
+.calc-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px;}
+@media(max-width:760px){.calc-flow{grid-template-columns:1fr 1fr;}}
+.calc-step{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;min-height:90px;}
+.calc-step .t{font-size:0.72rem;color:var(--muted);margin-bottom:6px;}
+.calc-step .v{font-family:'IBM Plex Mono',monospace;font-size:0.95rem;color:var(--ink);}
+
+/* ---------- STEPPER ---------- */
+.stepper-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+.step-track{display:flex;gap:6px;margin-bottom:18px;}
+.step-track .dot{flex:1;height:5px;border-radius:99px;background:var(--panel-2);}
+.step-track .dot.done{background:var(--amber);}
+.step-body{min-height:90px;font-size:1rem;color:var(--ink-dim);}
+.step-body .num{color:var(--amber);font-weight:700;font-family:'IBM Plex Mono',monospace;margin-right:8px;}
+.step-controls{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+
+/* ---------- ORDERING ---------- */
+.order-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.order-item{
+  background:var(--panel-2);border:1px solid var(--line-2);border-radius:var(--radius-sm);
+  padding:12px 14px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:0.93rem;user-select:none;
+}
+.order-item.dragging{opacity:0.4;}
+.order-item .handle{color:var(--muted);flex:none;}
+.order-item.correct{border-color:var(--good);background:rgba(95,217,154,0.08);}
+.order-item.wrong{border-color:var(--bad);background:rgba(255,122,122,0.08);}
+
+/* ---------- MATCHING ---------- */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:700px){.match-grid{grid-template-columns:1fr;}}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-item{
+  background:var(--panel-2);border:1px solid var(--line-2);border-radius:var(--radius-sm);
+  padding:12px 14px;cursor:pointer;font-size:0.9rem;transition:all .12s ease;
+}
+.match-item:hover{border-color:var(--amber);}
+.match-item.selected{border-color:var(--amber);background:rgba(255,180,84,0.12);}
+.match-item.matched{border-color:var(--good);background:rgba(95,217,154,0.1);opacity:0.7;cursor:default;}
+.match-item.wrongflash{border-color:var(--bad);background:rgba(255,122,122,0.15);}
+
+/* ---------- WORKED EXAMPLES ---------- */
+.example{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:16px;}
+.example h3{margin:0 0 10px;font-size:1.1rem;}
+.example .tag{display:inline-block;background:var(--panel-2);color:var(--amber);font-size:0.72rem;padding:3px 10px;border-radius:99px;margin-bottom:10px;font-family:'IBM Plex Mono',monospace;}
+.solution{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line-2);display:none;}
+.solution.show{display:block;}
+.solution ol{padding-left:20px;color:var(--ink-dim);}
+.solution .final{margin-top:10px;font-weight:600;color:var(--good);}
+
+/* ---------- EXPLORE ---------- */
+.explore-note{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;font-size:0.88rem;color:var(--ink-dim);}
+
+/* ---------- DISCOVERY ---------- */
+.discovery-item{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;}
+.discovery-item .q{font-weight:600;margin-bottom:10px;}
+.reveal-box{display:none;margin-top:10px;padding:12px 14px;background:rgba(94,234,212,0.08);border:1px solid rgba(94,234,212,0.25);border-radius:var(--radius-sm);font-size:0.9rem;color:var(--ink-dim);}
+.reveal-box.show{display:block;}
+
+/* ---------- MISTAKES ---------- */
+.mistake{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;}
+.mistake .row{display:flex;gap:10px;margin-bottom:6px;font-size:0.93rem;}
+.mistake .row.x{color:#ffb3b3;}
+.mistake .row.ok{color:var(--good);}
+.mistake .row.why{color:var(--muted);}
+
+/* ---------- APPLICATIONS ---------- */
+.app-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
+.app-card .sit{font-weight:600;margin-bottom:6px;font-size:1rem;}
+.app-card .how{font-size:0.85rem;color:var(--amber);margin-bottom:8px;}
+
+/* ---------- CHALLENGE / QUIZ ---------- */
+.level-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.level-tab{
+  padding:9px 16px;border-radius:99px;border:1px solid var(--line-2);background:transparent;color:var(--ink-dim);
+  cursor:pointer;font-family:inherit;font-size:0.88rem;font-weight:600;
+}
+.level-tab.active{background:var(--amber);color:#1a1200;border-color:var(--amber);}
+.q-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:14px;}
+.q-card .qtext{font-weight:600;margin-bottom:14px;}
+.opt{
+  display:block;width:100%;text-align:left;background:var(--panel-2);border:1px solid var(--line-2);color:var(--ink);
+  padding:11px 14px;border-radius:var(--radius-sm);margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:0.9rem;
+}
+.opt:hover{border-color:var(--amber);}
+.opt.correct{border-color:var(--good);background:rgba(95,217,154,0.12);}
+.opt.incorrect{border-color:var(--bad);background:rgba(255,122,122,0.12);}
+.opt:disabled{cursor:default;}
+.feedback{margin-top:10px;font-size:0.88rem;padding:10px 12px;border-radius:var(--radius-sm);display:none;}
+.feedback.show{display:block;}
+.feedback.correct{background:rgba(95,217,154,0.1);color:var(--good);}
+.feedback.incorrect{background:rgba(255,122,122,0.1);color:#ffb3b3;}
+.num-input-row{display:flex;gap:10px;align-items:center;}
+.num-input-row input{max-width:140px;}
+
+.quiz-summary{text-align:center;padding:30px 20px;}
+.quiz-summary .score{font-family:'IBM Plex Mono',monospace;font-size:2.4rem;color:var(--amber);margin:10px 0;}
+.quiz-summary .pct{color:var(--muted);}
+.quiz-summary .msg{margin-top:14px;font-size:1.05rem;}
+
+/* ---------- PROGRESS ---------- */
+.progress-wrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;}
+.progress-bar-outer{height:12px;background:var(--panel-2);border-radius:99px;overflow:hidden;margin:14px 0 18px;}
+.progress-bar-inner{height:100%;background:linear-gradient(90deg,var(--amber),var(--teal));width:0%;transition:width .3s ease;}
+.progress-items{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+@media(max-width:760px){.progress-items{grid-template-columns:repeat(2,1fr);}}
+.progress-item{background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px;text-align:center;font-size:0.8rem;color:var(--muted);}
+.progress-item.done{color:var(--good);border-color:rgba(95,217,154,0.35);}
+.progress-item .mark{font-size:1.3rem;display:block;margin-bottom:4px;}
+
+/* ---------- REFERENCE ---------- */
+table.ref{width:100%;border-collapse:collapse;font-size:0.88rem;}
+table.ref th,table.ref td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);}
+table.ref th{color:var(--muted);font-weight:600;font-size:0.78rem;}
+table.ref td.f{font-family:'IBM Plex Mono',monospace;color:var(--amber);}
+
+/* ---------- FOOTER ---------- */
+footer{padding:36px 0;text-align:center;border-top:1px solid var(--line);}
+footer .org{font-weight:600;color:var(--ink);}
+footer .dev{color:var(--muted);font-size:0.85rem;margin-top:4px;}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+@media(max-width:640px){
+  nav.tabs{display:none;}
+  .grid.cols-3{grid-template-columns:1fr;}
+  .calc-flow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brandmark">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#ffb454" stroke-width="1.4"/>
+        <line x1="20" y1="4" x2="20" y2="36" stroke="#5eead4" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M6 26 L20 20 L34 12" stroke="#ffb454" stroke-width="1.8" fill="none"/>
+        <path d="M20 20 L34 28" stroke="#c9aeff" stroke-width="1.8" fill="none"/>
+      </svg>
+      <div class="brand-text">
+        <h1 data-en="Brewster's Law" data-ta="ப்ரூஸ்டர் விதி">Brewster's Law</h1>
+        <div class="sub" data-en="Learn • Visualize • Interact • Practise • Master" data-ta="கற்றல் • காட்சிப்படுத்தல் • செயல்பாடு • பயிற்சி • தேர்ச்சி">Learn • Visualize • Interact • Practise • Master</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <a href="#home" data-en="Home" data-ta="முகப்பு">Home</a>
+      <a href="#learn" data-en="Learn" data-ta="கற்றல்">Learn</a>
+      <a href="#interactive" data-en="Interactive" data-ta="ஊடாடல்">Interactive</a>
+      <a href="#examples" data-en="Examples" data-ta="எடுத்துக்காட்டுகள்">Examples</a>
+      <a href="#practice" data-en="Practice" data-ta="பயிற்சி">Practice</a>
+      <a href="#challenge" data-en="Challenge" data-ta="சவால்">Challenge</a>
+      <a href="#quiz" data-en="Quiz" data-ta="வினாடி வினா">Quiz</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="langtoggle" role="group" aria-label="Language">
+        <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="lang-ta" onclick="setLang('ta')">தமிழ்</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO / HOME ============ -->
+<section class="hero" id="home">
+  <div class="wide hero-grid">
+    <div>
+      <span class="kicker mono">PHYSICS · WAVE OPTICS · POLARIZATION</span>
+      <h1 class="display" data-en="Why does glare vanish through polarized sunglasses at just the right angle?" data-ta="சரியான கோணத்தில் பார்க்கும்போது மட்டும் துருவமுனைப்பு கண்ணாடி வழியாக மின்னும் ஒளி ஏன் மறைகிறது?">Why does glare vanish through polarized sunglasses at just the right angle?</h1>
+      <p class="lede" data-en="At one particular angle of incidence, light reflected off a surface becomes completely polarized. That special angle is called Brewster's angle — and the rule that predicts it is Brewster's Law." data-ta="ஒரு குறிப்பிட்ட படு கோணத்தில், ஒரு பரப்பிலிருந்து பிரதிபலிக்கும் ஒளி முழுவதுமாக துருவமுனைப்பு அடைகிறது. அந்த சிறப்பு கோணம் ப்ரூஸ்டர் கோணம் எனப்படும் — அதை கணிக்கும் விதியே ப்ரூஸ்டர் விதி.">At one particular angle of incidence, light reflected off a surface becomes completely polarized. That special angle is called Brewster's angle — and the rule that predicts it is Brewster's Law.</p>
+      <div class="hero-cta">
+        <a href="#interactive" class="btn" data-en="Try the simulator" data-ta="சிமுலேட்டரை முயற்சி செய்யவும்">Try the simulator</a>
+        <a href="#learn" class="btn ghost" data-en="Start learning" data-ta="கற்றலைத் தொடங்கு">Start learning</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg id="hero-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING STARTED / LEARN ============ -->
+<section id="learn">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">1</span><h2 data-en="Getting Started" data-ta="தொடங்குதல்">Getting Started</h2></div>
+
+    <h3 data-en="What is Brewster's Law?" data-ta="ப்ரூஸ்டர் விதி என்றால் என்ன?">What is Brewster's Law?</h3>
+    <p data-en="Brewster's Law states that when unpolarized light strikes the boundary between two transparent media at a particular angle — called the polarizing angle or Brewster's angle (θB) — the reflected ray is completely plane polarized, with vibrations only perpendicular to the plane of incidence. At this angle, the reflected and refracted rays are exactly perpendicular to each other. The law is written as tan θB = n₂ / n₁, where n₁ and n₂ are the refractive indices of the first and second media." data-ta="ப்ரூஸ்டர் விதியின்படி, துருவமுனைப்பு அடையாத ஒளி இரண்டு ஒளி ஊடுருவும் ஊடகங்களுக்கு இடையிலான எல்லையில் ஒரு குறிப்பிட்ட கோணத்தில் (துருவமுனைப்பு கோணம் அல்லது ப்ரூஸ்டர் கோணம் θB) விழும்போது, பிரதிபலிக்கும் கதிர் முழுவதுமாக தள துருவமுனைப்பு அடைகிறது; அதிர்வுகள் படு தளத்திற்கு செங்குத்தாக மட்டுமே இருக்கும். இக்கோணத்தில் பிரதிபலித்த கதிரும் ஒளிவிலகல் கதிரும் ஒன்றுக்கொன்று செங்குத்தாக இருக்கும். இவ்விதி tan θB = n₂ / n₁ என எழுதப்படுகிறது; இங்கு n₁, n₂ முதல் மற்றும் இரண்டாவது ஊடகங்களின் ஒளிவிலகல் எண்கள்.">Brewster's Law states that when unpolarized light strikes the boundary between two transparent media at a particular angle — called the polarizing angle or Brewster's angle (θB) — the reflected ray is completely plane polarized, with vibrations only perpendicular to the plane of incidence. At this angle, the reflected and refracted rays are exactly perpendicular to each other. The law is written as tan θB = n₂ / n₁, where n₁ and n₂ are the refractive indices of the first and second media.</p>
+
+    <h3 data-en="Why is this important?" data-ta="இது ஏன் முக்கியம்?">Why is this important?</h3>
+    <p data-en="Brewster's Law, discovered by Sir David Brewster in 1815, is one of the clearest demonstrations that light behaves as a transverse wave. It underlies polarizing sunglasses, camera filters, glare-reduction coatings, and the Brewster windows used in gas laser tubes to produce a clean, linearly polarized beam with minimal loss. It also appears frequently in board and competitive physics exams as both a conceptual and numerical topic." data-ta="1815 ஆம் ஆண்டு சர் டேவிட் ப்ரூஸ்டரால் கண்டறியப்பட்ட இவ்விதி, ஒளி குறுக்கலை அலையாக செயல்படுகிறது என்பதற்கான தெளிவான சான்றுகளில் ஒன்று. துருவமுனைப்பு கண்ணாடிகள், கேமரா வடிகட்டிகள், மின்னல் குறைப்பு பூச்சுகள், மற்றும் வாயு லேசர் குழாய்களில் பயன்படும் ப்ரூஸ்டர் சாளரங்கள் அனைத்தும் இவ்விதியை அடிப்படையாகக் கொண்டவை. இது தேர்வுகளில் கருத்து மற்றும் எண்கணித வினாக்களாக அடிக்கடி வருகிறது.">Brewster's Law, discovered by Sir David Brewster in 1815, is one of the clearest demonstrations that light behaves as a transverse wave. It underlies polarizing sunglasses, camera filters, glare-reduction coatings, and the Brewster windows used in gas laser tubes to produce a clean, linearly polarized beam with minimal loss. It also appears frequently in board and competitive physics exams as both a conceptual and numerical topic.</p>
+
+    <h3 data-en="Learning Objectives" data-ta="கற்றல் நோக்கங்கள்">Learning Objectives</h3>
+    <p data-en="By the end of this interactive lesson, you will be able to:" data-ta="இந்த ஊடாடும் பாடத்தின் முடிவில், நீங்கள் பின்வருவனவற்றைச் செய்ய முடியும்:">By the end of this interactive lesson, you will be able to:</p>
+    <ul class="obj-list">
+      <li data-en="Explain what Brewster's angle is and why the reflected ray becomes fully polarized there" data-ta="ப்ரூஸ்டர் கோணம் என்றால் என்ன, அங்கு பிரதிபலித்த கதிர் ஏன் முழுவதுமாக துருவமுனைப்பு அடைகிறது என விளக்குதல்">Explain what Brewster's angle is and why the reflected ray becomes fully polarized there</li>
+      <li data-en="Identify the perpendicularity condition between reflected and refracted rays" data-ta="பிரதிபலித்த மற்றும் ஒளிவிலகல் கதிர்களுக்கு இடையேயான செங்குத்து நிபந்தனையை அடையாளம் காணுதல்">Identify the perpendicularity condition between reflected and refracted rays</li>
+      <li data-en="Calculate Brewster's angle for a given pair of refractive indices" data-ta="கொடுக்கப்பட்ட ஒளிவிலகல் எண்களுக்கு ப்ரூஸ்டர் கோணத்தைக் கணக்கிடுதல்">Calculate Brewster's angle for a given pair of refractive indices</li>
+      <li data-en="Apply the law to find an unknown refractive index from a measured polarizing angle" data-ta="அளக்கப்பட்ட துருவமுனைப்பு கோணத்திலிருந்து அறியப்படாத ஒளிவிலகல் எண்ணைக் கண்டறிய விதியைப் பயன்படுத்துதல்">Apply the law to find an unknown refractive index from a measured polarizing angle</li>
+      <li data-en="Analyze how the reflected light's polarization changes as the angle of incidence varies" data-ta="படு கோணம் மாறும்போது பிரதிபலித்த ஒளியின் துருவமுனைப்பு எவ்வாறு மாறுகிறது என ஆய்வு செய்தல்">Analyze how the reflected light's polarization changes as the angle of incidence varies</li>
+      <li data-en="Connect the law to real devices such as polarizing filters and Brewster windows" data-ta="துருவமுனைப்பு வடிகட்டிகள் மற்றும் ப்ரூஸ்டர் சாளரங்கள் போன்ற உண்மையான சாதனங்களுடன் இவ்விதியை இணைத்துப் புரிந்துகொள்ளுதல்">Connect the law to real devices such as polarizing filters and Brewster windows</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CONCEPT EXPLORER ============ -->
+<section id="concepts">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">2</span><h2 data-en="Concept Explorer" data-ta="கருத்து ஆய்வகம்">Concept Explorer</h2></div>
+    <p class="section-lede" data-en="Tap a card to expand it." data-ta="விரிவாக்க அட்டையைத் தட்டவும்.">Tap a card to expand it.</p>
+    <div class="grid cols-3" id="concept-cards" style="margin-top:20px;"></div>
+  </div>
+</section>
+
+<!-- ============ MAIN INTERACTIVE SIMULATOR ============ -->
+<section id="interactive">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">3</span><h2 data-en="Interactive Simulator" data-ta="ஊடாடும் சிமுலேட்டர்">Interactive Simulator</h2></div>
+    <p class="section-lede" data-en="Change the angle of incidence and the second medium. Watch the reflected ray's polarization change in real time." data-ta="படு கோணத்தையும் இரண்டாம் ஊடகத்தையும் மாற்றவும். பிரதிபலித்த கதிரின் துருவமுனைப்பு நேரடியாக மாறுவதைப் பாருங்கள்.">Change the angle of incidence and the second medium. Watch the reflected ray's polarization change in real time.</p>
+
+    <div class="sim-shell" style="margin-top:22px;">
+      <div class="sim-diagram">
+        <svg id="sim-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="status-pill" id="sim-status" style="margin-top:12px;"></div>
+      </div>
+
+      <div class="sim-controls">
+        <div class="field">
+          <label><span data-en="Angle of incidence (θᵢ)" data-ta="படு கோணம் (θᵢ)">Angle of incidence (θᵢ)</span><span class="val mono" id="theta-i-val">45°</span></label>
+          <input type="range" id="theta-i" min="1" max="89" value="45" step="1">
+        </div>
+        <div class="field">
+          <label><span data-en="Second medium" data-ta="இரண்டாம் ஊடகம்">Second medium</span></label>
+          <select id="medium-select">
+            <option value="1.33" data-en="Water (n = 1.33)" data-ta="நீர் (n = 1.33)">Water (n = 1.33)</option>
+            <option value="1.5" selected data-en="Glass (n = 1.50)" data-ta="கண்ணாடி (n = 1.50)">Glass (n = 1.50)</option>
+            <option value="2.42" data-en="Diamond (n = 2.42)" data-ta="வைரம் (n = 2.42)">Diamond (n = 2.42)</option>
+            <option value="custom" data-en="Custom…" data-ta="தனிப்பயன்…">Custom…</option>
+          </select>
+        </div>
+        <div class="field" id="custom-n-field" style="display:none;">
+          <label><span data-en="Custom n₂" data-ta="தனிப்பயன் n₂">Custom n₂</span><span class="val mono" id="custom-n-val">1.60</span></label>
+          <input type="range" id="custom-n" min="1.05" max="2.6" value="1.6" step="0.01">
+        </div>
+
+        <div class="readout-grid">
+          <div class="readout"><div class="lab" data-en="Brewster's angle θB" data-ta="ப்ரூஸ்டர் கோணம் θB">Brewster's angle θB</div><div class="num mono" id="out-thetaB">—</div></div>
+          <div class="readout"><div class="lab" data-en="Refraction angle θₜ" data-ta="ஒளிவிலகல் கோணம் θₜ">Refraction angle θₜ</div><div class="num mono" id="out-thetat">—</div></div>
+          <div class="readout"><div class="lab" data-en="Reflected ⟂ refracted?" data-ta="பிரதிபலிப்பு ⟂ ஒளிவிலகல்?">Reflected ⟂ refracted?</div><div class="num mono" id="out-perp">—</div></div>
+          <div class="readout"><div class="lab" data-en="Angle between them" data-ta="இடையேயான கோணம்">Angle between them</div><div class="num mono" id="out-between">—</div></div>
+        </div>
+
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-label" data-en="s-pol. R_s" data-ta="s-துருவம் R_s">s-pol. R_s</span>
+            <div class="bar-track"><div class="bar-fill" id="bar-rs" style="background:var(--teal);width:0%"></div></div>
+            <span class="bar-pct mono" id="pct-rs">0%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" data-en="p-pol. R_p" data-ta="p-துருவம் R_p">p-pol. R_p</span>
+            <div class="bar-track"><div class="bar-fill" id="bar-rp" style="background:var(--violet);width:0%"></div></div>
+            <span class="bar-pct mono" id="pct-rp">0%</span>
+          </div>
+        </div>
+
+        <button class="btn small" onclick="snapToBrewster()" data-en="Snap to Brewster's angle" data-ta="ப்ரூஸ்டர் கோணத்திற்குச் செல்">Snap to Brewster's angle</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE CALCULATOR ============ -->
+<section id="calculator">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">4</span><h2 data-en="Live Calculator" data-ta="நேரடி கணிப்பான்">Live Calculator</h2></div>
+    <p class="section-lede" data-en="Enter the refractive indices of the two media to compute Brewster's angle step by step." data-ta="ப்ரூஸ்டர் கோணத்தைப் படிப்படியாகக் கணக்கிட இரு ஊடகங்களின் ஒளிவிலகல் எண்களை உள்ளிடவும்.">Enter the refractive indices of the two media to compute Brewster's angle step by step.</p>
+    <div class="card" style="margin-top:18px;">
+      <div class="grid cols-2">
+        <div class="field">
+          <label><span data-en="Refractive index of medium 1 (n₁)" data-ta="ஊடகம் 1 இன் ஒளிவிலகல் எண் (n₁)">Refractive index of medium 1 (n₁)</span></label>
+          <input type="number" id="calc-n1" value="1.00" step="0.01" min="0.5" max="4">
+        </div>
+        <div class="field">
+          <label><span data-en="Refractive index of medium 2 (n₂)" data-ta="ஊடகம் 2 இன் ஒளிவிலகல் எண் (n₂)">Refractive index of medium 2 (n₂)</span></label>
+          <input type="number" id="calc-n2" value="1.50" step="0.01" min="0.5" max="4">
+        </div>
+      </div>
+      <div id="calc-error" class="status-pill warn" style="display:none;margin-top:12px;"></div>
+      <div class="calc-flow" id="calc-flow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP BY STEP ============ -->
+<section id="stepbystep">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">5</span><h2 data-en="Step-by-Step Derivation" data-ta="படிப்படியான விளக்கம்">Step-by-Step Derivation</h2></div>
+    <div class="stepper-card" style="margin-top:18px;">
+      <div class="step-track" id="step-track"></div>
+      <div class="step-body" id="step-body"></div>
+      <div class="step-controls">
+        <button class="btn ghost small" onclick="stepPrev()" data-en="Previous" data-ta="முந்தையது">Previous</button>
+        <button class="btn ghost small" onclick="stepPlay()" id="step-play-btn" data-en="Play" data-ta="இயக்கு">Play</button>
+        <button class="btn ghost small" onclick="stepNext()" data-en="Next" data-ta="அடுத்தது">Next</button>
+        <button class="btn ghost small" onclick="stepReset()" data-en="Reset" data-ta="மீட்டமை">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDERING ACTIVITY ============ -->
+<section id="ordering">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">6</span><h2 data-en="Arrange the Reasoning" data-ta="காரணத்தை வரிசைப்படுத்து">Arrange the Reasoning</h2></div>
+    <p class="section-lede" data-en="Drag the statements into the correct logical order, from first to last." data-ta="கூற்றுகளை சரியான தருக்க வரிசையில் இழுத்து வைக்கவும்.">Drag the statements into the correct logical order, from first to last.</p>
+    <ul class="order-list" id="order-list" style="margin-top:18px;"></ul>
+    <div class="step-controls">
+      <button class="btn small" onclick="checkOrder()" data-en="Check Answer" data-ta="பதிலைச் சரிபார்">Check Answer</button>
+      <button class="btn ghost small" onclick="resetOrder()" data-en="Reset" data-ta="மீட்டமை">Reset</button>
+    </div>
+    <div id="order-feedback" class="feedback"></div>
+  </div>
+</section>
+
+<!-- ============ MATCHING GAME ============ -->
+<section id="matching">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">7</span><h2 data-en="Matching Game" data-ta="இணைப்பு விளையாட்டு">Matching Game</h2></div>
+    <p class="section-lede" data-en="Click a term, then click its matching definition." data-ta="ஒரு சொல்லைக் கிளிக் செய்து, பின் அதற்குரிய விளக்கத்தைக் கிளிக் செய்யவும்.">Click a term, then click its matching definition.</p>
+    <div class="match-grid" style="margin-top:18px;">
+      <div class="match-col" id="match-terms"></div>
+      <div class="match-col" id="match-defs"></div>
+    </div>
+    <div class="step-controls">
+      <span id="match-status" style="align-self:center;color:var(--muted);font-size:0.88rem;"></span>
+      <button class="btn ghost small" onclick="resetMatch()" data-en="Reset" data-ta="மீட்டமை">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKED EXAMPLES ============ -->
+<section id="examples">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">8</span><h2 data-en="Worked Examples" data-ta="தீர்க்கப்பட்ட எடுத்துக்காட்டுகள்">Worked Examples</h2></div>
+    <div id="examples-wrap" style="margin-top:18px;"></div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE YOURSELF ============ -->
+<section id="explore">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">9</span><h2 data-en="Explore Yourself" data-ta="நீங்களே ஆராயுங்கள்">Explore Yourself</h2></div>
+    <p class="section-lede" data-en="There is no fixed answer here. Drag the sliders below and watch what happens — try to find your own patterns." data-ta="இங்கு நிலையான பதில் இல்லை. கீழேயுள்ள சறுக்கிகளை இழுத்து என்ன நடக்கிறது எனப் பாருங்கள் — உங்களது சொந்த முறைமைகளைக் கண்டறியுங்கள்.">There is no fixed answer here. Drag the sliders below and watch what happens — try to find your own patterns.</p>
+    <div class="card" style="margin-top:18px;">
+      <div class="field">
+        <label><span data-en="n₁ (first medium)" data-ta="n₁ (முதல் ஊடகம்)">n₁ (first medium)</span><span class="val mono" id="ex-n1-val">1.00</span></label>
+        <input type="range" id="ex-n1" min="1.0" max="2.0" value="1.0" step="0.01">
+      </div>
+      <div class="field" style="margin-top:14px;">
+        <label><span data-en="n₂ (second medium)" data-ta="n₂ (இரண்டாம் ஊடகம்)">n₂ (second medium)</span><span class="val mono" id="ex-n2-val">1.50</span></label>
+        <input type="range" id="ex-n2" min="1.0" max="2.6" value="1.5" step="0.01">
+      </div>
+      <div class="readout-grid" style="margin-top:16px;">
+        <div class="readout"><div class="lab" data-en="Brewster's angle" data-ta="ப்ரூஸ்டர் கோணம்">Brewster's angle</div><div class="num mono" id="ex-out-theta">—</div></div>
+        <div class="readout"><div class="lab" data-en="n₂ / n₁ ratio" data-ta="n₂ / n₁ விகிதம்">n₂ / n₁ ratio</div><div class="num mono" id="ex-out-ratio">—</div></div>
+      </div>
+      <div class="explore-note" style="margin-top:14px;" data-en="Key observation: Brewster's angle depends only on the ratio n₂/n₁ — not on the individual values. Two very different pairs of media with the same ratio give the same Brewster's angle." data-ta="முக்கிய அவதானிப்பு: ப்ரூஸ்டர் கோணம் n₂/n₁ விகிதத்தை மட்டுமே சார்ந்துள்ளது — தனித்தனி மதிப்புகளை அல்ல. ஒரே விகிதம் கொண்ட முற்றிலும் வேறுபட்ட இரு ஊடக ஜோடிகள் ஒரே ப்ரூஸ்டர் கோணத்தைத் தரும்.">Key observation: Brewster's angle depends only on the ratio n₂/n₁ — not on the individual values. Two very different pairs of media with the same ratio give the same Brewster's angle.</div>
+      <button class="btn ghost small" style="margin-top:14px;" onclick="resetExplore()" data-en="Reset" data-ta="மீட்டமை">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISCOVERY QUESTIONS ============ -->
+<section id="discovery">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">10</span><h2 data-en="Discovery Questions" data-ta="கண்டுபிடிப்பு வினாக்கள்">Discovery Questions</h2></div>
+    <div id="discovery-wrap" style="margin-top:18px;"></div>
+  </div>
+</section>
+
+<!-- ============ COMMON MISTAKES ============ -->
+<section id="mistakes">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">11</span><h2 data-en="Common Mistakes" data-ta="பொதுவான தவறுகள்">Common Mistakes</h2></div>
+    <div id="mistakes-wrap" style="margin-top:18px;"></div>
+  </div>
+</section>
+
+<!-- ============ APPLICATIONS ============ -->
+<section id="applications">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">12</span><h2 data-en="Real-World Applications" data-ta="நடைமுறை பயன்பாடுகள்">Real-World Applications</h2></div>
+    <div class="grid cols-2" id="apps-wrap" style="margin-top:18px;"></div>
+  </div>
+</section>
+
+<!-- ============ CHALLENGE MODE ============ -->
+<section id="challenge">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">13</span><h2 data-en="Challenge Mode" data-ta="சவால் முறை">Challenge Mode</h2></div>
+    <div class="level-tabs" style="margin-top:18px;">
+      <button class="level-tab active" data-level="easy" onclick="setChallengeLevel('easy')" data-en="Easy" data-ta="எளிது">Easy</button>
+      <button class="level-tab" data-level="medium" onclick="setChallengeLevel('medium')" data-en="Medium" data-ta="நடுத்தரம்">Medium</button>
+      <button class="level-tab" data-level="hard" onclick="setChallengeLevel('hard')" data-en="Hard" data-ta="கடினம்">Hard</button>
+    </div>
+    <div id="challenge-wrap"></div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">14</span><h2 data-en="Interactive Quiz" data-ta="ஊடாடும் வினாடி வினா">Interactive Quiz</h2></div>
+    <p class="section-lede" data-en="10 questions. Answer each one to see instant feedback." data-ta="10 வினாக்கள். ஒவ்வொன்றுக்கும் பதிலளித்து உடனடி விளக்கத்தைக் காணுங்கள்.">10 questions. Answer each one to see instant feedback.</p>
+    <div id="quiz-wrap" style="margin-top:18px;"></div>
+    <div id="quiz-summary" class="quiz-summary card" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- ============ PROGRESS ============ -->
+<section id="progress">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">15</span><h2 data-en="Your Progress" data-ta="உங்கள் முன்னேற்றம்">Your Progress</h2></div>
+    <div class="progress-wrap" style="margin-top:18px;">
+      <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+        <span data-en="Overall completion" data-ta="மொத்த நிறைவு">Overall completion</span>
+        <span class="mono" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar"></div></div>
+      <div class="progress-items">
+        <div class="progress-item" id="prog-concepts"><span class="mark">💡</span><span data-en="Concepts" data-ta="கருத்துகள்">Concepts</span></div>
+        <div class="progress-item" id="prog-sim"><span class="mark">🔬</span><span data-en="Simulator" data-ta="சிமுலேட்டர்">Simulator</span></div>
+        <div class="progress-item" id="prog-examples"><span class="mark">📘</span><span data-en="Examples" data-ta="எடுத்துக்காட்டு">Examples</span></div>
+        <div class="progress-item" id="prog-activities"><span class="mark">🧩</span><span data-en="Activities" data-ta="செயல்பாடுகள்">Activities</span></div>
+        <div class="progress-item" id="prog-quiz"><span class="mark">🏆</span><span data-en="Quiz" data-ta="வினாடி வினா">Quiz</span></div>
+      </div>
+      <button class="btn ghost small" style="margin-top:16px;" onclick="resetProgress()" data-en="Reset Progress" data-ta="முன்னேற்றத்தை மீட்டமை">Reset Progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK REFERENCE ============ -->
+<section id="reference">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow-num">16</span><h2 data-en="Quick Reference" data-ta="விரைவு குறிப்பு">Quick Reference</h2></div>
+    <div class="grid cols-2" style="margin-top:18px;">
+      <div class="card">
+        <h3 style="font-size:1rem;" data-en="Formulas" data-ta="சூத்திரங்கள்">Formulas</h3>
+        <table class="ref">
+          <thead><tr><th data-en="Quantity" data-ta="அளவு">Quantity</th><th data-en="Symbol" data-ta="குறியீடு">Symbol</th><th data-en="Formula" data-ta="சூத்திரம்">Formula</th></tr></thead>
+          <tbody>
+            <tr><td data-en="Brewster's angle" data-ta="ப்ரூஸ்டர் கோணம்">Brewster's angle</td><td class="mono">θB</td><td class="f mono">tan θB = n₂ / n₁</td></tr>
+            <tr><td data-en="Refraction angle at θB" data-ta="θB இல் ஒளிவிலகல் கோணம்">Refraction angle at θB</td><td class="mono">θₜ</td><td class="f mono">θₜ = 90° − θB</td></tr>
+            <tr><td data-en="Snell's Law" data-ta="ஸ்நெல் விதி">Snell's Law</td><td class="mono">—</td><td class="f mono">n₁ sin θᵢ = n₂ sin θₜ</td></tr>
+            <tr><td data-en="Refractive index from θB" data-ta="θB இலிருந்து ஒளிவிலகல் எண்">Refractive index from θB</td><td class="mono">n₂</td><td class="f mono">n₂ = n₁ tan θB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1rem;" data-en="Key Facts" data-ta="முக்கிய உண்மைகள்">Key Facts</h3>
+        <ul class="obj-list">
+          <li data-en="Discovered by Sir David Brewster, 1815" data-ta="1815 இல் சர் டேவிட் ப்ரூஸ்டரால் கண்டறியப்பட்டது">Discovered by Sir David Brewster, 1815</li>
+          <li data-en="Only the reflected ray is completely polarized; the refracted ray is only partially polarized" data-ta="பிரதிபலித்த கதிர் மட்டுமே முழுமையாக துருவமுனைப்பு அடைகிறது; ஒளிவிலகல் கதிர் ஓரளவே துருவமுனைப்பு அடைகிறது">Only the reflected ray is completely polarized; the refracted ray is only partially polarized</li>
+          <li data-en="Reflected and refracted rays are perpendicular exactly at θB" data-ta="θB இல் மட்டுமே பிரதிபலிப்பு மற்றும் ஒளிவிலகல் கதிர்கள் செங்குத்தாக இருக்கும்">Reflected and refracted rays are perpendicular exactly at θB</li>
+          <li data-en="Air–Water ≈ 53.1°, Air–Glass ≈ 56.3°, Air–Diamond ≈ 67.5°" data-ta="காற்று–நீர் ≈ 53.1°, காற்று–கண்ணாடி ≈ 56.3°, காற்று–வைரம் ≈ 67.5°">Air–Water ≈ 53.1°, Air–Glass ≈ 56.3°, Air–Diamond ≈ 67.5°</li>
+          <li data-en="Applications: polarizing sunglasses, camera filters, laser Brewster windows" data-ta="பயன்பாடுகள்: துருவமுனைப்பு கண்ணாடிகள், கேமரா வடிகட்டிகள், லேசர் ப்ரூஸ்டர் சாளரங்கள்">Applications: polarizing sunglasses, camera filters, laser Brewster windows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="org">SIVAGANGAI PG TEACHERS' RESOURCE PORTAL</div>
+    <div class="dev">Developed by H.HAMSAD BANU, PG ASST PHYSICS, GHSS Keeladi, Sivagangai District</div>
+  </div>
+</footer>
+
+<script>
+/* ===================== LANGUAGE ===================== */
+let currentLang = localStorage.getItem('bl_lang') || 'en';
+
+function applyStaticLang(lang){
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val = lang === 'ta' ? el.getAttribute('data-ta') : el.getAttribute('data-en');
+    if(val !== null) el.innerHTML = val;
+  });
+  document.documentElement.setAttribute('lang', lang === 'ta' ? 'ta' : 'en');
+  document.body.toggleAttribute('lang-ta', lang === 'ta');
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-ta').classList.toggle('active', lang==='ta');
+}
+
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('bl_lang', lang);
+  applyStaticLang(lang);
+  renderConcepts();
+  renderStepper(true);
+  renderOrdering();
+  renderMatching();
+  renderExamples();
+  renderDiscovery();
+  renderMistakes();
+  renderApplications();
+  renderChallenge();
+  renderQuiz();
+  updateSimulator();
+  updateExplore();
+}
+
+/* ===================== TEXT HELPERS ===================== */
+function T(obj){ return currentLang === 'ta' ? obj.ta : obj.en; }
+const deg = "\u00B0";
+
+/* ===================== HERO MINI DIAGRAM ===================== */
+function drawHeroSVG(){
+  const svg = document.getElementById('hero-svg');
+  const thetaI = 56.3, n1=1, n2=1.5;
+  const thetaT = Math.asin((n1/n2)*Math.sin(thetaI*Math.PI/180)) * 180/Math.PI;
+  svg.innerHTML = buildRayDiagram(thetaI, thetaT, 400, 300, true);
+}
+
+/* ===================== RAY DIAGRAM BUILDER ===================== */
+function buildRayDiagram(thetaI, thetaT, W, H, mini){
+  const cx = W/2, cy = H*0.5;
+  const L1 = H*0.42, L2 = H*0.42;
+  const ti = thetaI*Math.PI/180, tt = thetaT*Math.PI/180;
+  const incX = cx - L1*Math.sin(ti), incY = cy - L1*Math.cos(ti);
+  const refX = cx + L1*Math.sin(ti), refY = cy - L1*Math.cos(ti);
+  const refrX = cx + L2*Math.sin(tt), refrY = cy + L2*Math.cos(tt);
+
+  let s = '';
+  s += `<rect x="0" y="0" width="${W}" height="${cy}" fill="#101a30"/>`;
+  s += `<rect x="0" y="${cy}" width="${W}" height="${H-cy}" fill="#182548"/>`;
+  s += `<line x1="0" y1="${cy}" x2="${W}" y2="${cy}" stroke="#3a4c74" stroke-width="1.5"/>`;
+  s += `<line x1="${cx}" y1="${cy-L1*0.95}" x2="${cx}" y2="${cy+L2*0.95}" stroke="#5a6d94" stroke-width="1" stroke-dasharray="4 4"/>`;
+
+  // incident ray
+  s += rayLine(incX, incY, cx, cy, '#ffb454', 2.4);
+  s += arrowHead(incX, incY, cx, cy, '#ffb454');
+  // reflected ray
+  s += rayLine(cx, cy, refX, refY, '#5eead4', 2.4);
+  s += arrowHead(cx, cy, refX, refY, '#5eead4');
+  // refracted ray
+  s += rayLine(cx, cy, refrX, refrY, '#c9aeff', 2.4);
+  s += arrowHead(cx, cy, refrX, refrY, '#c9aeff');
+
+  s += `<circle cx="${cx}" cy="${cy}" r="3.2" fill="#eef2fb"/>`;
+
+  if(!mini){
+    s += textEl(incX-8, incY-6, 'i', '#ffb454', 'end');
+    s += textEl(refX+8, refY-6, 'r', '#5eead4', 'start');
+    s += textEl(refrX+8, refrY+16, 't', '#c9aeff', 'start');
+    s += textEl(W-8, 24, 'medium 1 (n\u2081)', '#8b97b8', 'end');
+    s += textEl(W-8, H-14, 'medium 2 (n\u2082)', '#8b97b8', 'end');
+  }
+  return s;
+}
+function rayLine(x1,y1,x2,y2,color,w){
+  return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/>`;
+}
+function arrowHead(x1,y1,x2,y2,color){
+  const ang = Math.atan2(y2-y1, x2-x1);
+  const size = 8;
+  const ax1 = x2 - size*Math.cos(ang - 0.35), ay1 = y2 - size*Math.sin(ang - 0.35);
+  const ax2 = x2 - size*Math.cos(ang + 0.35), ay2 = y2 - size*Math.sin(ang + 0.35);
+  return `<polygon points="${x2},${y2} ${ax1.toFixed(1)},${ay1.toFixed(1)} ${ax2.toFixed(1)},${ay2.toFixed(1)}" fill="${color}"/>`;
+}
+function textEl(x,y,label,color,anchor){
+  return `<text x="${x}" y="${y}" fill="${color}" font-size="12" font-family="IBM Plex Mono, monospace" text-anchor="${anchor}">${label}</text>`;
+}
+
+/* ===================== SIMULATOR ===================== */
+function getMedium2(){
+  const sel = document.getElementById('medium-select').value;
+  if(sel === 'custom') return parseFloat(document.getElementById('custom-n').value);
+  return parseFloat(sel);
+}
+function updateSimulator(){
+  const n1 = 1.0;
+  const n2 = getMedium2();
+  const thetaI = parseFloat(document.getElementById('theta-i').value);
+  document.getElementById('theta-i-val').textContent = thetaI + deg;
+
+  const thetaB = Math.atan(n2/n1) * 180/Math.PI;
+  const ti = thetaI*Math.PI/180;
+  const sinT = (n1/n2)*Math.sin(ti);
+  const thetaT = Math.asin(Math.min(1,Math.max(-1,sinT))) * 180/Math.PI;
+  const angleBetween = 180 - (thetaI + thetaT);
+
+  document.getElementById('out-thetaB').textContent = thetaB.toFixed(1) + deg;
+  document.getElementById('out-thetat').textContent = thetaT.toFixed(1) + deg;
+  document.getElementById('out-between').textContent = angleBetween.toFixed(1) + deg;
+
+  const isBrewster = Math.abs(thetaI - thetaB) < 0.6;
+  document.getElementById('out-perp').textContent = isBrewster ? T({en:'Yes ✓',ta:'ஆம் ✓'}) : T({en:'No',ta:'இல்லை'});
+
+  // Fresnel reflectances
+  const cosI = Math.cos(ti), cosT = Math.cos(thetaT*Math.PI/180);
+  const rs = (n1*cosI - n2*cosT) / (n1*cosI + n2*cosT);
+  const rp = (n2*cosI - n1*cosT) / (n2*cosI + n1*cosT);
+  const Rs = rs*rs*100, Rp = rp*rp*100;
+
+  document.getElementById('bar-rs').style.width = Rs.toFixed(1)+'%';
+  document.getElementById('bar-rp').style.width = Rp.toFixed(1)+'%';
+  document.getElementById('pct-rs').textContent = Rs.toFixed(1)+'%';
+  document.getElementById('pct-rp').textContent = Rp.toFixed(1)+'%';
+
+  const statusEl = document.getElementById('sim-status');
+  if(isBrewster){
+    statusEl.className = 'status-pill good';
+    statusEl.textContent = T({en:'✓ At Brewster\'s angle — reflected ray is COMPLETELY polarized (p-component = 0)', ta:'✓ ப்ரூஸ்டர் கோணத்தில் — பிரதிபலித்த கதிர் முழுமையாக துருவமுனைப்பு அடைந்துள்ளது (p-கூறு = 0)'});
+  } else {
+    statusEl.className = 'status-pill warn';
+    statusEl.textContent = T({en:'Reflected ray is only partially polarized at this angle', ta:'இந்த கோணத்தில் பிரதிபலித்த கதிர் ஓரளவு மட்டுமே துருவமுனைப்பு அடைந்துள்ளது'});
+  }
+
+  const svg = document.getElementById('sim-svg');
+  svg.innerHTML = buildRayDiagram(thetaI, thetaT, 400, 320, false);
+
+  saveProgress('sim');
+}
+document.getElementById('theta-i').addEventListener('input', updateSimulator);
+document.getElementById('medium-select').addEventListener('change', function(){
+  document.getElementById('custom-n-field').style.display = this.value === 'custom' ? 'flex' : 'none';
+  updateSimulator();
+});
+document.getElementById('custom-n').addEventListener('input', function(){
+  document.getElementById('custom-n-val').textContent = parseFloat(this.value).toFixed(2);
+  updateSimulator();
+});
+function snapToBrewster(){
+  const n2 = getMedium2();
+  const thetaB = Math.round(Math.atan(n2/1.0)*180/Math.PI);
+  document.getElementById('theta-i').value = thetaB;
+  updateSimulator();
+}
+
+/* ===================== LIVE CALCULATOR ===================== */
+function updateCalculator(){
+  const n1 = parseFloat(document.getElementById('calc-n1').value);
+  const n2 = parseFloat(document.getElementById('calc-n2').value);
+  const errEl = document.getElementById('calc-error');
+  const flow = document.getElementById('calc-flow');
+
+  if(isNaN(n1) || isNaN(n2) || n1 <= 0 || n2 <= 0){
+    errEl.style.display='block';
+    errEl.textContent = T({en:'Please enter valid positive refractive indices.', ta:'சரியான நேர்மறை ஒளிவிலகல் எண்களை உள்ளிடவும்.'});
+    flow.innerHTML='';
+    return;
+  }
+  if(Math.abs(n1-n2) < 0.0001){
+    errEl.style.display='block';
+    errEl.textContent = T({en:'n₁ and n₂ are equal — there is no interface, so Brewster\'s angle is undefined.', ta:'n₁ மற்றும் n₂ சமமாக உள்ளன — எல்லை இல்லை, எனவே ப்ரூஸ்டர் கோணம் வரையறுக்கப்படவில்லை.'});
+    flow.innerHTML='';
+    return;
+  }
+  errEl.style.display='none';
+  const ratio = n2/n1;
+  const thetaB = Math.atan(ratio)*180/Math.PI;
+
+  flow.innerHTML = `
+    <div class="calc-step"><div class="t">${T({en:'GIVEN',ta:'கொடுக்கப்பட்டவை'})}</div><div class="v">n₁ = ${n1.toFixed(2)}<br>n₂ = ${n2.toFixed(2)}</div></div>
+    <div class="calc-step"><div class="t">${T({en:'FORMULA',ta:'சூத்திரம்'})}</div><div class="v">tan θB = n₂ / n₁</div></div>
+    <div class="calc-step"><div class="t">${T({en:'SUBSTITUTION',ta:'மாற்றீடு'})}</div><div class="v">tan θB = ${n2.toFixed(2)} / ${n1.toFixed(2)}</div></div>
+    <div class="calc-step"><div class="t">${T({en:'CALCULATION',ta:'கணக்கீடு'})}</div><div class="v">tan θB = ${ratio.toFixed(3)}<br>θB = arctan(${ratio.toFixed(3)})</div></div>
+    <div class="calc-step" style="border-color:var(--good);"><div class="t">${T({en:'ANSWER',ta:'விடை'})}</div><div class="v" style="color:var(--good);font-weight:600;">θB = ${thetaB.toFixed(2)}${deg}</div></div>
+  `;
+}
+document.getElementById('calc-n1').addEventListener('input', updateCalculator);
+document.getElementById('calc-n2').addEventListener('input', updateCalculator);
+
+/* ===================== CONCEPT CARDS ===================== */
+const conceptData = [
+  {icon:'☀️', title:{en:'Unpolarized Light',ta:'துருவமுனைப்பு அடையாத ஒளி'}, key:{en:'Vibrates in all directions ⟂ to travel',ta:'பயண திசைக்கு செங்குத்தாக அனைத்து திசைகளிலும் அதிர்கிறது'}, body:{en:'Ordinary light (sunlight, bulb light) vibrates in every direction perpendicular to its direction of travel. No single plane is preferred.', ta:'சாதாரண ஒளி (சூரிய ஒளி, விளக்கு ஒளி) பயண திசைக்கு செங்குத்தாக அனைத்து திசைகளிலும் அதிர்கிறது. எந்த ஒரு தளத்திற்கும் முன்னுரிமை இல்லை.'}},
+  {icon:'📐', title:{en:'Plane of Incidence',ta:'படு தளம்'}, key:{en:'The plane containing the incident ray and the normal',ta:'படு கதிரையும் செங்குத்தையும் கொண்ட தளம்'}, body:{en:'This is the reference plane used to describe polarization directions — "parallel" (p) or "perpendicular" (s) always mean relative to this plane.', ta:'துருவமுனைப்பு திசைகளை விவரிக்கப் பயன்படும் அடிப்படைத் தளம் இதுவே — "இணையான" (p) அல்லது "செங்குத்தான" (s) என்பவை எப்போதும் இத்தளத்தை அடிப்படையாகக் கொண்டவை.'}},
+  {icon:'🎯', title:{en:"Brewster's Angle",ta:'ப்ரூஸ்டர் கோணம்'}, key:{en:'The one angle where reflected light is 100% polarized',ta:'பிரதிபலித்த ஒளி 100% துருவமுனைப்பு அடையும் ஒரே கோணம்'}, body:{en:'At θB = arctan(n₂/n₁), the reflected ray contains only the s-polarized (perpendicular) component — the p-component is entirely transmitted, not reflected.', ta:'θB = arctan(n₂/n₁) இல், பிரதிபலித்த கதிரில் s-துருவமுனைப்பு (செங்குத்து) கூறு மட்டுமே உள்ளது — p-கூறு முழுவதுமாக ஊடுருவுகிறது, பிரதிபலிக்கவில்லை.'}},
+  {icon:'⊥', title:{en:'Perpendicularity Condition',ta:'செங்குத்து நிபந்தனை'}, key:{en:'θB + θₜ = 90° exactly at Brewster\'s angle',ta:'ப்ரூஸ்டர் கோணத்தில் θB + θₜ = 90° சரியாக'}, body:{en:'Geometrically, this means the reflected ray and the refracted ray travel at exactly 90° to one another — a signature you can check in any diagram.', ta:'வடிவியல் ரீதியாக, பிரதிபலித்த கதிரும் ஒளிவிலகல் கதிரும் ஒன்றுக்கொன்று சரியாக 90° இல் பயணிக்கின்றன — எந்த வரைபடத்திலும் இதைச் சரிபார்க்கலாம்.'}},
+  {icon:'🔬', title:{en:'Refractive Index',ta:'ஒளிவிலகல் எண்'}, key:{en:'How much a medium slows and bends light',ta:'ஒரு ஊடகம் ஒளியை எவ்வளவு மெதுவாக்கி வளைக்கிறது'}, body:{en:'n = c/v. Higher n means light bends more and Brewster\'s angle (for light from air) is larger — diamond (n≈2.42) has a much higher θB than water (n≈1.33).', ta:'n = c/v. அதிக n எனில் ஒளி அதிகமாக வளையும், காற்றிலிருந்து வரும் ஒளிக்கு ப்ரூஸ்டர் கோணமும் அதிகமாகும் — வைரத்திற்கு (n≈2.42) நீரை (n≈1.33) விட அதிக θB உள்ளது.'}},
+  {icon:'🕶️', title:{en:'Polarizing Filters',ta:'துருவமுனைப்பு வடிகட்டிகள்'}, key:{en:'Block one polarization direction',ta:'ஒரு துருவமுனைப்பு திசையைத் தடுக்கும்'}, body:{en:'A polarizing filter transmits light vibrating along one axis and blocks the perpendicular axis — this is exactly why sunglasses cut glare reflected at near-Brewster angles.', ta:'ஒரு துருவமுனைப்பு வடிகட்டி ஒரு அச்சில் அதிரும் ஒளியை அனுப்பி, செங்குத்து அச்சைத் தடுக்கிறது — இதுவே சூரிய கண்ணாடிகள் ப்ரூஸ்டர் கோணத்திற்கு அருகில் பிரதிபலிக்கும் மின்னலை வெட்டுவதற்கான காரணம்.'}}
+];
+function renderConcepts(){
+  const wrap = document.getElementById('concept-cards');
+  wrap.innerHTML = conceptData.map((c,i)=>`
+    <div class="card ccard" id="ccard-${i}" onclick="toggleCard(${i})">
+      <div class="icon">${c.icon}</div>
+      <h3>${T(c.title)}</h3>
+      <div class="key">${T(c.key)}</div>
+      <div class="more">${T(c.body)}</div>
+      <div class="toggle-hint">${T({en:'Tap to explore',ta:'ஆராய தட்டவும்'})}</div>
+    </div>
+  `).join('');
+}
+function toggleCard(i){
+  document.getElementById('ccard-'+i).classList.toggle('open');
+  saveProgress('concepts');
+}
+
+/* ===================== STEP BY STEP ===================== */
+const stepsData = [
+  {en:'Unpolarized light strikes the boundary between two transparent media at angle of incidence θᵢ.', ta:'துருவமுனைப்பு அடையாத ஒளி இரு ஒளி ஊடுருவும் ஊடகங்களுக்கிடையிலான எல்லையில் θᵢ படு கோணத்தில் விழுகிறது.'},
+  {en:'Part of the light reflects (angle of reflection = θᵢ) and part refracts into the second medium, following Snell\'s Law: n₁ sin θᵢ = n₂ sin θₜ.', ta:'ஒளியின் ஒரு பகுதி பிரதிபலிக்கிறது (பிரதிபலிப்பு கோணம் = θᵢ), மற்றொரு பகுதி இரண்டாம் ஊடகத்தில் ஸ்நெல் விதிப்படி ஒளிவிலகல் அடைகிறது: n₁ sin θᵢ = n₂ sin θₜ.'},
+  {en:'As θᵢ increases, the reflected ray becomes progressively more polarized (the p-component reflects less and less).', ta:'θᵢ அதிகரிக்கும்போது பிரதிபலித்த கதிர் படிப்படியாக அதிக துருவமுனைப்பு அடைகிறது (p-கூறு குறைந்துகொண்டே பிரதிபலிக்கிறது).'},
+  {en:'At one special angle — Brewster\'s angle θB — the reflected ray and the refracted ray become exactly perpendicular to each other: θB + θₜ = 90°.', ta:'ஒரு சிறப்பு கோணத்தில் — ப்ரூஸ்டர் கோணம் θB — பிரதிபலித்த கதிரும் ஒளிவிலகல் கதிரும் ஒன்றுக்கொன்று சரியாக செங்குத்தாக மாறுகின்றன: θB + θₜ = 90°.'},
+  {en:'At this angle, the reflected ray contains ONLY the component polarized perpendicular to the plane of incidence — it is completely plane polarized.', ta:'இக்கோணத்தில், பிரதிபலித்த கதிரில் படு தளத்திற்கு செங்குத்தான கூறு மட்டுமே உள்ளது — அது முழுவதுமாக தள துருவமுனைப்பு அடைந்துள்ளது.'},
+  {en:'Using θₜ = 90° − θB in Snell\'s Law (n₁ sin θB = n₂ sin(90°−θB) = n₂ cos θB), we get n₁ sin θB = n₂ cos θB.', ta:'ஸ்நெல் விதியில் θₜ = 90° − θB என்பதைப் பயன்படுத்தினால் (n₁ sin θB = n₂ sin(90°−θB) = n₂ cos θB), n₁ sin θB = n₂ cos θB கிடைக்கிறது.'},
+  {en:'Rearranging gives Brewster\'s Law: tan θB = sin θB / cos θB = n₂ / n₁.', ta:'மறுசீரமைத்தால் ப்ரூஸ்டர் விதி கிடைக்கிறது: tan θB = sin θB / cos θB = n₂ / n₁.'}
+];
+let curStep = 0, stepTimer = null;
+function renderStepper(keepIndex){
+  if(!keepIndex) curStep = 0;
+  const track = document.getElementById('step-track');
+  track.innerHTML = stepsData.map((_,i)=>`<div class="dot ${i<=curStep?'done':''}"></div>`).join('');
+  document.getElementById('step-body').innerHTML = `<span class="num">${curStep+1}/${stepsData.length}</span>${T(stepsData[curStep])}`;
+  saveProgress('activities');
+}
+function stepNext(){ if(curStep < stepsData.length-1){ curStep++; renderStepper(true); } }
+function stepPrev(){ if(curStep > 0){ curStep--; renderStepper(true); } }
+function stepReset(){ curStep = 0; clearInterval(stepTimer); stepTimer=null; document.getElementById('step-play-btn').innerHTML = T({en:'Play',ta:'இயக்கு'}); renderStepper(true); }
+function stepPlay(){
+  const btn = document.getElementById('step-play-btn');
+  if(stepTimer){ clearInterval(stepTimer); stepTimer=null; btn.innerHTML = T({en:'Play',ta:'இயக்கு'}); return; }
+  btn.innerHTML = T({en:'Pause',ta:'இடைநிறுத்து'});
+  stepTimer = setInterval(()=>{
+    if(curStep >= stepsData.length-1){ clearInterval(stepTimer); stepTimer=null; btn.innerHTML = T({en:'Play',ta:'இயக்கு'}); return; }
+    curStep++; renderStepper(true);
+  }, 2200);
+}
+
+/* ===================== ORDERING ACTIVITY ===================== */
+const orderCorrect = [0,1,2,3,4,5];
+const orderData = [
+  {en:'Unpolarized light strikes the interface at angle of incidence θᵢ.', ta:'துருவமுனைப்பு அடையாத ஒளி θᵢ படு கோணத்தில் எல்லையில் விழுகிறது.'},
+  {en:'Light partly reflects and partly refracts, following Snell\'s Law.', ta:'ஸ்நெல் விதிப்படி ஒளி ஓரளவு பிரதிபலிக்கிறது, ஓரளவு ஒளிவிலகல் அடைகிறது.'},
+  {en:'As θᵢ increases, the reflected ray becomes progressively more polarized.', ta:'θᵢ அதிகரிக்கும்போது பிரதிபலித்த கதிர் படிப்படியாக அதிக துருவமுனைப்பு அடைகிறது.'},
+  {en:'At Brewster\'s angle θB, the reflected and refracted rays become perpendicular.', ta:'ப்ரூஸ்டர் கோணம் θB இல், பிரதிபலிப்பு மற்றும் ஒளிவிலகல் கதிர்கள் செங்குத்தாகின்றன.'},
+  {en:'At this angle, the reflected ray is completely polarized perpendicular to the plane of incidence.', ta:'இக்கோணத்தில் பிரதிபலித்த கதிர் படு தளத்திற்கு செங்குத்தாக முழுவதுமாக துருவமுனைப்பு அடைகிறது.'},
+  {en:'Using this geometry, tan θB = n₂ / n₁ is derived.', ta:'இந்த வடிவியலைப் பயன்படுத்தி tan θB = n₂ / n₁ என வருவிக்கப்படுகிறது.'}
+];
+let orderState = [];
+function renderOrdering(){
+  if(orderState.length === 0){
+    orderState = [...orderData.keys()];
+    shuffleArray(orderState);
+  }
+  const list = document.getElementById('order-list');
+  list.innerHTML = orderState.map((idx,pos)=>`
+    <li class="order-item" draggable="true" data-idx="${idx}" ondragstart="dragStart(event)" ondragover="dragOver(event)" ondrop="dropItem(event)" ondragend="dragEnd(event)">
+      <span class="handle">☰</span><span>${T(orderData[idx])}</span>
+    </li>`).join('');
+  document.getElementById('order-feedback').className='feedback';
+}
+function shuffleArray(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; }
+  // ensure it's not already in perfect order
+  if(JSON.stringify(arr)===JSON.stringify(orderCorrect)) shuffleArray(arr);
+}
+let dragEl = null;
+function dragStart(e){ dragEl = e.target.closest('.order-item'); dragEl.classList.add('dragging'); }
+function dragEnd(e){ if(dragEl) dragEl.classList.remove('dragging'); syncOrderState(); }
+function dragOver(e){
+  e.preventDefault();
+  const list = document.getElementById('order-list');
+  const after = getDragAfterElement(list, e.clientY);
+  if(!dragEl) return;
+  if(after == null) list.appendChild(dragEl); else list.insertBefore(dragEl, after);
+}
+function dropItem(e){ e.preventDefault(); }
+function getDragAfterElement(container, y){
+  const items = [...container.querySelectorAll('.order-item:not(.dragging)')];
+  return items.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height/2;
+    if(offset < 0 && offset > closest.offset){ return {offset, element: child}; }
+    else return closest;
+  }, {offset: -Infinity}).element;
+}
+function syncOrderState(){
+  orderState = [...document.querySelectorAll('#order-list .order-item')].map(li=>parseInt(li.dataset.idx));
+}
+function checkOrder(){
+  syncOrderState();
+  const items = document.querySelectorAll('#order-list .order-item');
+  let allCorrect = true;
+  items.forEach((li,pos)=>{
+    const idx = parseInt(li.dataset.idx);
+    if(idx === orderCorrect[pos]){ li.classList.add('correct'); li.classList.remove('wrong'); }
+    else { li.classList.add('wrong'); li.classList.remove('correct'); allCorrect = false; }
+  });
+  const fb = document.getElementById('order-feedback');
+  fb.className = 'feedback show ' + (allCorrect ? 'correct':'incorrect');
+  fb.textContent = allCorrect ? T({en:'Correct! That\'s the right logical sequence.',ta:'சரி! இதுவே சரியான தருக்க வரிசை.'}) : T({en:'Not quite — the green items are correctly placed, review the rest.',ta:'இன்னும் இல்லை — பச்சை நிற உருப்படிகள் சரியான இடத்தில் உள்ளன, மற்றவற்றை மறுபரிசீலனை செய்யவும்.'});
+  if(allCorrect) saveProgress('activities');
+}
+function resetOrder(){ orderState = []; renderOrdering(); }
+
+/* ===================== MATCHING GAME ===================== */
+const matchPairs = [
+  {term:{en:"Brewster's Angle",ta:'ப்ரூஸ்டர் கோணம்'}, def:{en:'The angle of incidence at which reflected light is completely polarized', ta:'பிரதிபலித்த ஒளி முழுமையாக துருவமுனைப்பு அடையும் படு கோணம்'}},
+  {term:{en:'Polarization',ta:'துருவமுனைப்பு'}, def:{en:"Restriction of light's vibration to a single plane", ta:'ஒளியின் அதிர்வு ஒரே தளத்திற்குள் கட்டுப்படுத்தப்படுவது'}},
+  {term:{en:'Angle of Incidence',ta:'படு கோணம்'}, def:{en:'The angle between the incoming ray and the normal', ta:'வரும் கதிருக்கும் செங்குத்திற்கும் இடையேயான கோணம்'}},
+  {term:{en:'Refractive Index',ta:'ஒளிவிலகல் எண்'}, def:{en:'Ratio of the speed of light in vacuum to its speed in the medium', ta:'வெற்றிடத்தில் ஒளியின் வேகத்திற்கும் ஊடகத்தில் அதன் வேகத்திற்கும் உள்ள விகிதம்'}},
+  {term:{en:'s-Polarization',ta:'s-துருவமுனைப்பு'}, def:{en:'Polarization perpendicular to the plane of incidence', ta:'படு தளத்திற்கு செங்குத்தான துருவமுனைப்பு'}},
+  {term:{en:"Snell's Law",ta:'ஸ்நெல் விதி'}, def:{en:'n₁ sin θᵢ = n₂ sin θₜ', ta:'n₁ sin θᵢ = n₂ sin θₜ'}}
+];
+let matchTermSel = null, matchedCount = 0, matchDefOrder = [];
+function renderMatching(){
+  matchedCount = 0;
+  const termsWrap = document.getElementById('match-terms');
+  const defsWrap = document.getElementById('match-defs');
+  termsWrap.innerHTML = matchPairs.map((p,i)=>`<div class="match-item" data-i="${i}" onclick="selectTerm(${i})">${T(p.term)}</div>`).join('');
+  matchDefOrder = [...matchPairs.keys()];
+  shuffleArray(matchDefOrder);
+  defsWrap.innerHTML = matchDefOrder.map(i=>`<div class="match-item" data-i="${i}" onclick="selectDef(${i})">${T(matchPairs[i].def)}</div>`).join('');
+  matchTermSel = null;
+  document.getElementById('match-status').textContent = T({en:'0 / '+matchPairs.length+' matched', ta:'0 / '+matchPairs.length+' இணைக்கப்பட்டது'});
+}
+function selectTerm(i){
+  const el = document.querySelector(`#match-terms .match-item[data-i="${i}"]`);
+  if(el.classList.contains('matched')) return;
+  document.querySelectorAll('#match-terms .match-item').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');
+  matchTermSel = i;
+}
+function selectDef(i){
+  if(matchTermSel === null) return;
+  const defEl = document.querySelector(`#match-defs .match-item[data-i="${i}"]`);
+  if(defEl.classList.contains('matched')) return;
+  const termEl = document.querySelector(`#match-terms .match-item[data-i="${matchTermSel}"]`);
+  if(i === matchTermSel){
+    termEl.classList.add('matched'); termEl.classList.remove('selected');
+    defEl.classList.add('matched');
+    matchedCount++;
+    document.getElementById('match-status').textContent = matchedCount+' / '+matchPairs.length+' '+T({en:'matched',ta:'இணைக்கப்பட்டது'});
+    matchTermSel = null;
+    if(matchedCount === matchPairs.length) saveProgress('activities');
+  } else {
+    defEl.classList.add('wrongflash');
+    setTimeout(()=>defEl.classList.remove('wrongflash'), 500);
+  }
+}
+function resetMatch(){ renderMatching(); }
+
+/* ===================== WORKED EXAMPLES ===================== */
+const examplesData = [
+  {
+    tag:{en:'EXAMPLE 1',ta:'எடுத்துக்காட்டு 1'},
+    title:{en:'Air to Glass',ta:'காற்றிலிருந்து கண்ணாடி'},
+    problem:{en:'Light travels from air (n₁ = 1.00) into glass (n₂ = 1.50). Find Brewster\'s angle.', ta:'ஒளி காற்றிலிருந்து (n₁ = 1.00) கண்ணாடிக்குள் (n₂ = 1.50) செல்கிறது. ப்ரூஸ்டர் கோணத்தைக் காண்க.'},
+    given:{en:'n₁ = 1.00, n₂ = 1.50', ta:'n₁ = 1.00, n₂ = 1.50'},
+    formula:{en:'tan θB = n₂ / n₁', ta:'tan θB = n₂ / n₁'},
+    steps:[
+      {en:'tan θB = 1.50 / 1.00 = 1.50', ta:'tan θB = 1.50 / 1.00 = 1.50'},
+      {en:'θB = arctan(1.50)', ta:'θB = arctan(1.50)'},
+      {en:'θB ≈ 56.3°', ta:'θB ≈ 56.3°'}
+    ],
+    final:{en:'θB ≈ 56.3°', ta:'θB ≈ 56.3°'}
+  },
+  {
+    tag:{en:'EXAMPLE 2',ta:'எடுத்துக்காட்டு 2'},
+    title:{en:'Air to Water',ta:'காற்றிலிருந்து நீர்'},
+    problem:{en:'Light travels from air (n₁ = 1.00) into water (n₂ = 1.33). Find Brewster\'s angle and the angle of refraction.', ta:'ஒளி காற்றிலிருந்து (n₁ = 1.00) நீருக்குள் (n₂ = 1.33) செல்கிறது. ப்ரூஸ்டர் கோணத்தையும் ஒளிவிலகல் கோணத்தையும் காண்க.'},
+    given:{en:'n₁ = 1.00, n₂ = 1.33', ta:'n₁ = 1.00, n₂ = 1.33'},
+    formula:{en:'tan θB = n₂ / n₁ ;  θₜ = 90° − θB', ta:'tan θB = n₂ / n₁ ;  θₜ = 90° − θB'},
+    steps:[
+      {en:'tan θB = 1.33', ta:'tan θB = 1.33'},
+      {en:'θB = arctan(1.33) ≈ 53.1°', ta:'θB = arctan(1.33) ≈ 53.1°'},
+      {en:'θₜ = 90° − 53.1° = 36.9°', ta:'θₜ = 90° − 53.1° = 36.9°'}
+    ],
+    final:{en:'θB ≈ 53.1°,  θₜ ≈ 36.9°', ta:'θB ≈ 53.1°,  θₜ ≈ 36.9°'}
+  },
+  {
+    tag:{en:'EXAMPLE 3',ta:'எடுத்துக்காட்டு 3'},
+    title:{en:'Finding the Refractive Index',ta:'ஒளிவிலகல் எண்ணைக் கண்டறிதல்'},
+    problem:{en:'The polarizing angle for a certain medium (light incident from air) is found to be 60°. Calculate the refractive index of the medium.', ta:'ஒரு குறிப்பிட்ட ஊடகத்திற்கான துருவமுனைப்பு கோணம் (காற்றிலிருந்து படும் ஒளி) 60° எனக் காணப்படுகிறது. அந்த ஊடகத்தின் ஒளிவிலகல் எண்ணைக் கணக்கிடுக.'},
+    given:{en:'n₁ = 1 (air), θB = 60°', ta:'n₁ = 1 (காற்று), θB = 60°'},
+    formula:{en:'n₂ = n₁ tan θB', ta:'n₂ = n₁ tan θB'},
+    steps:[
+      {en:'n₂ = 1 × tan 60°', ta:'n₂ = 1 × tan 60°'},
+      {en:'tan 60° = √3 ≈ 1.732', ta:'tan 60° = √3 ≈ 1.732'},
+      {en:'n₂ ≈ 1.73', ta:'n₂ ≈ 1.73'}
+    ],
+    final:{en:'n₂ ≈ 1.73', ta:'n₂ ≈ 1.73'}
+  }
+];
+function renderExamples(){
+  document.getElementById('examples-wrap').innerHTML = examplesData.map((ex,i)=>`
+    <div class="example">
+      <span class="tag">${T(ex.tag)}</span>
+      <h3>${T(ex.title)}</h3>
+      <p><strong>${T({en:'Problem:',ta:'சிக்கல்:'})}</strong> ${T(ex.problem)}</p>
+      <p><strong>${T({en:'Given:',ta:'கொடுக்கப்பட்டவை:'})}</strong> <span class="mono">${T(ex.given)}</span></p>
+      <p><strong>${T({en:'Formula:',ta:'சூத்திரம்:'})}</strong> <span class="mono">${T(ex.formula)}</span></p>
+      <button class="btn ghost small" onclick="toggleSolution(${i})" id="sol-btn-${i}">${T({en:'Show Solution',ta:'தீர்வைக் காட்டு'})}</button>
+      <div class="solution" id="sol-${i}">
+        <ol>${ex.steps.map(s=>`<li class="mono" style="margin-bottom:6px;">${T(s)}</li>`).join('')}</ol>
+        <div class="final">${T({en:'Final Answer:',ta:'இறுதி விடை:'})} ${T(ex.final)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleSolution(i){
+  const sol = document.getElementById('sol-'+i);
+  const btn = document.getElementById('sol-btn-'+i);
+  const showing = sol.classList.toggle('show');
+  btn.textContent = showing ? T({en:'Hide Solution',ta:'தீர்வை மறை'}) : T({en:'Show Solution',ta:'தீர்வைக் காட்டு'});
+  if(showing) saveProgress('examples');
+}
+
+/* ===================== EXPLORE YOURSELF ===================== */
+function updateExplore(){
+  const n1 = parseFloat(document.getElementById('ex-n1').value);
+  const n2 = parseFloat(document.getElementById('ex-n2').value);
+  document.getElementById('ex-n1-val').textContent = n1.toFixed(2);
+  document.getElementById('ex-n2-val').textContent = n2.toFixed(2);
+  const ratio = n2/n1;
+  const thetaB = Math.atan(ratio)*180/Math.PI;
+  document.getElementById('ex-out-theta').textContent = thetaB.toFixed(2)+deg;
+  document.getElementById('ex-out-ratio').textContent = ratio.toFixed(3);
+}
+document.getElementById('ex-n1').addEventListener('input', updateExplore);
+document.getElementById('ex-n2').addEventListener('input', updateExplore);
+function resetExplore(){
+  document.getElementById('ex-n1').value = 1.0;
+  document.getElementById('ex-n2').value = 1.5;
+  updateExplore();
+}
+
+/* ===================== DISCOVERY QUESTIONS ===================== */
+const discoveryData = [
+  {q:{en:'Predict: What happens to the reflected ray\'s polarization as you increase the angle of incidence from 0° toward Brewster\'s angle?', ta:'கணிக்கவும்: படு கோணத்தை 0° இலிருந்து ப்ரூஸ்டர் கோணத்தை நோக்கி அதிகரிக்கும்போது பிரதிபலித்த கதிரின் துருவமுனைப்புக்கு என்ன நடக்கும்?'},
+   a:{en:'The reflected ray goes from unpolarized (at 0°) to progressively more polarized, becoming completely polarized exactly at Brewster\'s angle.', ta:'பிரதிபலித்த கதிர் (0° இல்) துருவமுனைப்பு அடையாத நிலையிலிருந்து படிப்படியாக அதிக துருவமுனைப்பு அடைந்து, ப்ரூஸ்டர் கோணத்தில் முழுமையாக துருவமுனைப்பு அடைகிறது.'}},
+  {q:{en:'Predict: If you switch the second medium from water (n=1.33) to diamond (n=2.42), will Brewster\'s angle increase or decrease?', ta:'கணிக்கவும்: இரண்டாம் ஊடகத்தை நீரிலிருந்து (n=1.33) வைரமாக (n=2.42) மாற்றினால், ப்ரூஸ்டர் கோணம் அதிகரிக்குமா அல்லது குறையுமா?'},
+   a:{en:'It increases — since θB = arctan(n₂/n₁), a larger n₂ gives a larger Brewster\'s angle (≈53.1° for water vs ≈67.5° for diamond).', ta:'அது அதிகரிக்கும் — θB = arctan(n₂/n₁) என்பதால், அதிக n₂ அதிக ப்ரூஸ்டர் கோணத்தைத் தரும் (நீருக்கு ≈53.1°, வைரத்திற்கு ≈67.5°).'}},
+  {q:{en:'Predict: What is the angle between the reflected and refracted rays exactly at Brewster\'s angle?', ta:'கணிக்கவும்: ப்ரூஸ்டர் கோணத்தில் பிரதிபலிப்பு மற்றும் ஒளிவிலகல் கதிர்களுக்கு இடையேயான கோணம் என்ன?'},
+   a:{en:'Exactly 90° — this perpendicularity is the geometric signature of Brewster\'s angle.', ta:'சரியாக 90° — இந்த செங்குத்தன்மையே ப்ரூஸ்டர் கோணத்தின் வடிவியல் அடையாளம்.'}},
+  {q:{en:'Predict: If light travels from glass into air (n₁=1.5 → n₂=1.0) instead of air into glass, will Brewster\'s angle be the same?', ta:'கணிக்கவும்: காற்றிலிருந்து கண்ணாடிக்குப் பதிலாக கண்ணாடியிலிருந்து காற்றுக்கு (n₁=1.5 → n₂=1.0) ஒளி சென்றால், ப்ரூஸ்டர் கோணம் அதே அளவாக இருக்குமா?'},
+   a:{en:'No — it will be different. tan θB = n₂/n₁ = 1.0/1.5 ≈ 0.667, giving θB ≈ 33.7°, not 56.3°.', ta:'இல்லை — அது வேறுபடும். tan θB = n₂/n₁ = 1.0/1.5 ≈ 0.667, θB ≈ 33.7°, 56.3° அல்ல.'}},
+  {q:{en:'Predict: Will a polarizing filter completely eliminate all reflected light from a lake\'s surface, or just some of it?', ta:'கணிக்கவும்: ஒரு துருவமுனைப்பு வடிகட்டி ஒரு ஏரியின் மேற்பரப்பிலிருந்து அனைத்து பிரதிபலித்த ஒளியையும் முழுமையாக அகற்றுமா அல்லது ஓரளவு மட்டுமே அகற்றுமா?'},
+   a:{en:'Just some — it blocks the strongly polarized glare, but light reflected at other angles is only partially polarized, so some glare and scattered light always remains.', ta:'ஓரளவு மட்டுமே — அது வலுவாக துருவமுனைப்பு அடைந்த மின்னலை மட்டுமே தடுக்கும்; மற்ற கோணங்களில் பிரதிபலிக்கும் ஒளி ஓரளவே துருவமுனைப்பு அடைந்திருக்கும், எனவே சிறிது மின்னல் எப்போதும் மிச்சமிருக்கும்.'}}
+];
+function renderDiscovery(){
+  document.getElementById('discovery-wrap').innerHTML = discoveryData.map((d,i)=>`
+    <div class="discovery-item">
+      <div class="q">${i+1}. ${T(d.q)}</div>
+      <button class="btn ghost small" onclick="revealDiscovery(${i})" id="disc-btn-${i}">${T({en:'Reveal Result',ta:'விடையைக் காட்டு'})}</button>
+      <div class="reveal-box" id="disc-${i}">${T(d.a)}</div>
+    </div>
+  `).join('');
+}
+function revealDiscovery(i){
+  document.getElementById('disc-'+i).classList.toggle('show');
+  saveProgress('activities');
+}
+
+/* ===================== COMMON MISTAKES ===================== */
+const mistakesData = [
+  {x:{en:'"At Brewster\'s angle, no light is reflected at all."', ta:'"ப்ரூஸ்டர் கோணத்தில் ஒளியே பிரதிபலிக்காது."'},
+   ok:{en:'Reflected light still exists — but it is 100% polarized (only the s-component).', ta:'பிரதிபலித்த ஒளி இன்னும் உள்ளது — ஆனால் அது 100% துருவமுனைப்பு அடைந்துள்ளது (s-கூறு மட்டுமே).'},
+   why:{en:'Only the p-component (parallel to the plane of incidence) has zero reflectance at θB; the s-component still reflects strongly.', ta:'படு தளத்திற்கு இணையான p-கூறு மட்டுமே θB இல் பூஜ்ஜிய பிரதிபலிப்பைக் கொண்டுள்ளது; s-கூறு இன்னும் வலுவாக பிரதிபலிக்கிறது.'}},
+  {x:{en:'"Brewster\'s angle is the same for every material."', ta:'"ப்ரூஸ்டர் கோணம் எல்லா பொருட்களுக்கும் ஒரே மாதிரியாக இருக்கும்."'},
+   ok:{en:'It depends on the refractive indices of both media (tan θB = n₂/n₁), so it differs for every pair.', ta:'அது இரு ஊடகங்களின் ஒளிவிலகல் எண்களை சார்ந்துள்ளது (tan θB = n₂/n₁), எனவே ஒவ்வொரு ஜோடிக்கும் வேறுபடும்.'},
+   why:{en:'The ratio n₂/n₁ changes with the material pair, so θB = arctan(n₂/n₁) changes too.', ta:'n₂/n₁ விகிதம் ஊடக ஜோடிக்கு ஏற்ப மாறுகிறது, எனவே θB = arctan(n₂/n₁) உம் மாறுகிறது.'}},
+  {x:{en:'"The refracted ray is also completely polarized at Brewster\'s angle."', ta:'"ப்ரூஸ்டர் கோணத்தில் ஒளிவிலகல் கதிரும் முழுமையாக துருவமுனைப்பு அடைகிறது."'},
+   ok:{en:'Only the reflected ray is completely polarized; the refracted ray is merely partially polarized.', ta:'பிரதிபலித்த கதிர் மட்டுமே முழுமையாக துருவமுனைப்பு அடைகிறது; ஒளிவிலகல் கதிர் ஓரளவே துருவமுனைப்பு அடைகிறது.'},
+   why:{en:'The refracted beam still carries both polarization components, just in unequal proportion.', ta:'ஒளிவிலகல் கதிர் இன்னும் இரு துருவமுனைப்பு கூறுகளையும் கொண்டுள்ளது, ஆனால் சமமற்ற விகிதத்தில்.'}},
+  {x:{en:'"Brewster\'s angle always equals 45°."', ta:'"ப்ரூஸ்டர் கோணம் எப்போதும் 45° ஆக இருக்கும்."'},
+   ok:{en:'It depends on n₂/n₁; 45° would need n₂ = n₁, which means no real interface at all.', ta:'அது n₂/n₁ ஐ சார்ந்தது; 45° க்கு n₂ = n₁ தேவை, அதாவது உண்மையான எல்லையே இல்லை.'},
+   why:{en:'tan 45° = 1 requires n₂ = n₁ — two identical media have no interface to reflect off.', ta:'tan 45° = 1 என்பதற்கு n₂ = n₁ தேவை — ஒரே மாதிரியான இரு ஊடகங்களுக்கு பிரதிபலிக்க எல்லையே இருக்காது.'}},
+  {x:{en:'"Polarization by reflection only happens exactly at Brewster\'s angle."', ta:'"பிரதிபலிப்பால் துருவமுனைப்பு ப்ரூஸ்டர் கோணத்தில் மட்டுமே நடக்கும்."'},
+   ok:{en:'Partial polarization occurs at every angle of incidence (except 0° and 90°); complete polarization happens only at θB.', ta:'ஓரளவு துருவமுனைப்பு அனைத்து படு கோணங்களிலும் (0° மற்றும் 90° தவிர) நிகழும்; முழுமையான துருவமுனைப்பு θB இல் மட்டுமே நிகழும்.'},
+   why:{en:'θB is the special angle of TOTAL polarization of the reflected beam, not the only angle where any polarization effect exists.', ta:'θB என்பது பிரதிபலித்த கதிரின் முழுமையான துருவமுனைப்புக்கான சிறப்பு கோணம், அதுவே ஒரே துருவமுனைப்பு நிகழும் கோணம் அல்ல.'}}
+];
+function renderMistakes(){
+  document.getElementById('mistakes-wrap').innerHTML = mistakesData.map(m=>`
+    <div class="mistake">
+      <div class="row x">❌ ${T(m.x)}</div>
+      <div class="row ok">✅ ${T(m.ok)}</div>
+      <div class="row why">💡 ${T(m.why)}</div>
+    </div>
+  `).join('');
+}
+
+/* ===================== APPLICATIONS ===================== */
+const appsData = [
+  {sit:{en:'Polarizing Sunglasses',ta:'துருவமுனைப்பு சூரிய கண்ணாடிகள்'}, how:{en:'Glare from horizontal surfaces', ta:'கிடைமட்ட பரப்புகளிலிருந்து மின்னல்'}, body:{en:'Sunlight reflecting off water, roads, or snow near Brewster\'s angle is strongly polarized parallel to the surface. Polarized lenses block that direction, cutting glare dramatically.', ta:'ப்ரூஸ்டர் கோணத்திற்கு அருகில் நீர், சாலை அல்லது பனியிலிருந்து பிரதிபலிக்கும் சூரிய ஒளி பரப்புக்கு இணையாக வலுவாக துருவமுனைப்பு அடைந்திருக்கும். துருவமுனைப்பு கண்ணாடிகள் அத்திசையைத் தடுத்து மின்னலை கணிசமாகக் குறைக்கின்றன.'}},
+  {sit:{en:'Camera Polarizing Filters',ta:'கேமரா துருவமுனைப்பு வடிகட்டிகள்'}, how:{en:'Removing reflections from glass and water', ta:'கண்ணாடி மற்றும் நீரிலிருந்து பிரதிபலிப்புகளை அகற்றுதல்'}, body:{en:'Photographers rotate a polarizing filter to cut reflections off windows or lakes and deepen the color of the sky, by blocking the strongly polarized reflected component.', ta:'புகைப்படக்காரர்கள் ஒரு துருவமுனைப்பு வடிகட்டியைச் சுழற்றி ஜன்னல்கள் அல்லது ஏரிகளிலிருந்து பிரதிபலிப்புகளை வெட்டி, வானத்தின் நிறத்தை ஆழமாக்குகின்றனர்.'}},
+  {sit:{en:'Brewster Windows in Lasers',ta:'லேசர்களில் ப்ரூஸ்டர் சாளரங்கள்'}, how:{en:'Producing a polarized laser beam with minimal loss', ta:'குறைந்த இழப்புடன் துருவமுனைப்பு லேசர் கற்றையை உருவாக்குதல்'}, body:{en:'Gas laser tubes use glass windows tilted at exactly the Brewster angle to the beam, so the p-polarized light passes through with zero reflection loss on every pass, yielding a clean linearly polarized output.', ta:'வாயு லேசர் குழாய்கள் கற்றைக்கு சரியாக ப்ரூஸ்டர் கோணத்தில் சாய்ந்த கண்ணாடி சாளரங்களைப் பயன்படுத்துகின்றன, இதனால் p-துருவமுனைப்பு ஒளி ஒவ்வொரு முறையும் பூஜ்ஜிய பிரதிபலிப்பு இழப்புடன் கடந்து செல்கிறது.'}},
+  {sit:{en:'Underwater Photography',ta:'நீருக்கடியில் புகைப்படம்'}, how:{en:'Seeing through the water surface', ta:'நீர் மேற்பரப்பின் ஊடே பார்த்தல்'}, body:{en:'A polarizing filter angled near the Brewster condition removes surface glare from water, letting the camera "see" beneath the surface instead of just the sky\'s reflection.', ta:'ப்ரூஸ்டர் நிலைமைக்கு அருகில் கோணப்படுத்தப்பட்ட ஒரு துருவமுனைப்பு வடிகட்டி நீரின் மேற்பரப்பு மின்னலை அகற்றி, வானத்தின் பிரதிபலிப்புக்குப் பதிலாக மேற்பரப்புக்குக் கீழே கேமரா "பார்க்க" உதவுகிறது.'}}
+];
+function renderApplications(){
+  document.getElementById('apps-wrap').innerHTML = appsData.map(a=>`
+    <div class="card app-card">
+      <div class="sit">${T(a.sit)}</div>
+      <div class="how">${T(a.how)}</div>
+      <p style="margin:0;font-size:0.9rem;">${T(a.body)}</p>
+    </div>
+  `).join('');
+}
+
+/* ===================== CHALLENGE MODE ===================== */
+const challengeData = {
+  easy: [
+    {q:{en:"Brewster's Law relates refractive index to:",ta:'ப்ரூஸ்டர் விதி ஒளிவிலகல் எண்ணை எதனுடன் தொடர்புபடுத்துகிறது?'}, opts:[{en:'Wavelength',ta:'அலைநீளம்'},{en:'Polarizing angle',ta:'துருவமுனைப்பு கோணம்'},{en:'Frequency',ta:'அதிர்வெண்'},{en:'Intensity',ta:'தீவிரம்'}], correct:1,
+     exp:{en:'Brewster\'s Law, tan θB = n₂/n₁, directly connects the refractive indices to the polarizing (Brewster\'s) angle.', ta:'ப்ரூஸ்டர் விதி, tan θB = n₂/n₁, ஒளிவிலகல் எண்களை நேரடியாக துருவமுனைப்பு கோணத்துடன் இணைக்கிறது.'}},
+    {q:{en:'At Brewster\'s angle, the reflected light is:',ta:'ப்ரூஸ்டர் கோணத்தில், பிரதிபலித்த ஒளி:'}, opts:[{en:'Unpolarized',ta:'துருவமுனைப்பு அடையாதது'},{en:'Completely plane polarized',ta:'முழுமையாக தள துருவமுனைப்பு அடைந்தது'},{en:'Circularly polarized',ta:'வட்ட துருவமுனைப்பு அடைந்தது'},{en:'Not reflected at all',ta:'பிரதிபலிக்கவே இல்லை'}], correct:1,
+     exp:{en:'This is the defining property of Brewster\'s angle — complete plane polarization of the reflected ray.', ta:'இதுவே ப்ரூஸ்டர் கோணத்தின் வரையறுக்கும் பண்பு — பிரதிபலித்த கதிரின் முழுமையான தள துருவமுனைப்பு.'}},
+    {q:{en:"Brewster's Law was discovered by:",ta:'ப்ரூஸ்டர் விதியைக் கண்டறிந்தவர்:'}, opts:[{en:'Isaac Newton',ta:'ஐசக் நியூட்டன்'},{en:'Sir David Brewster',ta:'சர் டேவிட் ப்ரூஸ்டர்'},{en:'Christiaan Huygens',ta:'கிறிஸ்டியான் ஹியூகன்ஸ்'},{en:'Thomas Young',ta:'தாமஸ் யங்'}], correct:1,
+     exp:{en:'Sir David Brewster formulated this law in 1815.', ta:'சர் டேவிட் ப்ரூஸ்டர் 1815 இல் இவ்விதியை உருவாக்கினார்.'}}
+  ],
+  medium: [
+    {q:{en:'Light travels from air (n=1) into glass (n=1.5). Brewster\'s angle (nearest degree) is:',ta:'காற்றிலிருந்து (n=1) கண்ணாடிக்குள் (n=1.5) ஒளி செல்கிறது. ப்ரூஸ்டர் கோணம் (அருகிலுள்ள டிகிரி):'}, opts:[{en:'45°',ta:'45°'},{en:'56°',ta:'56°'},{en:'63°',ta:'63°'},{en:'33°',ta:'33°'}], correct:1,
+     exp:{en:'tan θB = 1.5/1 = 1.5 → θB = arctan(1.5) ≈ 56.3° ≈ 56°.', ta:'tan θB = 1.5/1 = 1.5 → θB = arctan(1.5) ≈ 56.3° ≈ 56°.'}},
+    {q:{en:'At the Brewster angle, the angle between the reflected ray and the refracted ray is:',ta:'ப்ரூஸ்டர் கோணத்தில், பிரதிபலிப்பு கதிருக்கும் ஒளிவிலகல் கதிருக்கும் இடையேயான கோணம்:'}, opts:[{en:'0°',ta:'0°'},{en:'45°',ta:'45°'},{en:'90°',ta:'90°'},{en:'180°',ta:'180°'}], correct:2,
+     exp:{en:'This perpendicularity (θB + θₜ = 90°) is the geometric signature of Brewster\'s angle.', ta:'இந்த செங்குத்தன்மையே (θB + θₜ = 90°) ப்ரூஸ்டர் கோணத்தின் வடிவியல் அடையாளம்.'}},
+    {q:{en:"If Brewster's angle for a medium is 53°, its refractive index (light from air) is approximately:",ta:'ஒரு ஊடகத்தின் ப்ரூஸ்டர் கோணம் 53° எனில், அதன் ஒளிவிலகல் எண் (காற்றிலிருந்து) தோராயமாக:'}, opts:[{en:'1.00',ta:'1.00'},{en:'1.33',ta:'1.33'},{en:'1.50',ta:'1.50'},{en:'2.42',ta:'2.42'}], correct:1,
+     exp:{en:'n₂ = tan 53° ≈ 1.33, which is the refractive index of water.', ta:'n₂ = tan 53° ≈ 1.33, இது நீரின் ஒளிவிலகல் எண்.'}}
+  ],
+  hard: [
+    {q:{en:'Light travels from glass (n₁=1.5) into water (n₂=1.33). Brewster\'s angle for this interface is closest to:',ta:'கண்ணாடியிலிருந்து (n₁=1.5) நீருக்குள் (n₂=1.33) ஒளி செல்கிறது. இந்த எல்லைக்கான ப்ரூஸ்டர் கோணம் நெருங்கியது:'}, opts:[{en:'33.7°',ta:'33.7°'},{en:'41.6°',ta:'41.6°'},{en:'53.1°',ta:'53.1°'},{en:'56.3°',ta:'56.3°'}], correct:1,
+     exp:{en:'tan θB = n₂/n₁ = 1.33/1.5 = 0.887 → θB = arctan(0.887) ≈ 41.6°.', ta:'tan θB = n₂/n₁ = 1.33/1.5 = 0.887 → θB = arctan(0.887) ≈ 41.6°.'}},
+    {q:{en:"A material's Brewster angle (in air) is 58°. The angle of refraction at this angle is:",ta:'ஒரு பொருளின் ப்ரூஸ்டர் கோணம் (காற்றில்) 58°. இக்கோணத்தில் ஒளிவிலகல் கோணம்:'}, opts:[{en:'22°',ta:'22°'},{en:'32°',ta:'32°'},{en:'58°',ta:'58°'},{en:'90°',ta:'90°'}], correct:1,
+     exp:{en:'θₜ = 90° − θB = 90° − 58° = 32°.', ta:'θₜ = 90° − θB = 90° − 58° = 32°.'}},
+    {q:{en:'A Brewster window in a laser tube produces a linearly polarized output with minimal loss because:',ta:'லேசர் குழாயில் ப்ரூஸ்டர் சாளரம் குறைந்த இழப்புடன் நேர்கோட்டு துருவமுனைப்பு வெளியீட்டைத் தருவதற்கான காரணம்:'}, opts:[{en:'It absorbs all light except the p-component',ta:'p-கூறு தவிர மற்ற அனைத்து ஒளியையும் உறிஞ்சுகிறது'},{en:'p-polarized light passes through at Brewster\'s angle with zero reflection loss each pass, while s-polarized light suffers losses',ta:'p-துருவமுனைப்பு ஒளி ப்ரூஸ்டர் கோணத்தில் ஒவ்வொரு முறையும் பூஜ்ஜிய பிரதிபலிப்பு இழப்புடன் கடக்கிறது, s-துருவமுனைப்பு ஒளியோ இழப்படைகிறது'},{en:'It reflects all light back into the cavity',ta:'அனைத்து ஒளியையும் குழிக்குள் திருப்பி பிரதிபலிக்கிறது'},{en:'It changes the laser\'s wavelength',ta:'லேசரின் அலைநீளத்தை மாற்றுகிறது'}], correct:1,
+     exp:{en:'Since R_p = 0 exactly at θB, p-polarized light suffers no reflection loss on every pass, so it dominates the output while s-polarized light is preferentially lost from the cavity.', ta:'θB இல் R_p = 0 என்பதால், ஒவ்வொரு முறையும் p-துருவமுனைப்பு ஒளிக்கு பிரதிபலிப்பு இழப்பு இல்லை, எனவே அது வெளியீட்டில் ஆதிக்கம் செலுத்துகிறது, s-துருவமுனைப்பு ஒளியோ குழியிலிருந்து இழக்கப்படுகிறது.'}}
+  ]
+};
+let currentChallengeLevel = 'easy';
+function setChallengeLevel(level){
+  currentChallengeLevel = level;
+  document.querySelectorAll('.level-tab').forEach(t=>t.classList.toggle('active', t.dataset.level===level));
+  renderChallenge();
+}
+function renderChallenge(){
+  const list = challengeData[currentChallengeLevel];
+  document.getElementById('challenge-wrap').innerHTML = list.map((item,i)=>`
+    <div class="q-card">
+      <div class="qtext">${i+1}. ${T(item.q)}</div>
+      ${item.opts.map((o,oi)=>`<button class="opt" onclick="answerChallenge('${currentChallengeLevel}',${i},${oi},this)">${T(o)}</button>`).join('')}
+      <div class="feedback" id="cfb-${currentChallengeLevel}-${i}"></div>
+    </div>
+  `).join('');
+}
+function answerChallenge(level, i, oi, btn){
+  const item = challengeData[level][i];
+  const card = btn.closest('.q-card');
+  const opts = card.querySelectorAll('.opt');
+  opts.forEach((o,idx)=>{
+    o.disabled = true;
+    if(idx===item.correct) o.classList.add('correct');
+    else if(idx===oi) o.classList.add('incorrect');
+  });
+  const fb = document.getElementById(`cfb-${level}-${i}`);
+  const correct = oi===item.correct;
+  fb.className = 'feedback show ' + (correct?'correct':'incorrect');
+  fb.textContent = (correct ? T({en:'Correct! ',ta:'சரி! '}) : T({en:'Not quite. ',ta:'இல்லை. '})) + T(item.exp);
+  saveProgress('activities');
+}
+
+/* ===================== QUIZ ===================== */
+const quizData = [
+  {type:'mcq', q:{en:"Brewster's Law formula is:",ta:'ப்ரூஸ்டர் விதி சூத்திரம்:'}, opts:[{en:'sin θB = n₂/n₁',ta:'sin θB = n₂/n₁'},{en:'tan θB = n₂/n₁',ta:'tan θB = n₂/n₁'},{en:'cos θB = n₁/n₂',ta:'cos θB = n₁/n₂'},{en:'tan θB = n₁ × n₂',ta:'tan θB = n₁ × n₂'}], correct:1, exp:{en:'Brewster\'s Law is tan θB = n₂/n₁.',ta:'ப்ரூஸ்டர் விதி tan θB = n₂/n₁.'}},
+  {type:'tf', q:{en:'True or False: At Brewster\'s angle, the reflected ray is completely unpolarized.', ta:'சரியா தவறா: ப்ரூஸ்டர் கோணத்தில், பிரதிபலித்த கதிர் முழுமையாக துருவமுனைப்பு அடையாதது.'}, opts:[{en:'True',ta:'சரி'},{en:'False',ta:'தவறு'}], correct:1, exp:{en:'False — it is completely polarized, not unpolarized.', ta:'தவறு — அது முழுமையாக துருவமுனைப்பு அடைந்துள்ளது, அடையாதது அல்ல.'}},
+  {type:'num', q:{en:'Calculate Brewster\'s angle for an air-to-glass (n=1.5) interface. Enter the nearest whole degree.', ta:'காற்று-கண்ணாடி (n=1.5) எல்லைக்கான ப்ரூஸ்டர் கோணத்தைக் கணக்கிடவும். அருகிலுள்ள முழு டிகிரியை உள்ளிடவும்.'}, answer:56, tolerance:1, exp:{en:'tan θB = 1.5 → θB ≈ 56.3° ≈ 56°.', ta:'tan θB = 1.5 → θB ≈ 56.3° ≈ 56°.'}},
+  {type:'mcq', q:{en:'At Brewster\'s angle, the angle between reflected and refracted rays is:', ta:'ப்ரூஸ்டர் கோணத்தில், பிரதிபலிப்பு மற்றும் ஒளிவிலகல் கதிர்களுக்கு இடையேயான கோணம்:'}, opts:[{en:'0°',ta:'0°'},{en:'45°',ta:'45°'},{en:'90°',ta:'90°'},{en:'180°',ta:'180°'}], correct:2, exp:{en:'They are exactly perpendicular (90°) at Brewster\'s angle.', ta:'ப்ரூஸ்டர் கோணத்தில் அவை சரியாக செங்குத்தாக (90°) இருக்கும்.'}},
+  {type:'mcq', q:{en:'Brewster\'s angle for an air–water interface (n=1.33) is closest to:', ta:'காற்று–நீர் எல்லைக்கான (n=1.33) ப்ரூஸ்டர் கோணம் நெருங்கியது:'}, opts:[{en:'36.9°',ta:'36.9°'},{en:'41.2°',ta:'41.2°'},{en:'53.1°',ta:'53.1°'},{en:'60°',ta:'60°'}], correct:2, exp:{en:'tan θB = 1.33 → θB ≈ 53.1°.', ta:'tan θB = 1.33 → θB ≈ 53.1°.'}},
+  {type:'mcq', q:{en:'A polarizing filter removes reflections off a lake\'s surface mainly because:', ta:'ஒரு துருவமுனைப்பு வடிகட்டி ஏரியின் மேற்பரப்பு பிரதிபலிப்புகளை அகற்றுவதற்கான முக்கிய காரணம்:'}, opts:[{en:'It darkens the whole image uniformly',ta:'முழு படத்தையும் சமமாக இருட்டாக்குகிறது'},{en:'Reflected light off water is strongly polarized parallel to the surface, and the filter blocks it',ta:'நீரிலிருந்து பிரதிபலிக்கும் ஒளி பரப்புக்கு இணையாக வலுவாக துருவமுனைப்பு அடைந்துள்ளது, வடிகட்டி அதைத் தடுக்கிறது'},{en:'It changes the color of water',ta:'நீரின் நிறத்தை மாற்றுகிறது'},{en:'It has no real effect',ta:'உண்மையான விளைவு எதுவும் இல்லை'}], correct:1, exp:{en:'The filter blocks the strongly polarized (largely s-polarized) reflected glare.', ta:'வடிகட்டி வலுவாக துருவமுனைப்பு அடைந்த (பெரும்பாலும் s-துருவமுனைப்பு) பிரதிபலித்த மின்னலைத் தடுக்கிறது.'}},
+  {type:'mcq', q:{en:"Who discovered Brewster's Law?", ta:'ப்ரூஸ்டர் விதியைக் கண்டறிந்தவர் யார்?'}, opts:[{en:'Isaac Newton',ta:'ஐசக் நியூட்டன்'},{en:'James Clerk Maxwell',ta:'ஜேம்ஸ் கிளார்க் மேக்ஸ்வெல்'},{en:'Sir David Brewster',ta:'சர் டேவிட் ப்ரூஸ்டர்'},{en:'Albert Einstein',ta:'ஆல்பர்ட் ஐன்ஸ்டீன்'}], correct:2, exp:{en:'Sir David Brewster, in 1815.', ta:'சர் டேவிட் ப்ரூஸ்டர், 1815 இல்.'}},
+  {type:'mcq', q:{en:'Brewster windows are used in laser tubes to:', ta:'லேசர் குழாய்களில் ப்ரூஸ்டர் சாளரங்கள் பயன்படுத்தப்படுவதற்கான காரணம்:'}, opts:[{en:'Increase the laser\'s power indefinitely',ta:'லேசரின் ஆற்றலை எல்லையின்றி அதிகரிக்க'},{en:'Produce a linearly polarized beam with minimal reflection loss',ta:'குறைந்த பிரதிபலிப்பு இழப்புடன் நேர்கோட்டு துருவமுனைப்பு கற்றையை உருவாக்க'},{en:'Cool the laser tube',ta:'லேசர் குழாயை குளிர்விக்க'},{en:'Change the laser\'s color',ta:'லேசரின் நிறத்தை மாற்ற'}], correct:1, exp:{en:'They let p-polarized light pass with near-zero loss, producing a clean polarized beam.', ta:'அவை p-துருவமுனைப்பு ஒளியை கிட்டத்தட்ட பூஜ்ஜிய இழப்புடன் கடக்க அனுமதித்து, தூய்மையான துருவமுனைப்பு கற்றையை உருவாக்குகின்றன.'}},
+  {type:'mcq', q:{en:"If a medium's refractive index (light from air) is 1.73, its Brewster angle is closest to:", ta:'ஒரு ஊடகத்தின் ஒளிவிலகல் எண் (காற்றிலிருந்து) 1.73 எனில், அதன் ப்ரூஸ்டர் கோணம் நெருங்கியது:'}, opts:[{en:'45°',ta:'45°'},{en:'50°',ta:'50°'},{en:'60°',ta:'60°'},{en:'70°',ta:'70°'}], correct:2, exp:{en:'tan 60° = 1.73, so θB ≈ 60°.', ta:'tan 60° = 1.73, எனவே θB ≈ 60°.'}},
+  {type:'tf', q:{en:'True or False: Brewster\'s angle is the same regardless of which two media form the interface.', ta:'சரியா தவறா: எல்லையை உருவாக்கும் இரு ஊடகங்கள் எதுவாக இருந்தாலும் ப்ரூஸ்டர் கோணம் ஒரே மாதிரியாக இருக்கும்.'}, opts:[{en:'True',ta:'சரி'},{en:'False',ta:'தவறு'}], correct:1, exp:{en:'False — it depends on the ratio n₂/n₁ of the specific pair of media.', ta:'தவறு — இது குறிப்பிட்ட ஊடக ஜோடியின் n₂/n₁ விகிதத்தை சார்ந்துள்ளது.'}}
+];
+let quizAnswered = new Array(quizData.length).fill(false);
+let quizScore = 0;
+function renderQuiz(){
+  quizAnswered = new Array(quizData.length).fill(false);
+  quizScore = 0;
+  document.getElementById('quiz-summary').style.display='none';
+  document.getElementById('quiz-wrap').innerHTML = quizData.map((item,i)=>{
+    let inner = '';
+    if(item.type==='num'){
+      inner = `<div class="num-input-row"><input type="number" id="quiz-num-${i}" placeholder="${T({en:'Enter degrees',ta:'டிகிரியை உள்ளிடவும்'})}"><button class="btn small" onclick="answerQuizNum(${i})">${T({en:'Submit',ta:'சமர்ப்பி'})}</button></div>`;
+    } else {
+      inner = item.opts.map((o,oi)=>`<button class="opt" onclick="answerQuiz(${i},${oi},this)">${T(o)}</button>`).join('');
+    }
+    return `<div class="q-card">
+      <div class="qtext">${i+1}. ${T(item.q)}</div>
+      ${inner}
+      <div class="feedback" id="qfb-${i}"></div>
+    </div>`;
+  }).join('');
+}
+function finalizeQuizItem(i, correct, expText){
+  if(quizAnswered[i]) return;
+  quizAnswered[i] = true;
+  if(correct) quizScore++;
+  const fb = document.getElementById('qfb-'+i);
+  fb.className = 'feedback show '+(correct?'correct':'incorrect');
+  fb.textContent = (correct?T({en:'Correct! ',ta:'சரி! '}):T({en:'Not quite. ',ta:'இல்லை. '})) + expText;
+  if(quizAnswered.every(a=>a)){ showQuizSummary(); saveProgress('quiz'); }
+}
+function answerQuiz(i, oi, btn){
+  if(quizAnswered[i]) return;
+  const item = quizData[i];
+  const card = btn.closest('.q-card');
+  card.querySelectorAll('.opt').forEach((o,idx)=>{
+    o.disabled = true;
+    if(idx===item.correct) o.classList.add('correct');
+    else if(idx===oi) o.classList.add('incorrect');
+  });
+  finalizeQuizItem(i, oi===item.correct, T(item.exp));
+}
+function answerQuizNum(i){
+  if(quizAnswered[i]) return;
+  const item = quizData[i];
+  const inputEl = document.getElementById('quiz-num-'+i);
+  const val = parseFloat(inputEl.value);
+  if(isNaN(val)){ inputEl.style.borderColor='var(--bad)'; return; }
+  inputEl.disabled = true;
+  document.querySelector(`#quiz-wrap .q-card:nth-child(${i+1}) .num-input-row button`)?.setAttribute('disabled','true');
+  const correct = Math.abs(val - item.answer) <= item.tolerance;
+  finalizeQuizItem(i, correct, T(item.exp));
+}
+function showQuizSummary(){
+  const pct = Math.round((quizScore/quizData.length)*100);
+  let msg;
+  if(pct>=90) msg = T({en:'Outstanding! You\'ve mastered Brewster\'s Law.',ta:'அற்புதம்! நீங்கள் ப்ரூஸ்டர் விதியில் தேர்ச்சி பெற்றுள்ளீர்கள்.'});
+  else if(pct>=70) msg = T({en:'Well done! A solid understanding of the concept.',ta:'நல்லது! கருத்தில் நல்ல புரிதல்.'});
+  else if(pct>=50) msg = T({en:'Good effort — review the sections above and try again.',ta:'நல்ல முயற்சி — மேலே உள்ள பகுதிகளை மறுபரிசீலனை செய்து மீண்டும் முயற்சிக்கவும்.'});
+  else msg = T({en:'Keep practising — revisit the Learn and Interactive sections.',ta:'தொடர்ந்து பயிற்சி செய்யுங்கள் — கற்றல் மற்றும் ஊடாடல் பகுதிகளை மீண்டும் பார்க்கவும்.'});
+  const summary = document.getElementById('quiz-summary');
+  summary.style.display='block';
+  summary.innerHTML = `
+    <div style="color:var(--muted);">${T({en:'Your Score',ta:'உங்கள் மதிப்பெண்'})}</div>
+    <div class="score">${quizScore} / ${quizData.length}</div>
+    <div class="pct">${pct}%</div>
+    <div class="msg">${msg}</div>
+  `;
+}
+
+/* ===================== PROGRESS ===================== */
+const progressKeys = ['concepts','sim','examples','activities','quiz'];
+function getProgress(){
+  try{ return JSON.parse(localStorage.getItem('bl_progress')) || {}; }catch(e){ return {}; }
+}
+function saveProgress(key){
+  const p = getProgress();
+  p[key] = true;
+  localStorage.setItem('bl_progress', JSON.stringify(p));
+  renderProgress();
+}
+function renderProgress(){
+  const p = getProgress();
+  let done = 0;
+  progressKeys.forEach(k=>{
+    const el = document.getElementById('prog-'+k);
+    if(!el) return;
+    if(p[k]){ el.classList.add('done'); done++; } else { el.classList.remove('done'); }
+  });
+  const pct = Math.round((done/progressKeys.length)*100);
+  document.getElementById('progress-bar').style.width = pct+'%';
+  document.getElementById('progress-pct').textContent = pct+'%';
+}
+function resetProgress(){
+  localStorage.removeItem('bl_progress');
+  renderProgress();
+}
+
+/* ===================== INIT ===================== */
+window.addEventListener('DOMContentLoaded', function(){
+  drawHeroSVG();
+  applyStaticLang(currentLang);
+  renderConcepts();
+  updateSimulator();
+  updateCalculator();
+  renderStepper(false);
+  renderOrdering();
+  renderMatching();
+  renderExamples();
+  updateExplore();
+  renderDiscovery();
+  renderMistakes();
+  renderApplications();
+  renderChallenge();
+  renderQuiz();
+  renderProgress();
+});
+</script>
+</body>
+</html>
