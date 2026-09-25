@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unit 2: Structural Organisation in Animals and Plants — NEET Biology Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page-bg:#eef3fa; --card-bg:#ffffff; --ink:#1c2b3d; --ink-soft:#51637a;
+    --heading:#0b2545; --navy:#0b2545; --navy-2:#153a6b; --blue:#1d4ed8; --blue-2:#2563eb;
+    --border-soft:#dbe6f5; --chip-bg:#e7f0fe; --chip-text:#0b2545;
+    --box-note-bg:#f4f7fb; --box-note-bd:#93a5c2;
+    --box-remember-bg:#eaf2fe; --box-remember-bd:#2563eb;
+    --box-tip-bg:#dbeafe; --box-tip-bd:#1d4ed8;
+    --box-mistake-bg:#eef2fb; --box-mistake-bd:#0b2545;
+    --box-pyq-bg:#e7f0fe; --box-pyq-bd:#1e40af;
+    --box-key-bg:#e2ebfc; --box-key-bd:#173d82;
+    --box-focus-bg:linear-gradient(135deg,#0b2545,#173d82); --box-focus-text:#ffffff;
+    --thead-bg:#0b2545; --thead-text:#ffffff;
+    --tstripe:#f3f7fd; --tborder:#d9e5f6;
+    --section-alt:#f7faff;
+    --shadow:0 1px 3px rgba(11,37,69,.08), 0 8px 24px rgba(11,37,69,.07);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page-bg:#0a1220; --card-bg:#0f1b2e; --ink:#e6ecf5; --ink-soft:#a9b8cc;
+      --heading:#eaf1ff; --navy:#0d2a52; --navy-2:#173a6e; --blue:#5b9bff; --blue-2:#7db0ff;
+      --border-soft:#22344d; --chip-bg:#16294a; --chip-text:#cfe0ff;
+      --box-note-bg:#122036; --box-note-bd:#6f86a8;
+      --box-remember-bg:#122a4d; --box-remember-bd:#5b9bff;
+      --box-tip-bg:#12305c; --box-tip-bd:#5b9bff;
+      --box-mistake-bg:#141f33; --box-mistake-bd:#7fa6e8;
+      --box-pyq-bg:#12294d; --box-pyq-bd:#5b9bff;
+      --box-key-bg:#13284a; --box-key-bd:#5b9bff;
+      --box-focus-bg:linear-gradient(135deg,#0a1830,#173a6e); --box-focus-text:#eaf1ff;
+      --thead-bg:#173a6e; --thead-text:#eaf1ff;
+      --tstripe:#101d33; --tborder:#22344d; --section-alt:#101c30;
+      --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --page-bg:#0a1220; --card-bg:#0f1b2e; --ink:#e6ecf5; --ink-soft:#a9b8cc;
+    --heading:#eaf1ff; --navy:#0d2a52; --navy-2:#173a6e; --blue:#5b9bff; --blue-2:#7db0ff;
+    --border-soft:#22344d; --chip-bg:#16294a; --chip-text:#cfe0ff;
+    --box-note-bg:#122036; --box-note-bd:#6f86a8;
+    --box-remember-bg:#122a4d; --box-remember-bd:#5b9bff;
+    --box-tip-bg:#12305c; --box-tip-bd:#5b9bff;
+    --box-mistake-bg:#141f33; --box-mistake-bd:#7fa6e8;
+    --box-pyq-bg:#12294d; --box-pyq-bd:#5b9bff;
+    --box-key-bg:#13284a; --box-key-bd:#5b9bff;
+    --box-focus-bg:linear-gradient(135deg,#0a1830,#173a6e); --box-focus-text:#eaf1ff;
+    --thead-bg:#173a6e; --thead-text:#eaf1ff;
+    --tstripe:#101d33; --tborder:#22344d; --section-alt:#101c30;
+    --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:14px;}
+  body{margin:0;background:var(--page-bg);color:var(--ink);font-family:'Source Sans 3',Segoe UI,Arial,sans-serif;line-height:1.6;font-size:16px;}
+  i, em{color:inherit;}
+  .container{max-width:960px;margin:0 auto;padding:0 14px 60px;}
+
+  .hero{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;padding:44px 20px 54px;text-align:center;padding-top:calc(44px + env(safe-area-inset-top,0px));}
+  .hero .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:#bcd4ff;font-weight:700;margin:0 0 10px;}
+  .hero h1{font-family:'Merriweather',Georgia,serif;font-size:1.7rem;margin:0 0 8px;font-weight:900;}
+  .hero .subtitle{color:#d7e6ff;margin:0 0 18px;font-size:1rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;padding:0;margin:0;}
+  .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:.8rem;color:#fff;text-decoration:none;display:inline-block;transition:background .15s ease;}
+  .chip:hover, .chip:active{background:rgba(255,255,255,.28);}
+
+  .card{background:var(--card-bg);border-radius:16px;box-shadow:var(--shadow);margin-top:-26px;overflow:hidden;}
+  .intro-pad{padding:22px 22px 4px;}
+
+  .box{border-radius:10px;padding:14px 16px;margin:16px 0;border-left:5px solid var(--box-remember-bd);background:var(--box-remember-bg);}
+  .box p{margin:0 0 8px;}
+  .box p:last-child, .box ul:last-child{margin-bottom:0;}
+  .box ul{margin:6px 0 0;padding-left:1.15em;}
+  .box .box-label{margin:0 0 8px;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue-2);}
+  .box.note{border-left-color:var(--box-note-bd);background:var(--box-note-bg);}
+  .box.remember{border-left-color:var(--box-remember-bd);background:var(--box-remember-bg);}
+  .box.tip{border-left-color:var(--box-tip-bd);background:var(--box-tip-bg);}
+  .box.mistake{border-left-color:var(--box-mistake-bd);background:var(--box-mistake-bg);border-left-style:dashed;}
+  .box.pyq{border-left-color:var(--box-pyq-bd);background:var(--box-pyq-bg);}
+  .box.keypoint{border-left-color:var(--box-key-bd);background:var(--box-key-bg);}
+  .box.examfocus{background:var(--box-focus-bg);color:var(--box-focus-text);border-left:none;padding:20px 22px;border-radius:14px;margin:18px 0 6px;}
+  .box.examfocus .box-label{color:var(--box-focus-text);opacity:.85;}
+  .box.examfocus ul li::marker{color:#bcd4ff;}
+  .box.examfocus a{color:#fff;}
+
+  #toc{background:var(--chip-bg);border:1px solid var(--border-soft);border-radius:12px;padding:18px 20px;margin:18px 22px 6px;}
+  #toc h2{margin:0 0 12px;font-family:'Merriweather',Georgia,serif;color:var(--heading);font-size:1.1rem;}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;list-style:none;padding:0;margin:0;}
+  .toc-grid a{color:var(--blue-2);text-decoration:none;font-size:.9rem;display:block;padding:5px 8px;border-radius:6px;}
+  .toc-grid a:hover{background:rgba(37,99,235,.1);text-decoration:underline;}
+  @media (max-width:600px){ .toc-grid{grid-template-columns:1fr;} }
+
+  .section{padding:26px 22px 6px;border-top:1px solid var(--border-soft);}
+  .section:nth-of-type(even){background:var(--section-alt);}
+  .section h2{font-family:'Merriweather',Georgia,serif;color:var(--heading);font-size:1.28rem;display:flex;align-items:center;gap:12px;margin:0 0 14px;line-height:1.3;}
+  .section h2 .num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:.85rem;}
+  .section h3.subhead{font-family:'Merriweather',Georgia,serif;color:var(--blue-2);font-size:1rem;margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--border-soft);}
+  .section h4.subsubhead{font-family:'Source Sans 3',sans-serif;font-weight:700;color:var(--heading);font-size:.95rem;margin:14px 0 6px;}
+  .section p{margin:0 0 10px;}
+  .section ul, .section ol{padding-left:1.25em;margin:0 0 10px;}
+  .section li{margin:5px 0;}
+  .section li::marker{color:var(--blue);}
+
+  .table-scroll{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid var(--tborder);}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem;}
+  table.narrow{min-width:0;}
+  table.wide{min-width:820px;}
+  thead th{background:var(--thead-bg);color:var(--thead-text);text-align:left;padding:10px 12px;font-family:'Merriweather',Georgia,serif;font-weight:700;font-size:.82rem;white-space:nowrap;}
+  table.narrow thead th{white-space:normal;}
+  tbody td{padding:9px 12px;border-top:1px solid var(--tborder);vertical-align:top;}
+  tbody tr:nth-child(even){background:var(--tstripe);}
+
+  .revision{list-style:none;padding:0;margin:0;columns:2 250px;column-gap:26px;}
+  .revision li{break-inside:avoid;padding:8px 0;border-bottom:1px dashed var(--border-soft);font-size:.92rem;}
+  .revision li::before{content:"▸ ";color:var(--blue);font-weight:700;}
+  @media (max-width:600px){ .revision{columns:1;} }
+
+  .quiz{list-style:none;counter-reset:q;padding:0;margin:8px 0;}
+  .quiz>li{counter-increment:q;background:var(--card-bg);border:1px solid var(--border-soft);border-radius:10px;padding:16px;margin:14px 0 0;position:relative;}
+  .quiz>li::before{content:"Q" counter(q);position:absolute;top:-11px;left:14px;background:var(--blue);color:#fff;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;}
+  .quiz .opts{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;margin-top:10px;font-size:.9rem;color:var(--ink-soft);list-style:none;padding:0;}
+  .quiz .opts li{margin:0;}
+  .quiz .opts li::marker{content:none;}
+  @media (max-width:480px){ .quiz .opts{grid-template-columns:1fr;} }
+  .answer-key{margin:18px 0 22px;background:var(--box-key-bg);border:1px solid var(--box-key-bd);border-radius:10px;padding:14px 18px;}
+  .answer-key summary{cursor:pointer;font-weight:700;color:var(--heading);}
+  .answer-key[open] summary{margin-bottom:8px;}
+  .answer-key p{margin:0;font-size:.95rem;}
+
+  footer{background:var(--navy);color:#cfe0ff;text-align:center;padding:26px 20px calc(26px + env(safe-area-inset-bottom,0px));font-size:.85rem;}
+
+  .fab-stack{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;z-index:50;}
+  .fab{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(29,78,216,.45);font-size:1.05rem;}
+</style>
+</head>
+<body>
+<div id="top"></div>
+
+<header class="hero">
+  <p class="eyebrow">NEET UG 2026 · Biology</p>
+  <h1>Unit 2: Structural Organisation in Animals and Plants</h1>
+  <p class="subtitle">Notes from NCERT — Class XI</p>
+  <ul class="chips">
+    <li><a class="chip" href="#sec1">Ch 5 · Morphology of Flowering Plants</a></li>
+    <li><a class="chip" href="#sec13">Ch 6 · Anatomy of Flowering Plants</a></li>
+    <li><a class="chip" href="#sec16">Ch 7 · Structural Organisation in Animals</a></li>
+  </ul>
+</header>
+
+<div class="container">
+<div class="card">
+
+  <div class="intro-pad">
+    <div class="box keypoint">
+      <p class="box-label">NEET syllabus topics in this unit</p>
+      <ol>
+        <li>Morphology and modifications; Tissues; Anatomy and functions of different parts of flowering plants: root, stem, leaf, inflorescence (cymose and racemose), flower, fruit and seed.</li>
+        <li>Families: Malvaceae, Cruciferae, Leguminosae, Compositae, Graminae.</li>
+        <li>Animal tissues; Morphology, anatomy and functions of different systems (digestive, circulatory, respiratory, nervous and reproductive) of Frog (brief account only).</li>
+      </ol>
+    </div>
+
+    <div class="box note">
+      <p class="box-label">📝 Note: Content beyond the current NCERT reprint</p>
+      <p>The 2026–27 NCERT reprint has dropped some sections that the NEET 2026 syllabus still lists: modifications of root, stem and leaf; plant tissues (meristematic and permanent); animal tissues; and the five plant families. These are marked <strong>[Beyond current NCERT]</strong> in these notes and are written from the earlier NCERT edition, so students do not miss them.</p>
+    </div>
+
+    <div class="box examfocus">
+      <p class="box-label">🎯 NEET Focus: How this unit is tested</p>
+      <ul>
+        <li>Morphology gives direct example-based questions: phyllotaxy, aestivation, placentation, position of ovary, types of stamens, fruit and seed parts. NEET loves "Which pair is correctly matched?" questions from these lists.</li>
+        <li>Floral formula of families (especially Solanaceae, Fabaceae, Brassicaceae) is asked almost every few years.</li>
+        <li>Anatomy: differences between dicot and monocot root, stem and leaf; types of vascular bundles; endodermis and casparian strips; bulliform cells.</li>
+        <li>Frog: sexual dimorphism, excretion (ureotelic), heart (3 chambers, sinus venosus, conus arteriosus), portal systems, cranial nerves, Bidder's canal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <nav id="toc">
+    <h2>Contents</h2>
+    <ul class="toc-grid">
+      <li><a href="#sec1">1. Morphology of Flowering Plants — Intro</a></li>
+      <li><a href="#sec2">2. The Root</a></li>
+      <li><a href="#sec3">3. The Stem</a></li>
+      <li><a href="#sec4">4. The Leaf</a></li>
+      <li><a href="#sec5">5. The Inflorescence</a></li>
+      <li><a href="#sec6">6. The Flower</a></li>
+      <li><a href="#sec7">7. Parts of a Flower</a></li>
+      <li><a href="#sec8">8. The Fruit</a></li>
+      <li><a href="#sec9">9. The Seed</a></li>
+      <li><a href="#sec10">10. Floral Formula &amp; Diagram</a></li>
+      <li><a href="#sec11">11. Family Solanaceae (NCERT)</a></li>
+      <li><a href="#sec12">12. Other NEET Families</a></li>
+      <li><a href="#sec13">13. Plant Tissues</a></li>
+      <li><a href="#sec14">14. The Tissue Systems (NCERT)</a></li>
+      <li><a href="#sec15">15. Anatomy of Dicot &amp; Monocot Plants</a></li>
+      <li><a href="#sec16">16. Animal Tissues</a></li>
+      <li><a href="#sec17">17. Frog — Morphology</a></li>
+      <li><a href="#sec18">18. Frog — Anatomy (Organ Systems)</a></li>
+      <li><a href="#sec19">19. Quick Revision — One-liners</a></li>
+      <li><a href="#sec20">20. Practice Questions</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <section class="section" id="sec1">
+    <h2><span class="num">1</span>Morphology of Flowering Plants — Introduction</h2>
+    <ul>
+      <li>Angiosperms are characterised by the presence of <strong>roots, stems, leaves, flowers and fruits</strong>.</li>
+      <li>The underground part is the <strong>root system</strong>; the part above ground is the <strong>shoot system</strong>.</li>
+      <li><strong>Morphology</strong> = study of external form. Standard technical terms and definitions are needed to classify and understand plants, and to understand adaptations (for protection, climbing, storage, etc.).</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="sec2">
+    <h2><span class="num">2</span>The Root</h2>
+    <h3 class="subhead">2.1 Types of root systems</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Origin</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tap root system</strong></td><td>Direct elongation of the <strong>radicle</strong> forms the primary root, which bears lateral roots (secondary, tertiary). Primary root + branches = tap root system. Common in <strong>dicots</strong>.</td><td>Mustard</td></tr>
+          <tr><td><strong>Fibrous root system</strong></td><td>In <strong>monocots</strong>, the primary root is short-lived and replaced by many roots arising from the <strong>base of the stem</strong>.</td><td>Wheat</td></tr>
+          <tr><td><strong>Adventitious roots</strong></td><td>Roots arising from parts of the plant <strong>other than the radicle</strong>.</td><td>Grass, <i>Monstera</i>, banyan tree</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">2.2 Functions of roots</h3>
+    <ul>
+      <li>Absorption of water and minerals from the soil</li>
+      <li>Proper anchorage to the plant</li>
+      <li>Storing reserve food material</li>
+      <li><strong>Synthesis of plant growth regulators</strong></li>
+    </ul>
+    <h3 class="subhead">2.3 Regions of the root tip (from apex upwards)</h3>
+    <ol>
+      <li><strong>Root cap</strong> — thimble-like structure covering the apex; protects the tender apex as it moves through soil.</li>
+      <li><strong>Region of meristematic activity</strong> — a few mm above the root cap; cells very small, thin-walled, dense protoplasm; divide repeatedly.</li>
+      <li><strong>Region of elongation</strong> — cells undergo rapid elongation and enlargement; responsible for <strong>growth in length</strong>.</li>
+      <li><strong>Region of maturation</strong> — cells differentiate and mature. Some epidermal cells here form <strong>root hairs</strong>, which absorb water and minerals.</li>
+    </ol>
+    <h3 class="subhead">2.4 Modifications of root <em>[Beyond current NCERT]</em></h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Modification</th><th>Function</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Storage (tap root)</td><td>Store food</td><td>Carrot, turnip</td></tr>
+          <tr><td>Storage (adventitious)</td><td>Store food</td><td>Sweet potato</td></tr>
+          <tr><td><strong>Prop roots</strong></td><td>Support; hanging roots from branches grow into soil</td><td>Banyan tree</td></tr>
+          <tr><td><strong>Stilt roots</strong></td><td>Support; arise from lower nodes of stem</td><td>Maize, sugarcane</td></tr>
+          <tr><td><strong>Pneumatophores</strong></td><td>Respiration — roots grow vertically upwards to get oxygen in swampy (mangrove) areas</td><td><i>Rhizophora</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box tip">
+      <p class="box-label">🎯 Exam Tip</p>
+      <p>Sweet potato is a root (adventitious root modified for storage). Potato is a stem (tuber). This pair is a classic NEET trap.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="sec3">
+    <h2><span class="num">3</span>The Stem</h2>
+    <h3 class="subhead">3.1 Features</h3>
+    <ul>
+      <li>Ascending part of the axis bearing branches, leaves, flowers and fruits.</li>
+      <li>Develops from the <strong>plumule</strong> of the embryo.</li>
+      <li>Has <strong>nodes</strong> (where leaves are borne) and <strong>internodes</strong> (portions between nodes).</li>
+      <li>Bears <strong>buds</strong> — terminal or axillary.</li>
+      <li>Green when young, later often woody and dark brown.</li>
+      <li>Features that distinguish stem from root: nodes and internodes, multicellular hairs and <strong>positively phototropic</strong> nature.</li>
+    </ul>
+    <h3 class="subhead">3.2 Functions</h3>
+    <ul>
+      <li>Spreading out branches bearing leaves, flowers and fruits.</li>
+      <li>Conducting water, minerals and photosynthates.</li>
+      <li>Some stems: storage of food, support, protection, vegetative propagation.</li>
+    </ul>
+    <h3 class="subhead">3.3 Modifications of stem <em>[Beyond current NCERT]</em></h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Modification</th><th>Function</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Underground storage stems</td><td>Store food; perennation (survive unfavourable conditions)</td><td>Potato (tuber), ginger (rhizome), turmeric (rhizome), zaminkand (corm), <i>Colocasia</i> (corm)</td></tr>
+          <tr><td><strong>Stem tendrils</strong> (from axillary buds)</td><td>Climbing; slender and spirally coiled</td><td>Gourds (cucumber, pumpkin, watermelon), grapevine</td></tr>
+          <tr><td><strong>Thorns</strong> (axillary buds)</td><td>Protection from browsing animals; woody, straight, pointed</td><td><i>Citrus</i>, <i>Bougainvillea</i></td></tr>
+          <tr><td><strong>Flattened stem (phylloclade)</strong></td><td>Photosynthesis in arid regions (leaves reduced to spines)</td><td><i>Opuntia</i></td></tr>
+          <tr><td><strong>Fleshy cylindrical stem</strong></td><td>Photosynthesis, stores water</td><td><i>Euphorbia</i></td></tr>
+          <tr><td>Sub-aerial — <strong>runner</strong></td><td>Vegetative propagation; lateral branch spreads to new niches, roots touch soil</td><td>Grass, strawberry</td></tr>
+          <tr><td>Sub-aerial — <strong>stolon</strong></td><td>Slender lateral branch arising from base of main axis; arches down to touch ground</td><td>Mint, jasmine</td></tr>
+          <tr><td>Sub-aerial — <strong>offset</strong></td><td>Short lateral branch, one internode, each node bearing a rosette of leaves and a tuft of roots; aquatic plants</td><td><i>Pistia</i>, <i>Eichhornia</i></td></tr>
+          <tr><td>Sub-aerial — <strong>sucker</strong></td><td>Lateral branch from basal, underground portion of main stem; grows horizontally under soil then comes up obliquely</td><td>Banana, pineapple, <i>Chrysanthemum</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>Thorn (stem modification, arises from axillary bud, has vascular connection) vs spine (leaf modification, e.g., cactus) vs prickle (epidermal outgrowth, e.g., rose). NEET tests which one arises from an axillary bud.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="sec4">
+    <h2><span class="num">4</span>The Leaf</h2>
+    <h3 class="subhead">4.1 Structure</h3>
+    <ul>
+      <li>Lateral, generally flattened structure borne on the stem; develops at the <strong>node</strong> and bears a <strong>bud in its axil</strong>. The axillary bud later develops into a branch.</li>
+      <li>Leaves originate from <strong>shoot apical meristems</strong> and are arranged in <strong>acropetal order</strong>.</li>
+      <li>Most important vegetative organ for <strong>photosynthesis</strong>.</li>
+      <li><strong>Leaf base</strong> — attaches leaf to stem; may bear two lateral small leaf-like <strong>stipules</strong>. In monocots the leaf base expands into a <strong>sheath</strong> covering the stem. In some leguminous plants the leaf base becomes swollen = <strong>pulvinus</strong>.</li>
+      <li><strong>Petiole</strong> — holds the blade to light. Long thin flexible petioles let blades flutter in wind, <strong>cooling the leaf</strong> and bringing fresh air to the surface.</li>
+      <li><strong>Lamina (leaf blade)</strong> — green expanded part with veins and veinlets; middle prominent vein = <strong>midrib</strong>. Veins give rigidity and act as channels of transport for water, minerals and food.</li>
+    </ul>
+    <h3 class="subhead">4.2 Venation</h3>
+    <p><strong>Reticulate</strong> — veinlets form a network; generally in <strong>dicots</strong>. <strong>Parallel</strong> — veins run parallel; characteristic of most <strong>monocots</strong>.</p>
+    <h3 class="subhead">4.3 Simple and compound leaves</h3>
+    <ul>
+      <li><strong>Simple leaf:</strong> lamina entire, or incisions do not touch the midrib.</li>
+      <li><strong>Compound leaf:</strong> incisions reach the midrib, breaking it into <strong>leaflets</strong>.</li>
+      <li>A <strong>bud is present in the axil of the petiole</strong> in both simple and compound leaves, <strong>but not in the axil of leaflets</strong> — this distinguishes a compound leaf from a branch with leaves.</li>
+      <li><strong>Pinnately compound:</strong> leaflets on a common axis, the <strong>rachis</strong> (represents the midrib), e.g., <strong>neem</strong>.</li>
+      <li><strong>Palmately compound:</strong> leaflets attached at a common point (tip of petiole), e.g., <strong>silk cotton</strong>.</li>
+    </ul>
+    <h3 class="subhead">4.4 Phyllotaxy (arrangement of leaves on stem)</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Description</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Alternate</strong></td><td>Single leaf at each node in alternate manner</td><td>China rose, mustard, sunflower</td></tr>
+          <tr><td><strong>Opposite</strong></td><td>A pair of leaves at each node, opposite each other</td><td><i>Calotropis</i>, guava</td></tr>
+          <tr><td><strong>Whorled</strong></td><td>More than two leaves at a node forming a whorl</td><td><i>Alstonia</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">4.5 Modifications of leaf <em>[Beyond current NCERT]</em></h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Modification</th><th>Function</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Leaf tendrils</strong></td><td>Climbing</td><td>Pea</td></tr>
+          <tr><td><strong>Spines</strong></td><td>Defence; reduce water loss</td><td>Cacti</td></tr>
+          <tr><td><strong>Fleshy leaves</strong></td><td>Store food</td><td>Onion, garlic</td></tr>
+          <tr><td><strong>Phyllode</strong></td><td>Petiole expands, becomes green and photosynthesises; leaves are small and short-lived</td><td>Australian <i>Acacia</i></td></tr>
+          <tr><td><strong>Insectivorous (pitcher/trap)</strong></td><td>Trap insects (nitrogen supply)</td><td>Pitcher plant, Venus fly trap</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="section" id="sec5">
+    <h2><span class="num">5</span>The Inflorescence</h2>
+    <ul>
+      <li>A <strong>flower is a modified shoot</strong>: the shoot apical meristem changes into a <strong>floral meristem</strong>; internodes do not elongate, the axis gets condensed, and the apex produces floral appendages at successive nodes instead of leaves.</li>
+      <li>When a shoot tip transforms into a flower, it is always <strong>solitary</strong>.</li>
+      <li><strong>Inflorescence</strong> = arrangement of flowers on the floral axis.</li>
+    </ul>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Feature</th><th>Racemose</th><th>Cymose</th></tr></thead>
+        <tbody>
+          <tr><td>Main axis</td><td><strong>Continues to grow</strong> (indefinite)</td><td><strong>Terminates in a flower</strong> (limited growth)</td></tr>
+          <tr><td>Order of flowers</td><td><strong>Acropetal succession</strong> — older flowers at base, younger at top</td><td><strong>Basipetal order</strong> — older flower at top</td></tr>
+          <tr><td>Examples <em>[Beyond current NCERT]</em></td><td>Mustard, radish (raceme); wheat (spike); sunflower (head/capitulum)</td><td><i>Solanum</i> (cyme), jasmine, <i>Calotropis</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box remember">
+      <p class="box-label">📌 Remember</p>
+      <p>Racemose = Acropetal (think "R-A"). Cymose = basipetal. The main axis of cymose ends in a flower.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section class="section" id="sec6">
+    <h2><span class="num">6</span>The Flower</h2>
+    <h3 class="subhead">6.1 General</h3>
+    <ul>
+      <li>The <strong>reproductive unit</strong> in angiosperms; meant for sexual reproduction.</li>
+      <li>Four whorls on the swollen end of the stalk (<strong>pedicel</strong>), called the <strong>thalamus or receptacle</strong>: <strong>calyx, corolla, androecium and gynoecium</strong>.</li>
+      <li>Calyx and corolla = <strong>accessory organs</strong>; androecium and gynoecium = <strong>reproductive organs</strong>.</li>
+      <li>In some flowers like <strong>lily</strong>, calyx and corolla are not distinct and are called <strong>perianth</strong>.</li>
+      <li><strong>Bisexual</strong> — has both androecium and gynoecium. <strong>Unisexual</strong> — only stamens or only carpels.</li>
+      <li><strong>Trimerous, tetramerous, pentamerous</strong> — floral appendages in multiples of 3, 4 or 5.</li>
+      <li><strong>Bracteate</strong> — flowers with bracts (reduced leaf at base of pedicel); <strong>ebracteate</strong> — without bracts.</li>
+    </ul>
+    <h3 class="subhead">6.2 Symmetry of flower</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Definition</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Actinomorphic</strong> (radial)</td><td>Divisible into two equal radial halves in any radial plane through the centre</td><td>Mustard, <i>Datura</i>, chilli</td></tr>
+          <tr><td><strong>Zygomorphic</strong> (bilateral)</td><td>Divisible into two similar halves in only one particular vertical plane</td><td>Pea, gulmohur, bean, <i>Cassia</i></td></tr>
+          <tr><td><strong>Asymmetric</strong> (irregular)</td><td>Cannot be divided into two similar halves by any vertical plane</td><td><i>Canna</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">6.3 Position of floral parts on thalamus</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Position</th><th>Ovary</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hypogynous</strong></td><td>Gynoecium at the highest position; other parts below it</td><td><strong>Superior</strong></td><td>Mustard, china rose, brinjal</td></tr>
+          <tr><td><strong>Perigynous</strong></td><td>Gynoecium in the centre; other parts on the rim of the thalamus almost at the same level</td><td><strong>Half inferior</strong></td><td>Plum, rose, peach</td></tr>
+          <tr><td><strong>Epigynous</strong></td><td>Margin of thalamus grows upward, encloses and fuses with the ovary; other parts arise above the ovary</td><td><strong>Inferior</strong></td><td>Guava, cucumber, ray florets of sunflower</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>"Which of the following has an inferior ovary?" — guava, cucumber, sunflower (ray florets). "Half-inferior ovary" — plum, rose, peach. This list is repeatedly asked.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section class="section" id="sec7">
+    <h2><span class="num">7</span>Parts of a Flower</h2>
+    <h3 class="subhead">7.1 Calyx</h3>
+    <p>Outermost whorl; members are <strong>sepals</strong>. Generally green, leaf-like; <strong>protect the flower in the bud stage</strong>. <strong>Gamosepalous</strong> (sepals united) or <strong>polysepalous</strong> (sepals free).</p>
+    <h3 class="subhead">7.2 Corolla</h3>
+    <p>Composed of <strong>petals</strong>; usually brightly coloured to <strong>attract insects</strong> for pollination. <strong>Gamopetalous</strong> (united) or <strong>polypetalous</strong> (free). Shapes: tubular, bell-shaped, funnel-shaped, wheel-shaped.</p>
+    <h3 class="subhead">7.3 Aestivation</h3>
+    <p>The mode of arrangement of sepals or petals in the floral bud with respect to other members of the same whorl.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Arrangement</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Valvate</strong></td><td>Sepals/petals just <strong>touch</strong> one another at the margin <strong>without overlapping</strong></td><td><i>Calotropis</i></td></tr>
+          <tr><td><strong>Twisted</strong></td><td>One margin of each appendage overlaps the next one, and so on (in one direction)</td><td>China rose, lady's finger, cotton</td></tr>
+          <tr><td><strong>Imbricate</strong></td><td>Margins overlap one another but <strong>not in any particular direction</strong></td><td><i>Cassia</i>, gulmohur</td></tr>
+          <tr><td><strong>Vexillary (papilionaceous)</strong></td><td>Five petals: the largest <strong>standard</strong> (vexillum) overlaps two lateral <strong>wings</strong>, which overlap the two smallest anterior petals, the <strong>keel</strong></td><td>Pea, bean</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">7.4 Androecium</h3>
+    <p>Composed of <strong>stamens</strong> (male reproductive organs). Each stamen = <strong>filament</strong> (stalk) + <strong>anther</strong>. Each anther is usually <strong>bilobed</strong>; each lobe has two chambers, the <strong>pollen sacs</strong> (so 4 pollen sacs per anther). <strong>Staminode</strong> = a sterile stamen.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Epipetalous</strong></td><td>Stamens attached to petals</td><td>Brinjal</td></tr>
+          <tr><td><strong>Epiphyllous</strong></td><td>Stamens attached to perianth</td><td>Lily</td></tr>
+          <tr><td><strong>Polyandrous</strong></td><td>Stamens free</td><td>—</td></tr>
+          <tr><td><strong>Monoadelphous</strong></td><td>United into one bundle</td><td>China rose</td></tr>
+          <tr><td><strong>Diadelphous</strong></td><td>Two bundles</td><td>Pea</td></tr>
+          <tr><td><strong>Polyadelphous</strong></td><td>More than two bundles</td><td><i>Citrus</i></td></tr>
+          <tr><td>Variation in filament length</td><td>Filaments of different lengths in the same flower</td><td><i>Salvia</i>, mustard</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">7.5 Gynoecium</h3>
+    <ul>
+      <li>Female reproductive part; made of one or more <strong>carpels</strong>. Carpel = <strong>stigma, style and ovary</strong>.</li>
+      <li><strong>Ovary</strong> — enlarged basal part; bears one or more <strong>ovules</strong> attached to a flattened cushion-like <strong>placenta</strong>.</li>
+      <li><strong>Style</strong> — elongated tube connecting ovary to stigma. <strong>Stigma</strong> — usually at the tip of style; <strong>receptive surface for pollen grains</strong>.</li>
+      <li><strong>Apocarpous</strong> — carpels free (<strong>lotus, rose</strong>). <strong>Syncarpous</strong> — carpels fused (<strong>mustard, tomato</strong>).</li>
+      <li>After fertilisation, ovules → <strong>seeds</strong>; ovary → <strong>fruit</strong>.</li>
+    </ul>
+    <h3 class="subhead">7.6 Placentation (arrangement of ovules within the ovary)</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Description</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Marginal</strong></td><td>Placenta forms a ridge along the <strong>ventral suture</strong>; ovules in two rows</td><td>Pea</td></tr>
+          <tr><td><strong>Axile</strong></td><td>Placenta axial; ovules attached to it in a <strong>multilocular ovary</strong></td><td>China rose, tomato, lemon</td></tr>
+          <tr><td><strong>Parietal</strong></td><td>Ovules on the <strong>inner wall/periphery</strong> of the ovary; one-chambered ovary becomes two-chambered by a <strong>false septum</strong></td><td>Mustard, <i>Argemone</i></td></tr>
+          <tr><td><strong>Free central</strong></td><td>Ovules on a <strong>central axis</strong>; septa absent</td><td><i>Dianthus</i>, primrose</td></tr>
+          <tr><td><strong>Basal</strong></td><td>Placenta at the <strong>base</strong> of ovary; single ovule attached</td><td>Sunflower, marigold</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box remember">
+      <p class="box-label">📌 Remember — placentation examples</p>
+      <p>Marginal — pea. Axile — china rose, tomato, lemon. Parietal — mustard, <i>Argemone</i>. Free central — <i>Dianthus</i>, primrose. Basal — sunflower, marigold.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 8 -->
+  <section class="section" id="sec8">
+    <h2><span class="num">8</span>The Fruit</h2>
+    <ul>
+      <li>Characteristic of flowering plants; a <strong>mature or ripened ovary</strong> developed after fertilisation.</li>
+      <li><strong>Parthenocarpic fruit</strong> — formed <strong>without fertilisation</strong> of the ovary.</li>
+      <li>Fruit = wall (<strong>pericarp</strong>) + seeds. Pericarp may be dry or fleshy. When thick and fleshy, pericarp is differentiated into <strong>epicarp</strong> (outer), <strong>mesocarp</strong> (middle) and <strong>endocarp</strong> (inner).</li>
+    </ul>
+    <h3 class="subhead">8.1 Drupe</h3>
+    <p>Examples: <strong>mango and coconut</strong>. Develop from <strong>monocarpellary superior ovaries</strong>; <strong>one-seeded</strong>.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Fruit</th><th>Epicarp</th><th>Mesocarp</th><th>Endocarp</th></tr></thead>
+        <tbody>
+          <tr><td>Mango</td><td>Outer thin</td><td><strong>Fleshy, edible</strong></td><td>Stony, hard</td></tr>
+          <tr><td>Coconut</td><td>—</td><td><strong>Fibrous</strong></td><td>Hard</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box tip">
+      <p class="box-label">🎯 Exam Tip</p>
+      <p>Edible part of mango = mesocarp. Coconut mesocarp is fibrous (coir). Both are drupes from a monocarpellary superior ovary.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 9 -->
+  <section class="section" id="sec9">
+    <h2><span class="num">9</span>The Seed</h2>
+    <p>Ovules after fertilisation develop into seeds. Seed = <strong>seed coat + embryo</strong>. Embryo = <strong>radicle, embryonal axis</strong>, and <strong>one cotyledon</strong> (wheat, maize) or <strong>two cotyledons</strong> (gram, pea).</p>
+    <h3 class="subhead">9.1 Dicotyledonous seed (e.g., gram, pea, bean)</h3>
+    <ul>
+      <li><strong>Seed coat</strong> — two layers: outer <strong>testa</strong>, inner <strong>tegmen</strong>.</li>
+      <li><strong>Hilum</strong> — scar through which the developing seed was attached to the fruit. <strong>Micropyle</strong> — small pore <strong>above the hilum</strong>.</li>
+      <li><strong>Embryo</strong> — embryonal axis + two cotyledons (often fleshy, full of reserve food). <strong>Radicle</strong> and <strong>plumule</strong> at the two ends of the axis.</li>
+      <li><strong>Endospermic seeds</strong> — endosperm (formed by double fertilisation) stores food, e.g., <strong>castor</strong>. <strong>Non-endospermous seeds</strong> — endosperm absent in mature seed, e.g., <strong>bean, gram, pea</strong>.</li>
+    </ul>
+    <h3 class="subhead">9.2 Monocotyledonous seed (e.g., maize)</h3>
+    <ul>
+      <li>Generally <strong>endospermic</strong>; but <strong>orchids are non-endospermic</strong>.</li>
+      <li>In cereals such as maize, the <strong>seed coat is membranous and fused with the fruit wall</strong>.</li>
+      <li><strong>Endosperm</strong> is bulky and stores food. <strong>Aleurone layer</strong> — <strong>proteinous layer</strong> on the outer covering of the endosperm, separating it from the embryo.</li>
+      <li>Embryo is small, in a groove at one end of the endosperm. It has one large, <strong>shield-shaped cotyledon</strong> called <strong>scutellum</strong>, and a short axis with plumule and radicle.</li>
+      <li><strong>Coleoptile</strong> — sheath enclosing the <strong>plumule</strong>. <strong>Coleorhiza</strong> — sheath enclosing the <strong>radicle</strong>.</li>
+    </ul>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>Coleoptile covers the plumule (shoot); coleorhiza covers the radicle (root). "Ptile" = shoot side. The aleurone layer is proteinous, not starchy.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 10 -->
+  <section class="section" id="sec10">
+    <h2><span class="num">10</span>Floral Formula &amp; Floral Diagram</h2>
+    <p>A flowering plant is described in sequence: <strong>habit → vegetative characters (root, stem, leaves) → floral characters (inflorescence, flower parts)</strong> → floral diagram and floral formula.</p>
+    <h3 class="subhead">10.1 Symbols used in floral formula</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>Br</td><td>Bracteate</td></tr>
+          <tr><td>K</td><td>Calyx</td></tr>
+          <tr><td>C</td><td>Corolla</td></tr>
+          <tr><td>P</td><td>Perianth</td></tr>
+          <tr><td>A</td><td>Androecium</td></tr>
+          <tr><td>G</td><td>Gynoecium</td></tr>
+          <tr><td>G with a line <strong>below</strong> the number</td><td>Superior ovary</td></tr>
+          <tr><td>G with a line <strong>above</strong> the number</td><td>Inferior ovary</td></tr>
+          <tr><td>♂ / ♀ / ⚥</td><td>Male / Female / Bisexual</td></tr>
+          <tr><td>⊕</td><td>Actinomorphic</td></tr>
+          <tr><td>%</td><td>Zygomorphic</td></tr>
+          <tr><td>Number in brackets, e.g., (5)</td><td><strong>Fusion</strong> (cohesion) of members</td></tr>
+          <tr><td>Line drawn above symbols of two whorls</td><td><strong>Adhesion</strong> (e.g., epipetalous stamens)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Floral diagram</strong> — shows the number of parts, their arrangement and relation to one another. The <strong>mother axis</strong> is shown by a <strong>dot on top</strong>. Calyx is outermost; gynoecium in the centre. The NCERT floral diagram example is of <strong>mustard (family Brassicaceae)</strong>: ⊕ ⚥ K<sub>2+2</sub> C<sub>4</sub> A<sub>2+4</sub> G<sub>(2)</sub> (superior).</p>
+  </section>
+
+  <!-- SECTION 11 -->
+  <section class="section" id="sec11">
+    <h2><span class="num">11</span>Family Solanaceae (NCERT)</h2>
+    <p>Large family, commonly called the <strong>"potato family"</strong>. Distributed in tropics, subtropics and even temperate zones. Example in NCERT figure: <i>Solanum nigrum</i> (makoi).</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Mostly herbs, shrubs, rarely small trees</td></tr>
+          <tr><td>Stem</td><td>Herbaceous, rarely woody; aerial, erect, cylindrical, branched, solid or hollow, hairy or glabrous; <strong>underground stem in potato (<i>Solanum tuberosum</i>)</strong></td></tr>
+          <tr><td>Leaves</td><td>Alternate, simple, rarely pinnately compound, <strong>exstipulate</strong>; reticulate venation</td></tr>
+          <tr><td>Inflorescence</td><td>Solitary, axillary or <strong>cymose</strong> (as in <i>Solanum</i>)</td></tr>
+          <tr><td>Flower</td><td>Bisexual, actinomorphic</td></tr>
+          <tr><td>Calyx</td><td>Sepals 5, united, <strong>persistent</strong>, valvate</td></tr>
+          <tr><td>Corolla</td><td>Petals 5, united; valvate</td></tr>
+          <tr><td>Androecium</td><td>Stamens 5, <strong>epipetalous</strong></td></tr>
+          <tr><td>Gynoecium</td><td><strong>Bicarpellary, obliquely placed</strong>, syncarpous; ovary <strong>superior</strong>, <strong>bilocular</strong>; placenta swollen with many ovules; <strong>axile</strong></td></tr>
+          <tr><td>Fruit</td><td><strong>Berry or capsule</strong></td></tr>
+          <tr><td>Seeds</td><td>Many, <strong>endospermous</strong></td></tr>
+          <tr><td>Floral formula</td><td>⊕ ⚥ K<sub>(5)</sub> C<sub>(5)</sub> A<sub>5</sub> (epipetalous) G<sub>(2)</sub> superior</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Food — tomato, brinjal, potato; spice — chilli; medicine — belladonna, ashwagandha; fumigatory — tobacco; ornamental — petunia.</p>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>Obliquely placed ovary, persistent calyx and epipetalous stamens are the favourite identifying features of Solanaceae in NEET questions.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 12 -->
+  <section class="section" id="sec12">
+    <h2><span class="num">12</span>Other NEET Families <em>[Beyond current NCERT]</em></h2>
+    <div class="box note">
+      <p class="box-label">📝 Note</p>
+      <p>The NEET 2026 syllabus names Malvaceae, Cruciferae (Brassicaceae), Leguminosae (Fabaceae), Compositae (Asteraceae) and Graminae (Poaceae). The current NCERT describes only Solanaceae in detail. The notes below cover the key features students need, including floral formulae.</p>
+    </div>
+
+    <h3 class="subhead">12.1 Fabaceae (Leguminosae, sub-family Papilionoideae) — Pea family</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Trees, shrubs, herbs</td></tr>
+          <tr><td>Root</td><td>Tap root with <strong>root nodules</strong> (nitrogen-fixing bacteria)</td></tr>
+          <tr><td>Leaves</td><td>Alternate, pinnately compound or simple; leaf base <strong>pulvinate</strong>; <strong>stipulate</strong>; reticulate venation</td></tr>
+          <tr><td>Inflorescence</td><td><strong>Racemose</strong></td></tr>
+          <tr><td>Flower</td><td>Bisexual, <strong>zygomorphic</strong></td></tr>
+          <tr><td>Calyx</td><td>Sepals 5, gamosepalous; imbricate</td></tr>
+          <tr><td>Corolla</td><td>Petals 5, polypetalous, <strong>papilionaceous</strong> — 1 standard (posterior), 2 wings (lateral), 2 keel (anterior, fused); <strong>vexillary</strong> aestivation</td></tr>
+          <tr><td>Androecium</td><td>10 stamens, <strong>diadelphous (9)+1</strong>; anthers dithecous</td></tr>
+          <tr><td>Gynoecium</td><td>Ovary superior, <strong>monocarpellary</strong>, unilocular, many ovules; single style; <strong>marginal</strong> placentation</td></tr>
+          <tr><td>Fruit</td><td><strong>Legume (pod)</strong></td></tr>
+          <tr><td>Seed</td><td>One to many, <strong>non-endospermic</strong></td></tr>
+          <tr><td>Floral formula</td><td>% ⚥ K<sub>(5)</sub> C<sub>1+2+(2)</sub> A<sub>(9)+1</sub> G<sub>1</sub> superior</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Pulses — gram, arhar, sem, moong, soybean; edible oil — soybean, groundnut; dye — <i>Indigofera</i>; fibre — sunhemp; fodder — <i>Sesbania</i>, <i>Trifolium</i>; ornamentals — lupin, sweet pea; medicine — muliathi.</p>
+
+    <h3 class="subhead">12.2 Brassicaceae (Cruciferae) — Mustard family</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Mostly herbs, with pungent juice</td></tr>
+          <tr><td>Root</td><td>Tap root; sometimes modified for storage (radish, turnip)</td></tr>
+          <tr><td>Leaves</td><td>Alternate, simple, exstipulate</td></tr>
+          <tr><td>Inflorescence</td><td><strong>Racemose</strong> (raceme / corymbose raceme)</td></tr>
+          <tr><td>Flower</td><td>Bisexual, actinomorphic, <strong>tetramerous</strong>, hypogynous, ebracteate</td></tr>
+          <tr><td>Calyx</td><td>4 sepals in two whorls (2+2), polysepalous</td></tr>
+          <tr><td>Corolla</td><td>4 petals, free, arranged in the form of a cross — <strong>cruciform</strong></td></tr>
+          <tr><td>Androecium</td><td>6 stamens, <strong>tetradynamous</strong> — 2 short (outer) + 4 long (inner)</td></tr>
+          <tr><td>Gynoecium</td><td><strong>Bicarpellary</strong>, syncarpous, ovary superior; unilocular but becomes <strong>bilocular due to a false septum (replum)</strong>; <strong>parietal</strong> placentation</td></tr>
+          <tr><td>Fruit</td><td><strong>Siliqua</strong> (long) or silicula (short)</td></tr>
+          <tr><td>Floral formula</td><td>⊕ ⚥ K<sub>2+2</sub> C<sub>4</sub> A<sub>2+4</sub> G<sub>(2)</sub> superior (same as NCERT mustard floral diagram)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Mustard oil; vegetables — cabbage, cauliflower, radish, turnip; ornamentals — candytuft (<i>Iberis</i>); <i>Arabidopsis thaliana</i> is a model plant in research.</p>
+
+    <h3 class="subhead">12.3 Malvaceae — Cotton family</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Herbs, shrubs, trees; mucilage present; often <strong>stellate (star-shaped) hairs</strong></td></tr>
+          <tr><td>Leaves</td><td>Simple, alternate, <strong>stipulate</strong>; palmately reticulate venation</td></tr>
+          <tr><td>Inflorescence</td><td>Solitary axillary</td></tr>
+          <tr><td>Flower</td><td>Bisexual, actinomorphic, hypogynous; <strong>epicalyx</strong> (whorl of bracteoles below calyx) present</td></tr>
+          <tr><td>Calyx</td><td>Sepals 5, gamosepalous, valvate</td></tr>
+          <tr><td>Corolla</td><td>Petals 5, polypetalous but fused at base with staminal tube; <strong>twisted</strong> aestivation</td></tr>
+          <tr><td>Androecium</td><td>Numerous stamens, <strong>monadelphous</strong> (filaments fused into a <strong>staminal tube</strong> around the style); anthers <strong>monothecous</strong> (one lobe), kidney-shaped</td></tr>
+          <tr><td>Gynoecium</td><td>Pentacarpellary (or more), syncarpous, ovary superior; <strong>axile</strong> placentation</td></tr>
+          <tr><td>Fruit</td><td>Capsule or schizocarp</td></tr>
+          <tr><td>Floral formula</td><td>⊕ ⚥ Epicalyx K<sub>(5)</sub> C<sub>5</sub> A<sub>(∞)</sub> G<sub>(5)</sub> superior</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Fibre — cotton (<i>Gossypium</i>); vegetable — lady's finger/okra (<i>Abelmoschus esculentus</i>); ornamentals — China rose (<i>Hibiscus</i>), hollyhock.</p>
+    <div class="box remember">
+      <p class="box-label">📌 Remember</p>
+      <p>Malvaceae = monadelphous stamens + monothecous anthers + twisted aestivation + epicalyx + axile placentation. China rose shows all of these, and all are separately listed as NCERT examples (monoadelphous — china rose; twisted — china rose, cotton, lady's finger; axile — china rose).</p>
+    </div>
+
+    <h3 class="subhead">12.4 Asteraceae (Compositae) — Sunflower family</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Mostly herbs, some shrubs</td></tr>
+          <tr><td>Leaves</td><td>Alternate or opposite, simple, exstipulate</td></tr>
+          <tr><td>Inflorescence</td><td><strong>Capitulum (head)</strong> — many small flowers (florets) on a flat receptacle, surrounded by an <strong>involucre of bracts</strong></td></tr>
+          <tr><td>Florets</td><td><strong>Ray florets</strong> (marginal) — ligulate (strap-shaped), zygomorphic, female or neuter. <strong>Disc florets</strong> (central) — tubular, actinomorphic, bisexual</td></tr>
+          <tr><td>Calyx</td><td>Modified into <strong>pappus</strong> (hairs or scales) — helps in fruit dispersal</td></tr>
+          <tr><td>Corolla</td><td>5 petals, gamopetalous</td></tr>
+          <tr><td>Androecium</td><td>5 stamens, <strong>syngenesious</strong> (anthers fused, filaments free), epipetalous</td></tr>
+          <tr><td>Gynoecium</td><td><strong>Bicarpellary</strong>, syncarpous, <strong>inferior ovary</strong>, unilocular, one ovule, <strong>basal</strong> placentation</td></tr>
+          <tr><td>Fruit</td><td><strong>Cypsela</strong></td></tr>
+          <tr><td>Floral formula (disc floret)</td><td>⊕ ⚥ K<sub>pappus</sub> C<sub>(5)</sub> A<sub>(5)</sub> (syngenesious, epipetalous) G<sub>(2)</sub> inferior</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Oil — sunflower, safflower; vegetable — lettuce; ornamentals — marigold, <i>Dahlia</i>, <i>Chrysanthemum</i>, <i>Zinnia</i>; medicine — <i>Artemisia</i>; weed — <i>Parthenium</i> (congress grass).</p>
+    <div class="box tip">
+      <p class="box-label">🎯 Exam Tip</p>
+      <p>Links with NCERT text: epigynous flower (inferior ovary) — "ray florets of sunflower"; basal placentation — "sunflower, marigold"; racemose inflorescence type — head/capitulum.</p>
+    </div>
+
+    <h3 class="subhead">12.5 Poaceae (Gramineae) — Grass family</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Character</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Habit</td><td>Mostly herbs; some woody (bamboo)</td></tr>
+          <tr><td>Root</td><td><strong>Fibrous</strong>; stilt roots in maize, sugarcane</td></tr>
+          <tr><td>Stem</td><td><strong>Culm</strong> — cylindrical, with solid <strong>nodes</strong> and usually hollow (<strong>fistular</strong>) internodes</td></tr>
+          <tr><td>Leaves</td><td>Alternate, <strong>distichous</strong> (in two rows), simple; <strong>sheathing leaf base</strong>; a small outgrowth called <strong>ligule</strong> at the junction of sheath and blade; <strong>parallel</strong> venation</td></tr>
+          <tr><td>Inflorescence</td><td>Spike of <strong>spikelets</strong> (compound spike) or panicle</td></tr>
+          <tr><td>Spikelet / floret</td><td>Spikelet bears two sterile bracts, <strong>glumes</strong>; each floret enclosed by <strong>lemma</strong> and <strong>palea</strong></td></tr>
+          <tr><td>Perianth</td><td>Represented by 2–3 small scales called <strong>lodicules</strong></td></tr>
+          <tr><td>Androecium</td><td>Usually <strong>3 stamens</strong>; anthers <strong>versatile</strong> (attached at the middle, swing freely); long filaments — adaptation for <strong>wind pollination</strong></td></tr>
+          <tr><td>Gynoecium</td><td>Ovary superior, unilocular, <strong>one ovule</strong>, <strong>basal</strong> placentation; <strong>two feathery stigmas</strong> (wind pollination)</td></tr>
+          <tr><td>Fruit</td><td><strong>Caryopsis</strong> — seed coat fused with fruit wall (as described in NCERT for maize)</td></tr>
+          <tr><td>Floral formula</td><td>% ⚥ P<sub>(lodicules 2)</sub> A<sub>3</sub> G<sub>1</sub> superior</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Economic importance:</strong> Cereals — wheat, rice, maize, millets (bajra, jowar, ragi); sugarcane; bamboo (paper, construction); fodder grasses; lemongrass (oil).</p>
+
+    <h3 class="subhead">12.6 Family comparison — quick table</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Fabaceae</th><th>Brassicaceae</th><th>Malvaceae</th><th>Asteraceae</th><th>Poaceae</th><th>Solanaceae</th></tr></thead>
+        <tbody>
+          <tr><td>Symmetry</td><td>Zygomorphic</td><td>Actinomorphic</td><td>Actinomorphic</td><td>Disc: actino.; ray: zygo.</td><td>Zygomorphic</td><td>Actinomorphic</td></tr>
+          <tr><td>Stamens</td><td>10, diadelphous (9)+1</td><td>6, tetradynamous</td><td>∞, monadelphous</td><td>5, syngenesious</td><td>3, versatile</td><td>5, epipetalous</td></tr>
+          <tr><td>Carpels</td><td>1</td><td>2</td><td>5 or more</td><td>2</td><td>1 (effectively)</td><td>2 (oblique)</td></tr>
+          <tr><td>Ovary</td><td>Superior</td><td>Superior</td><td>Superior</td><td><strong>Inferior</strong></td><td>Superior</td><td>Superior</td></tr>
+          <tr><td>Placentation</td><td>Marginal</td><td>Parietal</td><td>Axile</td><td>Basal</td><td>Basal</td><td>Axile</td></tr>
+          <tr><td>Fruit</td><td>Legume</td><td>Siliqua</td><td>Capsule/schizocarp</td><td>Cypsela</td><td>Caryopsis</td><td>Berry/capsule</td></tr>
+          <tr><td>Examples</td><td>Pea, gram, groundnut</td><td>Mustard, radish, cabbage</td><td>Cotton, okra, china rose</td><td>Sunflower, marigold</td><td>Wheat, rice, maize</td><td>Potato, tomato, brinjal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 13 -->
+  <section class="section" id="sec13">
+    <h2><span class="num">13</span>Plant Tissues <em>[Beyond current NCERT]</em></h2>
+    <p>A <strong>tissue</strong> is a group of cells having a common origin and usually performing a common function. Plant tissues are of two main types: <strong>meristematic</strong> and <strong>permanent</strong>.</p>
+    <h3 class="subhead">13.1 Meristematic tissues</h3>
+    <p>Growth in plants is restricted to specialised regions of active cell division called <strong>meristems</strong>.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Meristem</th><th>Location</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Apical meristem</strong></td><td>Tips of roots and shoots</td><td>Produce <strong>primary tissues</strong>; increase <strong>length</strong></td></tr>
+          <tr><td><strong>Intercalary meristem</strong></td><td>Between mature tissues, e.g., at the base of internodes in <strong>grasses</strong></td><td>Regenerate parts removed by grazing herbivores</td></tr>
+          <tr><td><strong>Lateral meristem</strong></td><td>Mature regions of roots and shoots; cylindrical</td><td>Produce <strong>secondary tissues</strong>; increase <strong>girth</strong>. Examples: fascicular vascular cambium, interfascicular cambium, cork cambium</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Apical and intercalary meristems are <strong>primary meristems</strong>. Lateral meristems (cambium) are <strong>secondary meristems</strong> (appear later). As the shoot apical meristem forms leaves, some cells are left behind as <strong>axillary buds</strong>, which can form a branch or a flower.</p>
+    <h3 class="subhead">13.2 Permanent tissues</h3>
+    <p>Cells that have become structurally and functionally specialised and lost the ability to divide. <strong>Simple tissues</strong> — made of one type of cell. <strong>Complex tissues</strong> — made of more than one type of cell, working together as a unit.</p>
+    <h3 class="subhead">13.3 Simple permanent tissues</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Tissue</th><th>Cell features</th><th>Location</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Parenchyma</strong></td><td>Isodiametric (spherical, oval, round, polygonal, elongated); thin cellulose walls; closely packed or with small intercellular spaces</td><td>Major component within organs</td><td>Photosynthesis, storage, secretion</td></tr>
+          <tr><td><strong>Collenchyma</strong></td><td>Cells thickened at the <strong>corners</strong> due to deposition of cellulose, hemicellulose and pectin; may contain chloroplasts</td><td>Below epidermis in <strong>dicots</strong> (hypodermis, petioles); <strong>absent in monocots</strong></td><td><strong>Mechanical support</strong> to growing parts</td></tr>
+          <tr><td><strong>Sclerenchyma</strong></td><td>Long narrow cells, thick <strong>lignified</strong> walls; usually <strong>dead</strong>, without protoplasts</td><td>Fibres — various parts. Sclereids — fruit walls of nuts, pulp of guava/pear/sapota, seed coats of legumes, leaves of tea</td><td>Mechanical support</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Fibres</strong> — thick-walled, elongated, pointed cells, usually in groups. <strong>Sclereids</strong> — spherical, oval or cylindrical, highly thickened dead cells with very narrow cavities (lumen).</p>
+    <h3 class="subhead">13.4 Complex permanent tissues</h3>
+    <p><strong>Xylem</strong> — conducts water and minerals from roots to stem and leaves; also gives mechanical strength.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Element</th><th>Features</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tracheids</strong></td><td>Elongated, tube-like cells with thick lignified walls and tapering ends; <strong>dead</strong>, without protoplasm</td></tr>
+          <tr><td><strong>Vessels</strong></td><td>Long tube-like structures of many <strong>vessel members</strong>, lignified, large central cavity; dead; interconnected through <strong>perforations</strong>. <strong>Characteristic of angiosperms</strong></td></tr>
+          <tr><td><strong>Xylem fibres</strong></td><td>Highly thickened walls and obliterated central lumen; septate or aseptate</td></tr>
+          <tr><td><strong>Xylem parenchyma</strong></td><td><strong>Living</strong>, thin-walled; stores food as starch or fat, and tannins</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Gymnosperms lack vessels</strong> in their xylem (they have tracheids). <strong>Protoxylem</strong> — first-formed primary xylem; <strong>metaxylem</strong> — later-formed. <strong>Endarch</strong> (protoxylem towards centre) — in stems. <strong>Exarch</strong> (protoxylem towards periphery) — in roots.</p>
+    <p><strong>Phloem</strong> — transports food materials, usually from leaves to other parts.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Element</th><th>Features</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sieve tube elements</strong></td><td>Long tube-like structures; end walls perforated as <strong>sieve plates</strong>. Mature element <strong>lacks a nucleus</strong>; controlled by companion cells</td></tr>
+          <tr><td><strong>Companion cells</strong></td><td>Specialised <strong>parenchymatous</strong> cells connected to sieve tubes by <strong>pit fields</strong>; maintain pressure gradient</td></tr>
+          <tr><td><strong>Phloem parenchyma</strong></td><td>Stores food, resins, latex, mucilage. <strong>Absent in most monocots</strong></td></tr>
+          <tr><td><strong>Phloem fibres (bast fibres)</strong></td><td>Sclerenchymatous; <strong>generally absent in primary phloem</strong>, found in secondary phloem. Commercial fibres of jute, flax, hemp</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Gymnosperms</strong> have <strong>albuminous cells and sieve cells</strong> instead; they <strong>lack sieve tubes and companion cells</strong>.</p>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>Living vs dead elements: in xylem only <strong>xylem parenchyma</strong> is living; in phloem only <strong>phloem fibres</strong> are dead. Vessels are characteristic of angiosperms; companion cells are absent in gymnosperms.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 14 -->
+  <section class="section" id="sec14">
+    <h2><span class="num">14</span>The Tissue Systems (NCERT)</h2>
+    <p>Based on structure and location there are <strong>three tissue systems</strong>: <strong>epidermal, ground (fundamental) and vascular (conducting)</strong>.</p>
+    <h3 class="subhead">14.1 Epidermal tissue system</h3>
+    <ul>
+      <li>Outermost covering of the whole plant body: <strong>epidermal cells, stomata and epidermal appendages</strong> (trichomes and hairs).</li>
+      <li><strong>Epidermis</strong> — outermost layer, usually <strong>single-layered</strong>, parenchymatous.</li>
+      <li><strong>Cuticle</strong> — waxy thick layer that <strong>prevents water loss</strong>. <strong>Absent in roots.</strong></li>
+      <li><strong>Stomata</strong> — regulate <strong>transpiration and gaseous exchange</strong>. Each stoma has two <strong>bean-shaped guard cells</strong>; in <strong>grasses</strong>, guard cells are <strong>dumb-bell shaped</strong>. Outer walls of guard cells are <strong>thin</strong>; inner walls (towards pore) are <strong>highly thickened</strong>. <strong>Subsidiary cells</strong> lie near the guard cells. Stomatal apparatus = aperture + guard cells + subsidiary cells.</li>
+      <li><strong>Root hairs</strong> — <strong>unicellular</strong> elongations of epidermal cells; absorb water and minerals.</li>
+      <li><strong>Trichomes</strong> — usually <strong>multicellular</strong> epidermal hairs on the stem; help <strong>prevent water loss</strong>.</li>
+    </ul>
+    <h3 class="subhead">14.2 Ground tissue system</h3>
+    <p><strong>All tissues except epidermis and vascular bundles</strong>: parenchyma, collenchyma and sclerenchyma. Parenchyma is present in cortex, pericycle, pith and medullary rays. In leaves, ground tissue = <strong>mesophyll</strong>.</p>
+    <h3 class="subhead">14.3 Vascular tissue system</h3>
+    <p>Complex tissues <strong>xylem and phloem</strong> together form <strong>vascular bundles</strong>.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Description</th><th>Where</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Open</strong></td><td><strong>Cambium present</strong> between xylem and phloem; can form secondary tissues</td><td>Dicot stems</td></tr>
+          <tr><td><strong>Closed</strong></td><td><strong>No cambium</strong>; no secondary tissues</td><td>Monocots</td></tr>
+          <tr><td><strong>Radial</strong></td><td>Xylem and phloem arranged <strong>alternately on different radii</strong></td><td>Roots</td></tr>
+          <tr><td><strong>Conjoint</strong></td><td>Xylem and phloem on the <strong>same radius</strong>; phloem usually outer to xylem</td><td>Stems and leaves</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 15 -->
+  <section class="section" id="sec15">
+    <h2><span class="num">15</span>Anatomy of Dicot &amp; Monocot Plants</h2>
+    <h3 class="subhead">15.1 Dicot root (e.g., sunflower root)</h3>
+    <ol>
+      <li><strong>Epiblema</strong> — outermost layer; many cells protrude as <strong>unicellular root hairs</strong>.</li>
+      <li><strong>Cortex</strong> — several layers of thin-walled <strong>parenchyma</strong> with intercellular spaces.</li>
+      <li><strong>Endodermis</strong> — innermost layer; single layer of <strong>barrel-shaped</strong> cells without intercellular spaces; walls have deposits of waxy <strong>suberin</strong> as <strong>casparian strips</strong>.</li>
+      <li><strong>Pericycle</strong> — thick-walled parenchyma next to endodermis. <strong>Initiation of lateral roots and vascular cambium</strong> takes place here.</li>
+      <li><strong>Pith</strong> — small or inconspicuous.</li>
+      <li><strong>Conjunctive tissue</strong> — parenchyma between xylem and phloem.</li>
+      <li>Usually <strong>two to four</strong> xylem and phloem patches (<strong>diarch to tetrarch</strong>). Later a cambium ring develops.</li>
+    </ol>
+    <p><strong>Stele</strong> = all tissues inside the endodermis: pericycle, vascular bundles and pith.</p>
+    <h3 class="subhead">15.2 Monocot root</h3>
+    <p>Similar layers to dicot root, but <strong>more than six (polyarch)</strong> xylem bundles; <strong>pith is large and well developed</strong>; <strong>no secondary growth</strong>.</p>
+    <h3 class="subhead">15.3 Dicot stem (young)</h3>
+    <ol>
+      <li><strong>Epidermis</strong> — outermost protective layer; thin cuticle; may bear trichomes and a few stomata.</li>
+      <li><strong>Cortex</strong> — <strong>hypodermis</strong> (collenchyma, mechanical strength) + cortical parenchyma with intercellular spaces + <strong>endodermis</strong> (starch grains = <strong>starch sheath</strong>).</li>
+      <li><strong>Pericycle</strong> — semi-lunar patches of sclerenchyma, inner to endodermis and above the phloem.</li>
+      <li><strong>Medullary rays</strong> — radially placed parenchyma between vascular bundles.</li>
+      <li><strong>Vascular bundles</strong> — many, arranged in a <strong>ring</strong> (characteristic of dicot stem); each <strong>conjoint, open, with endarch protoxylem</strong>.</li>
+      <li><strong>Pith</strong> — large number of rounded parenchyma cells with large intercellular spaces.</li>
+    </ol>
+    <h3 class="subhead">15.4 Monocot stem</h3>
+    <p><strong>Sclerenchymatous hypodermis</strong>; large number of <strong>scattered vascular bundles</strong>, each surrounded by a <strong>sclerenchymatous bundle sheath</strong>. Large parenchymatous ground tissue (no distinction into cortex, endodermis, pericycle, pith). Vascular bundles <strong>conjoint and closed</strong>; peripheral bundles smaller than central ones; <strong>phloem parenchyma absent</strong>; <strong>water-containing cavities</strong> present.</p>
+    <h3 class="subhead">15.5 Dorsiventral (dicot) leaf</h3>
+    <p>Vertical section shows epidermis, mesophyll and vascular system. <strong>Abaxial epidermis bears more stomata</strong>; adaxial may even lack stomata. <strong>Mesophyll</strong> has two types: <strong>palisade parenchyma</strong> (adaxial, elongated, vertical) and <strong>spongy parenchyma</strong> (loosely arranged, below palisade, many air spaces). Vascular bundles surrounded by thick-walled <strong>bundle sheath cells</strong>.</p>
+    <h3 class="subhead">15.6 Isobilateral (monocot) leaf</h3>
+    <p>Similar to dorsiventral leaf, but <strong>stomata on both surfaces</strong>, and mesophyll <strong>not differentiated</strong> into palisade and spongy. <strong>Bulliform cells</strong> — large, empty, colourless adaxial epidermal cells along veins in grasses; when <strong>turgid</strong> the leaf surface is exposed, when <strong>flaccid</strong> (water stress) they make the leaf <strong>curl inwards</strong> to minimise water loss.</p>
+    <h3 class="subhead">15.7 Dicot vs monocot — master comparison</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Dicot root</th><th>Monocot root</th><th>Dicot stem</th><th>Monocot stem</th></tr></thead>
+        <tbody>
+          <tr><td>Xylem bundles</td><td>2–4 (diarch–tetrarch)</td><td>More than 6 (polyarch)</td><td>Many, in a ring</td><td>Many, scattered</td></tr>
+          <tr><td>Vascular bundle type</td><td>Radial</td><td>Radial</td><td>Conjoint, open, endarch</td><td>Conjoint, closed</td></tr>
+          <tr><td>Pith</td><td>Small/inconspicuous</td><td>Large, well developed</td><td>Large</td><td>Not distinct (ground tissue)</td></tr>
+          <tr><td>Hypodermis</td><td>—</td><td>—</td><td>Collenchymatous</td><td>Sclerenchymatous</td></tr>
+          <tr><td>Bundle sheath</td><td>—</td><td>—</td><td>Absent</td><td>Sclerenchymatous</td></tr>
+          <tr><td>Secondary growth</td><td>Yes</td><td>No</td><td>Yes</td><td>No</td></tr>
+          <tr><td>Special</td><td>Casparian strips in endodermis</td><td>Casparian strips in endodermis</td><td>Starch sheath; semi-lunar sclerenchyma patches</td><td>Water cavities; phloem parenchyma absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>NEET often gives a description and asks you to identify the section: "vascular bundles conjoint, scattered, surrounded by sclerenchymatous bundle sheath, phloem parenchyma absent" = <strong>monocot stem</strong>. "Polyarch xylem, large pith" = <strong>monocot root</strong>. "Conjoint, open, endarch, ring arrangement" = <strong>dicot stem</strong>.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 16 -->
+  <section class="section" id="sec16">
+    <h2><span class="num">16</span>Animal Tissues <em>[Beyond current NCERT]</em></h2>
+    <p>A <strong>tissue</strong> is a group of similar cells along with intercellular substances performing a specific function.</p>
+    <div class="box keypoint">
+      <p class="box-label">🔑 Key Point</p>
+      <p>All complex animals consist of only <strong>four basic types of tissues</strong>: <strong>epithelial, connective, muscular and neural</strong>. Organs (stomach, lung, heart, kidney) are made of these tissues in a specific proportion — the <strong>heart has all four types</strong>. Two or more organs performing a common function form an <strong>organ system</strong>.</p>
+    </div>
+    <h3 class="subhead">16.1 Epithelial tissue</h3>
+    <p>Has a <strong>free surface</strong> facing a body fluid or the outside environment; provides a covering or lining. Two types: <strong>simple epithelium</strong> (single layer) and <strong>compound epithelium</strong> (two or more layers, protective).</p>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Type</th><th>Structure</th><th>Location</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Squamous</strong></td><td>Single thin layer of flattened cells with irregular boundaries</td><td>Walls of <strong>blood vessels</strong>, <strong>air sacs of lungs</strong></td><td>Forming diffusion boundary</td></tr>
+          <tr><td><strong>Cuboidal</strong></td><td>Single layer of cube-like cells</td><td><strong>Ducts of glands</strong>, tubular parts of nephrons (microvilli = <strong>brush border</strong> in PCT)</td><td>Secretion and absorption</td></tr>
+          <tr><td><strong>Columnar</strong></td><td>Single layer of tall, slender cells; nuclei at base</td><td>Lining of <strong>stomach and intestine</strong></td><td>Secretion and absorption</td></tr>
+          <tr><td><strong>Ciliated</strong></td><td>Cilia move particles or mucus in a specific direction</td><td>Inner surface of <strong>bronchioles and fallopian tubes</strong></td><td>Moving particles/mucus</td></tr>
+          <tr><td><strong>Glandular</strong></td><td>Specialised cells for secretion</td><td>Unicellular — <strong>goblet cells</strong>; multicellular — <strong>salivary gland</strong></td><td>Secretion</td></tr>
+          <tr><td><strong>Compound</strong></td><td>Multi-layered</td><td>Dry surface of <strong>skin</strong>, moist surface of buccal cavity, pharynx; ducts of salivary/pancreatic glands</td><td>Protection</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Exocrine glands</strong> — secrete mucus, saliva, earwax, oil, milk, digestive enzymes; released <strong>through ducts</strong>. <strong>Endocrine glands</strong> — <strong>no ducts</strong>; products (<strong>hormones</strong>) secreted directly into the fluid bathing the gland.</p>
+    <p><strong>Cell junctions:</strong> <strong>Tight junctions</strong> stop substances from leaking across a tissue. <strong>Adhering junctions</strong> cement neighbouring cells together. <strong>Gap junctions</strong> let cells communicate by connecting cytoplasm for rapid transfer of ions and molecules.</p>
+    <h3 class="subhead">16.2 Connective tissue</h3>
+    <p><strong>Most abundant and widely distributed</strong> tissue; links and supports other tissues/organs. In all except <strong>blood</strong>, cells secrete fibres of <strong>collagen or elastin</strong> plus a polysaccharide <strong>matrix (ground substance)</strong>.</p>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Category</th><th>Type</th><th>Features / Location</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><strong>Loose connective</strong></td><td><strong>Areolar</strong></td><td>Present <strong>beneath the skin</strong>; contains <strong>fibroblasts</strong> (produce fibres), <strong>macrophages</strong> and <strong>mast cells</strong></td></tr>
+          <tr><td><strong>Adipose</strong></td><td>Mainly beneath the skin; cells specialised to <strong>store fats</strong></td></tr>
+          <tr><td rowspan="2"><strong>Dense connective</strong></td><td><strong>Dense regular</strong></td><td>Collagen fibres in rows between parallel bundles. <strong>Tendons</strong> attach skeletal muscle to bone; <strong>ligaments</strong> attach bone to bone</td></tr>
+          <tr><td><strong>Dense irregular</strong></td><td>Fibroblasts and fibres (mostly collagen) oriented differently; present in the <strong>skin</strong></td></tr>
+          <tr><td rowspan="3"><strong>Specialised connective</strong></td><td><strong>Cartilage</strong></td><td>Solid, pliable matrix; cells (<strong>chondrocytes</strong>) in small cavities. In adults: tip of nose, outer ear, between vertebrae, limbs, hands</td></tr>
+          <tr><td><strong>Bone</strong></td><td>Hard matrix rich in <strong>calcium salts and collagen</strong>; structural frame. <strong>Bone marrow</strong> produces blood cells. Cells = <strong>osteocytes</strong>, in <strong>lacunae</strong></td></tr>
+          <tr><td><strong>Blood</strong></td><td><strong>Fluid connective tissue</strong>: plasma, RBCs, WBCs and platelets; main circulating/transport fluid</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">16.3 Muscle tissue</h3>
+    <p>Made of long, cylindrical fibres composed of fine <strong>myofibrils</strong>; fibres <strong>contract</strong> then <strong>relax</strong> in a coordinated fashion.</p>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Type</th><th>Features</th><th>Location</th><th>Control</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Skeletal</strong></td><td>Attached to bones; <strong>striated</strong>; bundled in parallel</td><td>e.g., biceps</td><td><strong>Voluntary</strong></td></tr>
+          <tr><td><strong>Smooth</strong></td><td>Fibres taper at both ends (fusiform); <strong>no striations</strong></td><td>Walls of internal organs — blood vessels, stomach, intestine</td><td><strong>Involuntary</strong></td></tr>
+          <tr><td><strong>Cardiac</strong></td><td>Striated; found <strong>only in heart</strong>; junctions called <strong>intercalated discs</strong> let cells contract as a unit</td><td>Heart</td><td><strong>Involuntary</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">16.4 Neural tissue</h3>
+    <p>Exerts the <strong>greatest control</strong> over the body's responsiveness to changing conditions. <strong>Neurons</strong> are the excitable unit of the neural system. <strong>Neuroglial cells</strong> make up <strong>more than half the volume</strong> of neural tissue, protecting and supporting neurons. A stimulated neuron generates an <strong>electrical disturbance</strong> that travels along its membrane, triggering adjacent neurons at its ending.</p>
+    <div class="box remember">
+      <p class="box-label">📌 Remember</p>
+      <p>Tendon = muscle to bone. Ligament = bone to bone. Both are dense regular connective tissue. Blood is a connective tissue (fluid). Intercalated discs are only in cardiac muscle.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 17 -->
+  <section class="section" id="sec17">
+    <h2><span class="num">17</span>Frog (<i>Rana tigrina</i>) — Morphology</h2>
+    <h3 class="subhead">17.1 General features</h3>
+    <ul>
+      <li>Frogs live <strong>both on land and in freshwater</strong>; class <strong>Amphibia</strong>, phylum <strong>Chordata</strong>.</li>
+      <li>Most common species in India: <i>Rana tigrina</i> (Indian bullfrog).</li>
+      <li><strong>Cold-blooded (poikilotherms)</strong> — body temperature varies with the environment.</li>
+      <li><strong>Change colour</strong> to hide from enemies (camouflage) — this protective coloration is called <strong>mimicry</strong>.</li>
+      <li><strong>Aestivation</strong> — summer sleep; <strong>hibernation</strong> — winter sleep. They shelter in deep burrows during peak summer and winter.</li>
+    </ul>
+    <h3 class="subhead">17.2 External features</h3>
+    <ul>
+      <li><strong>Skin</strong> smooth, slippery due to <strong>mucus</strong>; always moist.</li>
+      <li><strong>Dorsal side</strong> — olive green with dark irregular spots; <strong>ventral side</strong> — uniformly pale yellow.</li>
+      <li>The frog <strong>never drinks water</strong> but <strong>absorbs it through the skin</strong>.</li>
+      <li>Body divisible into <strong>head and trunk</strong>; <strong>neck and tail absent</strong>.</li>
+      <li>A pair of <strong>nostrils</strong> above the mouth. Eyes bulged, covered by a <strong>nictitating membrane</strong> (protects eyes in water). <strong>Tympanum</strong> (membranous ear) on either side of the eyes receives sound signals.</li>
+      <li><strong>Forelimbs</strong> end in <strong>four digits</strong>; <strong>hind limbs</strong> end in <strong>five digits</strong>, larger and more muscular, with <strong>webbed digits</strong> for swimming.</li>
+      <li><strong>Sexual dimorphism</strong> — males have <strong>sound-producing vocal sacs</strong> and a <strong>copulatory pad on the first digit of the forelimbs</strong>; absent in females.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 18 -->
+  <section class="section" id="sec18">
+    <h2><span class="num">18</span>Frog — Anatomy (Organ Systems)</h2>
+    <h3 class="subhead">18.1 Digestive system</h3>
+    <ul>
+      <li>Alimentary canal is <strong>short</strong> because frogs are <strong>carnivores</strong> (reduced intestine length).</li>
+      <li>Pathway: <strong>mouth → buccal cavity → pharynx → oesophagus → stomach → intestine → rectum → cloaca</strong> (opens outside).</li>
+      <li>Food captured by the <strong>bilobed tongue</strong>. <strong>Liver</strong> secretes <strong>bile</strong>, stored in the <strong>gall bladder</strong>. <strong>Pancreas</strong> produces pancreatic juice.</li>
+      <li>Digestion in stomach by HCl and gastric juices → <strong>chyme</strong> → duodenum, where bile and pancreatic juice arrive via the <strong>common bile duct</strong>. Bile <strong>emulsifies fat</strong>; pancreatic juice digests carbohydrates and proteins.</li>
+      <li>Final digestion/absorption in the intestine via <strong>villi and microvilli</strong>. Undigested waste → rectum → out through <strong>cloaca</strong>.</li>
+    </ul>
+    <h3 class="subhead">18.2 Respiratory system</h3>
+    <div class="table-scroll">
+      <table class="narrow">
+        <thead><tr><th>Situation</th><th>Organs</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td>In water</td><td><strong>Skin</strong></td><td><strong>Cutaneous respiration</strong> (dissolved O<sub>2</sub> by diffusion)</td></tr>
+          <tr><td>On land</td><td><strong>Buccal cavity, skin and lungs</strong></td><td>Lungs = <strong>pulmonary respiration</strong></td></tr>
+          <tr><td>During aestivation/hibernation</td><td><strong>Skin</strong> only</td><td>Cutaneous</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Lungs: a pair of <strong>elongated, pink, sac-like</strong> structures in the upper trunk. Air enters: nostrils → buccal cavity → lungs.</p>
+    <h3 class="subhead">18.3 Circulatory system</h3>
+    <ul>
+      <li>Well-developed <strong>closed</strong> type. Frogs also have a <strong>lymphatic system</strong>.</li>
+      <li><strong>Heart</strong> — muscular; <strong>three chambers — two atria and one ventricle</strong>; covered by <strong>pericardium</strong>.</li>
+      <li><strong>Sinus venosus</strong> — triangular structure joining the <strong>right atrium</strong>; receives blood via the <strong>vena cava</strong>.</li>
+      <li><strong>Conus arteriosus</strong> — sac-like structure into which the ventricle opens, on the <strong>ventral</strong> side of the heart.</li>
+      <li>Special connections: <strong>Hepatic portal system</strong> (liver–intestine); <strong>Renal portal system</strong> (kidney–lower body).</li>
+      <li><strong>Frog RBCs are nucleated</strong> and contain haemoglobin. Frog has <strong>single circulation</strong> (per NCERT summary).</li>
+    </ul>
+    <h3 class="subhead">18.4 Excretory system</h3>
+    <ul>
+      <li>A pair of <strong>kidneys</strong>, ureters, cloaca and urinary bladder. Kidneys are compact, <strong>dark red, bean-like</strong>.</li>
+      <li>Each kidney has many <strong>uriniferous tubules (nephrons)</strong>.</li>
+      <li><strong>In males</strong>, the ureters act as <strong>urinogenital ducts</strong>. <strong>In females</strong>, ureters and oviducts open <strong>separately</strong> into the cloaca.</li>
+      <li>Frog excretes <strong>urea</strong> → <strong>ureotelic</strong> animal.</li>
+    </ul>
+    <h3 class="subhead">18.5 Control and coordination</h3>
+    <ul>
+      <li><strong>Endocrine glands:</strong> pituitary, thyroid, parathyroid, thymus, pineal body, pancreatic islets, adrenals, gonads.</li>
+      <li><strong>Nervous system:</strong> Central (brain and spinal cord); Peripheral (cranial and spinal nerves); Autonomic (sympathetic and parasympathetic).</li>
+      <li><strong>Ten pairs of cranial nerves.</strong> Brain divisions: <strong>Fore-brain</strong> (olfactory lobes, cerebral hemispheres, diencephalon), <strong>Mid-brain</strong> (optic lobes), <strong>Hind-brain</strong> (cerebellum, medulla oblongata). Medulla continues into the spinal cord through the <strong>foramen magnum</strong>.</li>
+    </ul>
+    <h3 class="subhead">18.6 Sense organs</h3>
+    <p>Touch — sensory papillae; taste — taste buds; smell — nasal epithelium; vision — eyes; hearing — tympanum with internal ears. <strong>Eyes and internal ears are well-organised structures.</strong> <strong>External ear absent</strong>; only the tympanum is visible.</p>
+    <h3 class="subhead">18.7 Reproductive system</h3>
+    <h4 class="subsubhead">Male</h4>
+    <ul>
+      <li>A pair of yellowish ovoid <strong>testes</strong>, adhered to the kidneys by the <strong>mesorchium</strong>.</li>
+      <li><strong>Vasa efferentia — 10 to 12</strong>, arise from testes, enter the kidneys and open into <strong>Bidder's canal</strong>, which communicates with the <strong>urinogenital duct</strong> opening into the cloaca.</li>
+    </ul>
+    <h4 class="subsubhead">Female</h4>
+    <ul>
+      <li>A pair of <strong>ovaries</strong> near the kidneys, with <strong>no functional connection</strong> to them.</li>
+      <li>A pair of <strong>oviducts</strong> opens <strong>separately</strong> into the cloaca. A mature female lays <strong>2500 to 3000 ova</strong> at a time.</li>
+      <li><strong>Fertilisation is external</strong> (in water). Development involves a larval stage, the <strong>tadpole</strong>, which undergoes <strong>metamorphosis</strong> into the adult.</li>
+    </ul>
+    <h3 class="subhead">18.8 Importance of frogs</h3>
+    <p>Eat insects and <strong>protect crops</strong>; maintain <strong>ecological balance</strong> as an important link in food chains and webs; muscular legs used as food in some countries.</p>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>Frequently asked frog facts — <i>Rana tigrina</i>; nictitating membrane; vocal sacs and copulatory pad (male only); 3-chambered heart with sinus venosus and conus arteriosus; nucleated RBCs; ureotelic; urinogenital duct in males only; 10 pairs of cranial nerves; Bidder's canal; vasa efferentia 10–12; 2500–3000 eggs; hepatic and renal portal systems.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 19 -->
+  <section class="section" id="sec19">
+    <h2><span class="num">19</span>Quick Revision — High-Yield One-liners</h2>
+    <ul class="revision">
+      <li>Tap root — mustard; fibrous — wheat; adventitious — grass, <i>Monstera</i>, banyan.</li>
+      <li>Root functions include <strong>synthesis of plant growth regulators</strong>.</li>
+      <li>Growth in length of root — region of elongation. Root hairs — region of maturation.</li>
+      <li>Stem develops from <strong>plumule</strong>; root from <strong>radicle</strong>.</li>
+      <li>Pulvinus — swollen leaf base in legumes.</li>
+      <li>Bud absent in axil of leaflets of compound leaf.</li>
+      <li>Pinnate compound — neem; palmate compound — silk cotton.</li>
+      <li>Alternate phyllotaxy — china rose, mustard, sunflower; opposite — <i>Calotropis</i>, guava; whorled — <i>Alstonia</i>.</li>
+      <li>Racemose — acropetal; cymose — basipetal.</li>
+      <li>Perianth — lily. Asymmetric flower — <i>Canna</i>.</li>
+      <li>Actinomorphic — mustard, <i>Datura</i>, chilli; zygomorphic — pea, gulmohur, bean, <i>Cassia</i>.</li>
+      <li>Superior ovary — mustard, china rose, brinjal; half-inferior — plum, rose, peach; inferior — guava, cucumber, ray florets of sunflower.</li>
+      <li>Valvate — <i>Calotropis</i>; twisted — china rose, lady's finger, cotton; imbricate — <i>Cassia</i>, gulmohur; vexillary — pea, bean.</li>
+      <li>Epipetalous — brinjal; epiphyllous — lily.</li>
+      <li>Monoadelphous — china rose; diadelphous — pea; polyadelphous — <i>Citrus</i>.</li>
+      <li>Apocarpous — lotus, rose; syncarpous — mustard, tomato.</li>
+      <li>Parthenocarpic fruit — formed without fertilisation.</li>
+      <li>Drupe — mango (edible mesocarp), coconut (fibrous mesocarp).</li>
+      <li>Endospermic dicot seed — castor; non-endospermic — bean, gram, pea; non-endospermic monocot — orchids.</li>
+      <li>Aleurone layer — proteinous; scutellum — cotyledon of maize.</li>
+      <li>Solanaceae — obliquely placed bicarpellary ovary, axile placentation, persistent calyx; berry.</li>
+      <li>Guard cells dumb-bell shaped in grasses; inner walls thick.</li>
+      <li>Cuticle absent in roots.</li>
+      <li>Casparian strips — suberin, in endodermis.</li>
+      <li>Lateral roots arise from <strong>pericycle</strong> (endogenous).</li>
+      <li>Starch sheath — endodermis of dicot stem.</li>
+      <li>Bulliform cells — grasses; leaf curling.</li>
+      <li>Vessels absent in gymnosperms; companion cells absent in gymnosperms.</li>
+      <li>Tendons — muscle to bone; ligaments — bone to bone.</li>
+      <li>Frog — ureotelic, 10 pairs cranial nerves, nucleated RBCs, 3-chambered heart.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 20 -->
+  <section class="section" id="sec20">
+    <h2><span class="num">20</span>Practice Questions (NEET pattern)</h2>
+    <ol class="quiz">
+      <li>Which one of the following is a modified stem?
+        <ul class="opts"><li>a) Sweet potato</li><li>b) Potato</li><li>c) Carrot</li><li>d) Turnip</li></ul>
+      </li>
+      <li>Vexillary aestivation is characteristic of:
+        <ul class="opts"><li>a) China rose</li><li>b) <i>Calotropis</i></li><li>c) Pea</li><li>d) <i>Cassia</i></li></ul>
+      </li>
+      <li>Which pair shows correctly matched placentation?
+        <ul class="opts"><li>a) Mustard — axile</li><li>b) Sunflower — free central</li><li>c) Pea — marginal</li><li>d) <i>Dianthus</i> — basal</li></ul>
+      </li>
+      <li>Perigynous flowers with half-inferior ovary are found in:
+        <ul class="opts"><li>a) Plum</li><li>b) Mustard</li><li>c) Guava</li><li>d) Cucumber</li></ul>
+      </li>
+      <li>The floral formula ⊕ ⚥ K<sub>(5)</sub> C<sub>(5)</sub> A<sub>5</sub> G<sub>(2)</sub> with epipetalous stamens and obliquely placed ovary belongs to:
+        <ul class="opts"><li>a) Solanaceae</li><li>b) Fabaceae</li><li>c) Brassicaceae</li><li>d) Liliaceae</li></ul>
+      </li>
+      <li>Tetradynamous stamens and parietal placentation are features of:
+        <ul class="opts"><li>a) Malvaceae</li><li>b) Asteraceae</li><li>c) Poaceae</li><li>d) Brassicaceae</li></ul>
+      </li>
+      <li>Casparian strips are found in:
+        <ul class="opts"><li>a) Pericycle</li><li>b) Epidermis</li><li>c) Endodermis</li><li>d) Cortex</li></ul>
+      </li>
+      <li>Conjoint, closed vascular bundles scattered in ground tissue with sclerenchymatous bundle sheath indicate:
+        <ul class="opts"><li>a) Dicot root</li><li>b) Monocot root</li><li>c) Monocot stem</li><li>d) Dicot stem</li></ul>
+      </li>
+      <li>Which structure helps grass leaves to roll during water stress?
+        <ul class="opts"><li>a) Guard cells</li><li>b) Subsidiary cells</li><li>c) Bulliform cells</li><li>d) Palisade cells</li></ul>
+      </li>
+      <li>Which tissue connects bone to bone?
+        <ul class="opts"><li>a) Tendon</li><li>b) Areolar tissue</li><li>c) Ligament</li><li>d) Cartilage</li></ul>
+      </li>
+      <li>In male frog, the vasa efferentia open into:
+        <ul class="opts"><li>a) Cloaca directly</li><li>b) Bidder's canal</li><li>c) Urinary bladder</li><li>d) Oviduct</li></ul>
+      </li>
+      <li>Which feature is found only in male frogs?
+        <ul class="opts"><li>a) Nictitating membrane</li><li>b) Tympanum</li><li>c) Webbed hind limbs</li><li>d) Copulatory pad on first digit of forelimb</li></ul>
+      </li>
+    </ol>
+    <details class="answer-key">
+      <summary>Show Answer Key</summary>
+      <p>1–b, 2–c, 3–c, 4–a, 5–a, 6–d, 7–c, 8–c, 9–c, 10–c, 11–b, 12–d</p>
+    </details>
+  </section>
+
+</div>
+</div>
+
+<footer>
+  Unit 2 · Structural Organisation in Animals and Plants — NEET UG 2026 Biology Notes from NCERT
+</footer>
+
+<div class="fab-stack">
+  <a class="fab" href="#toc" title="Jump to Contents" aria-label="Jump to Contents">☰</a>
+  <a class="fab" href="#top" title="Back to top" aria-label="Back to top">↑</a>
+</div>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
+      var el = id ? document.getElementById(id) : document.body;
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
