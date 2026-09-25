@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unit 1: Diversity in Living World — NEET Biology Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page-bg:#eef3fa; --card-bg:#ffffff; --ink:#1c2b3d; --ink-soft:#51637a;
+    --heading:#0b2545; --navy:#0b2545; --navy-2:#153a6b; --blue:#1d4ed8; --blue-2:#2563eb;
+    --border-soft:#dbe6f5; --chip-bg:#e7f0fe; --chip-text:#0b2545;
+    --box-note-bg:#f4f7fb; --box-note-bd:#93a5c2;
+    --box-remember-bg:#eaf2fe; --box-remember-bd:#2563eb;
+    --box-tip-bg:#dbeafe; --box-tip-bd:#1d4ed8;
+    --box-mistake-bg:#eef2fb; --box-mistake-bd:#0b2545;
+    --box-pyq-bg:#e7f0fe; --box-pyq-bd:#1e40af;
+    --box-key-bg:#e2ebfc; --box-key-bd:#173d82;
+    --box-focus-bg:linear-gradient(135deg,#0b2545,#173d82); --box-focus-text:#ffffff;
+    --thead-bg:#0b2545; --thead-text:#ffffff;
+    --tstripe:#f3f7fd; --tborder:#d9e5f6;
+    --section-alt:#f7faff;
+    --shadow:0 1px 3px rgba(11,37,69,.08), 0 8px 24px rgba(11,37,69,.07);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page-bg:#0a1220; --card-bg:#0f1b2e; --ink:#e6ecf5; --ink-soft:#a9b8cc;
+      --heading:#eaf1ff; --navy:#0d2a52; --navy-2:#173a6e; --blue:#5b9bff; --blue-2:#7db0ff;
+      --border-soft:#22344d; --chip-bg:#16294a; --chip-text:#cfe0ff;
+      --box-note-bg:#122036; --box-note-bd:#6f86a8;
+      --box-remember-bg:#122a4d; --box-remember-bd:#5b9bff;
+      --box-tip-bg:#12305c; --box-tip-bd:#5b9bff;
+      --box-mistake-bg:#141f33; --box-mistake-bd:#7fa6e8;
+      --box-pyq-bg:#12294d; --box-pyq-bd:#5b9bff;
+      --box-key-bg:#13284a; --box-key-bd:#5b9bff;
+      --box-focus-bg:linear-gradient(135deg,#0a1830,#173a6e); --box-focus-text:#eaf1ff;
+      --thead-bg:#173a6e; --thead-text:#eaf1ff;
+      --tstripe:#101d33; --tborder:#22344d; --section-alt:#101c30;
+      --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --page-bg:#0a1220; --card-bg:#0f1b2e; --ink:#e6ecf5; --ink-soft:#a9b8cc;
+    --heading:#eaf1ff; --navy:#0d2a52; --navy-2:#173a6e; --blue:#5b9bff; --blue-2:#7db0ff;
+    --border-soft:#22344d; --chip-bg:#16294a; --chip-text:#cfe0ff;
+    --box-note-bg:#122036; --box-note-bd:#6f86a8;
+    --box-remember-bg:#122a4d; --box-remember-bd:#5b9bff;
+    --box-tip-bg:#12305c; --box-tip-bd:#5b9bff;
+    --box-mistake-bg:#141f33; --box-mistake-bd:#7fa6e8;
+    --box-pyq-bg:#12294d; --box-pyq-bd:#5b9bff;
+    --box-key-bg:#13284a; --box-key-bd:#5b9bff;
+    --box-focus-bg:linear-gradient(135deg,#0a1830,#173a6e); --box-focus-text:#eaf1ff;
+    --thead-bg:#173a6e; --thead-text:#eaf1ff;
+    --tstripe:#101d33; --tborder:#22344d; --section-alt:#101c30;
+    --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:14px;}
+  body{margin:0;background:var(--page-bg);color:var(--ink);font-family:'Source Sans 3',Segoe UI,Arial,sans-serif;line-height:1.6;font-size:16px;}
+  i, em{color:inherit;}
+  .container{max-width:960px;margin:0 auto;padding:0 14px 60px;}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;padding:44px 20px 54px;text-align:center;padding-top:calc(44px + env(safe-area-inset-top,0px));}
+  .hero .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:#bcd4ff;font-weight:700;margin:0 0 10px;}
+  .hero h1{font-family:'Merriweather',Georgia,serif;font-size:1.8rem;margin:0 0 8px;font-weight:900;}
+  .hero .subtitle{color:#d7e6ff;margin:0 0 18px;font-size:1rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;padding:0;margin:0;}
+  .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:.8rem;color:#fff;text-decoration:none;display:inline-block;transition:background .15s ease;}
+  .chip:hover, .chip:active{background:rgba(255,255,255,.28);}
+
+  /* Card */
+  .card{background:var(--card-bg);border-radius:16px;box-shadow:var(--shadow);margin-top:-26px;overflow:hidden;}
+
+  .intro-pad{padding:22px 22px 4px;}
+
+  /* Boxes */
+  .box{border-radius:10px;padding:14px 16px;margin:16px 0;border-left:5px solid var(--box-remember-bd);background:var(--box-remember-bg);}
+  .box p{margin:0 0 8px;}
+  .box p:last-child, .box ul:last-child{margin-bottom:0;}
+  .box ul{margin:6px 0 0;padding-left:1.15em;}
+  .box .box-label{margin:0 0 8px;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--blue-2);}
+  .box.note{border-left-color:var(--box-note-bd);background:var(--box-note-bg);}
+  .box.remember{border-left-color:var(--box-remember-bd);background:var(--box-remember-bg);}
+  .box.tip{border-left-color:var(--box-tip-bd);background:var(--box-tip-bg);}
+  .box.mistake{border-left-color:var(--box-mistake-bd);background:var(--box-mistake-bg);border-left-style:dashed;}
+  .box.pyq{border-left-color:var(--box-pyq-bd);background:var(--box-pyq-bg);}
+  .box.keypoint{border-left-color:var(--box-key-bd);background:var(--box-key-bg);}
+  .box.examfocus{background:var(--box-focus-bg);color:var(--box-focus-text);border-left:none;padding:20px 22px;border-radius:14px;margin:18px 0 6px;}
+  .box.examfocus .box-label{color:var(--box-focus-text);opacity:.85;}
+  .box.examfocus ul li::marker{color:#bcd4ff;}
+  .box.examfocus a{color:#fff;}
+
+  /* TOC */
+  #toc{background:var(--chip-bg);border:1px solid var(--border-soft);border-radius:12px;padding:18px 20px;margin:18px 22px 6px;}
+  #toc h2{margin:0 0 12px;font-family:'Merriweather',Georgia,serif;color:var(--heading);font-size:1.1rem;}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;list-style:none;padding:0;margin:0;}
+  .toc-grid a{color:var(--blue-2);text-decoration:none;font-size:.9rem;display:block;padding:5px 8px;border-radius:6px;}
+  .toc-grid a:hover{background:rgba(37,99,235,.1);text-decoration:underline;}
+  @media (max-width:600px){ .toc-grid{grid-template-columns:1fr;} }
+
+  /* Sections */
+  .section{padding:26px 22px 6px;border-top:1px solid var(--border-soft);}
+  .section:nth-of-type(even){background:var(--section-alt);}
+  .section h2{font-family:'Merriweather',Georgia,serif;color:var(--heading);font-size:1.3rem;display:flex;align-items:center;gap:12px;margin:0 0 14px;line-height:1.3;}
+  .section h2 .num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:.88rem;}
+  .section h3.subhead{font-family:'Merriweather',Georgia,serif;color:var(--blue-2);font-size:1rem;margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--border-soft);}
+  .section p{margin:0 0 10px;}
+  .section ul, .section ol{padding-left:1.25em;margin:0 0 10px;}
+  .section li{margin:5px 0;}
+  .section li::marker{color:var(--blue);}
+
+  /* Tables */
+  .table-scroll{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid var(--tborder);}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem;}
+  table.wide{min-width:900px;}
+  thead th{background:var(--thead-bg);color:var(--thead-text);text-align:left;padding:10px 12px;font-family:'Merriweather',Georgia,serif;font-weight:700;font-size:.82rem;white-space:nowrap;}
+  tbody td{padding:9px 12px;border-top:1px solid var(--tborder);vertical-align:top;}
+  tbody tr:nth-child(even){background:var(--tstripe);}
+  caption{caption-side:top;text-align:left;font-weight:700;color:var(--heading);padding:6px 2px 10px;font-size:.9rem;}
+
+  /* Revision one-liners */
+  .revision{list-style:none;padding:0;margin:0;columns:2 250px;column-gap:26px;}
+  .revision li{break-inside:avoid;padding:8px 0;border-bottom:1px dashed var(--border-soft);font-size:.92rem;}
+  .revision li::before{content:"▸ ";color:var(--blue);font-weight:700;}
+  @media (max-width:600px){ .revision{columns:1;} }
+
+  /* Quiz */
+  .quiz{list-style:none;counter-reset:q;padding:0;margin:8px 0;}
+  .quiz>li{counter-increment:q;background:var(--card-bg);border:1px solid var(--border-soft);border-radius:10px;padding:16px;margin:14px 0 0;position:relative;}
+  .quiz>li::before{content:"Q" counter(q);position:absolute;top:-11px;left:14px;background:var(--blue);color:#fff;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;}
+  .quiz .opts{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;margin-top:10px;font-size:.9rem;color:var(--ink-soft);list-style:none;padding:0;}
+  .quiz .opts li{margin:0;}
+  .quiz .opts li::marker{content:none;}
+  @media (max-width:480px){ .quiz .opts{grid-template-columns:1fr;} }
+  .answer-key{margin:18px 0 22px;background:var(--box-key-bg);border:1px solid var(--box-key-bd);border-radius:10px;padding:14px 18px;}
+  .answer-key summary{cursor:pointer;font-weight:700;color:var(--heading);}
+  .answer-key[open] summary{margin-bottom:8px;}
+  .answer-key p{margin:0;font-size:.95rem;}
+
+  footer{background:var(--navy);color:#cfe0ff;text-align:center;padding:26px 20px calc(26px + env(safe-area-inset-bottom,0px));font-size:.85rem;}
+
+  .fab-stack{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px;z-index:50;}
+  .fab{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(29,78,216,.45);font-size:1.05rem;}
+</style>
+</head>
+<body>
+<div id="top"></div>
+
+<header class="hero">
+  <p class="eyebrow">NEET UG 2026-2027 · Biology</p>
+  <h1>Unit 1: Diversity in Living World</h1>
+  <p class="subtitle">NCERT — Class XI</p>
+  <ul class="chips">
+    <li><a class="chip" href="#sec1">Ch 1 · The Living World</a></li>
+    <li><a class="chip" href="#sec6">Ch 2 · Biological Classification</a></li>
+    <li><a class="chip" href="#sec12">Ch 3 · Plant Kingdom</a></li>
+    <li><a class="chip" href="#sec18">Ch 4 · Animal Kingdom</a></li>
+  </ul>
+</header>
+
+<div class="container">
+<div class="card">
+
+  <div class="intro-pad">
+    <div class="box keypoint">
+      <p class="box-label">NEET syllabus topics in this unit</p>
+      <ol>
+        <li>What is living?; Biodiversity; Need for classification; Taxonomy and Systematics; Concept of species and taxonomical hierarchy; Binomial nomenclature.</li>
+        <li>Five kingdom classification; salient features and classification of Monera, Protista and Fungi into major groups; Lichens; Viruses and Viroids.</li>
+        <li>Salient features and classification of plants into major groups — Algae, Bryophytes, Pteridophytes, Gymnosperms (three to five salient/distinguishing features and at least two examples of each).</li>
+        <li>Salient features and classification of animals — non-chordates up to phyla level and chordates up to class level (three to five salient features and at least two examples).</li>
+      </ol>
+    </div>
+
+    <div class="box examfocus">
+      <p class="box-label">🎯 NEET Focus: How this unit is tested</p>
+      <ul>
+        <li>This is a high-scoring, fact-based unit. Questions test examples (“Which of these is a sponge?”), matching (organism – group – feature), and exceptions.</li>
+        <li>Most asked areas: five-kingdom table, archaebacteria &amp; cyanobacteria, protist groups, fungal classes with examples, algae table (pigment, food, flagella), bryophyte &amp; pteridophyte life cycles, heterospory, phylum features &amp; examples, chordate classes.</li>
+        <li>Learn every example printed in NCERT with its common name. NEET often picks the example directly from the NCERT text.</li>
+      </ul>
+    </div>
+  </div>
+
+  <nav id="toc">
+    <h2>Contents</h2>
+    <ul class="toc-grid">
+      <li><a href="#sec1">1. What is Living?</a></li>
+      <li><a href="#sec2">2. Biodiversity &amp; Need for Classification</a></li>
+      <li><a href="#sec3">3. Taxonomy and Systematics</a></li>
+      <li><a href="#sec4">4. Binomial Nomenclature</a></li>
+      <li><a href="#sec5">5. Taxonomic Categories &amp; Hierarchy</a></li>
+      <li><a href="#sec6">6. Five Kingdom Classification</a></li>
+      <li><a href="#sec7">7. Kingdom Monera</a></li>
+      <li><a href="#sec8">8. Kingdom Protista</a></li>
+      <li><a href="#sec9">9. Kingdom Fungi</a></li>
+      <li><a href="#sec10">10. Plantae &amp; Animalia (overview)</a></li>
+      <li><a href="#sec11">11. Viruses, Viroids, Prions &amp; Lichens</a></li>
+      <li><a href="#sec12">12. Plant Kingdom — Classification Systems</a></li>
+      <li><a href="#sec13">13. Algae</a></li>
+      <li><a href="#sec14">14. Bryophytes</a></li>
+      <li><a href="#sec15">15. Pteridophytes</a></li>
+      <li><a href="#sec16">16. Gymnosperms</a></li>
+      <li><a href="#sec17">17. Angiosperms (brief)</a></li>
+      <li><a href="#sec18">18. Animal Kingdom — Basis of Classification</a></li>
+      <li><a href="#sec19">19. Non-chordate Phyla</a></li>
+      <li><a href="#sec20">20. Phylum Chordata</a></li>
+      <li><a href="#sec21">21. Classes of Vertebrates</a></li>
+      <li><a href="#sec22">22. Quick Revision — One-liners</a></li>
+      <li><a href="#sec23">23. Practice Questions</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <section class="section" id="sec1">
+    <h2><span class="num">1</span>What is Living?</h2>
+    <div class="box note">
+      <p class="box-label">📝 Note</p>
+      <p>The current NCERT Chapter 1 (2026–27 reprint) starts directly with diversity and taxonomy. “What is living?” is still in the NEET 2026 syllabus, so the key points (from the earlier NCERT edition) are given here for completeness.</p>
+    </div>
+    <p>Living organisms show certain characteristics. Some are <strong>defining</strong> (true of all living things and no non-living thing), others are not.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Characteristic</th><th>Defining feature?</th><th>Explanation</th></tr></thead>
+        <tbody>
+          <tr><td>Growth</td><td>No</td><td>Living things grow by cell division (increase in mass and number). But non-living things like mountains, sand mounds and crystals also “grow” by accumulation of material on the surface. In living things, growth is from inside.</td></tr>
+          <tr><td>Reproduction</td><td>No</td><td>Many organisms do not reproduce: mules, sterile worker bees, infertile human couples. So reproduction cannot be an all-inclusive defining feature.</td></tr>
+          <tr><td>Metabolism</td><td><strong>Yes</strong></td><td>The sum of all chemical reactions in the body. No non-living object shows metabolism. Metabolic reactions can be shown outside the body in cell-free systems (<i>in vitro</i>), but these are neither living nor non-living — they are living reactions.</td></tr>
+          <tr><td>Consciousness (response to stimuli)</td><td><strong>Yes</strong></td><td>All organisms sense their environment and respond to physical, chemical or biological stimuli. Humans are the only organisms aware of themselves (self-consciousness).</td></tr>
+          <tr><td>Cellular organisation</td><td><strong>Yes</strong></td><td>All living things are made of cells.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box remember">
+      <p class="box-label">📌 Remember</p>
+      <p>Metabolism, consciousness and cellular organisation are the defining properties of life. Growth and reproduction are NOT defining features. Patients in a coma (brain-dead) on life support are an example discussed with respect to consciousness.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="sec2">
+    <h2><span class="num">2</span>Biodiversity &amp; the Need for Classification</h2>
+    <h3 class="subhead">2.1 Biodiversity</h3>
+    <ul>
+      <li>Each different kind of plant, animal or organism represents a <strong>species</strong>.</li>
+      <li>The number of species known and described is between <strong>1.7 and 1.8 million</strong>. This number/variety of organisms on Earth is called <strong>biodiversity</strong>.</li>
+      <li>New organisms are continuously being identified as we explore new and old areas.</li>
+    </ul>
+    <h3 class="subhead">2.2 Why do we need to classify and name organisms?</h3>
+    <ul>
+      <li>Local names vary from place to place even within a country, which causes confusion.</li>
+      <li>Names must be standardised so one organism has the same name everywhere. This is <strong>nomenclature</strong>.</li>
+      <li>Nomenclature is possible only when the organism is correctly described and we know which organism the name refers to. This is <strong>identification</strong>.</li>
+      <li>Since it is impossible to study all organisms one by one, we group them into convenient categories based on easily observable characters. This is <strong>classification</strong>.</li>
+      <li>The scientific term for these categories is <strong>taxa</strong> (singular: taxon). Examples: “Plants”, “Animals”, “Mammals”, “Dogs”, “Wheat” — all are taxa at different levels.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="sec3">
+    <h2><span class="num">3</span>Taxonomy and Systematics</h2>
+    <h3 class="subhead">3.1 Taxonomy</h3>
+    <ul>
+      <li>The process of classifying organisms into different taxa based on characteristics is <strong>taxonomy</strong>.</li>
+      <li>Basis of modern taxonomic studies: external and internal structure, structure of cell, development process and ecological information.</li>
+      <li>The four basic processes of taxonomy: <strong>characterisation, identification, classification and nomenclature</strong>.</li>
+      <li>The earliest classifications were based on the <strong>uses</strong> of organisms (food, clothing, shelter).</li>
+    </ul>
+    <h3 class="subhead">3.2 Systematics</h3>
+    <ul>
+      <li>The study of different kinds of organisms, their diversity and the <strong>relationships</strong> among them.</li>
+      <li>Word derived from the Latin <i>systema</i> — systematic arrangement of organisms.</li>
+      <li>Linnaeus used <i>Systema Naturae</i> as the title of his publication.</li>
+      <li>Scope of systematics was later enlarged to include identification, nomenclature and classification. <strong>Systematics takes into account evolutionary relationships</strong> between organisms.</li>
+    </ul>
+    <div class="box tip">
+      <p class="box-label">🎯 Exam Tip</p>
+      <p>Taxonomy = characterisation + identification + classification + nomenclature. Systematics = taxonomy + evolutionary relationships (phylogeny). “Systematics” is the broader term.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="sec4">
+    <h2><span class="num">4</span>Binomial Nomenclature</h2>
+    <ul>
+      <li>Codes for scientific names: Plants — <strong>ICBN</strong> (International Code for Botanical Nomenclature); Animals — <strong>ICZN</strong> (International Code of Zoological Nomenclature).</li>
+      <li>Scientific names ensure that each organism has <strong>only one name</strong>, and that the name has not been used for any other organism.</li>
+      <li><strong>Binomial nomenclature</strong> was given by <strong>Carolus Linnaeus</strong>. Each name has two parts: the <strong>generic name</strong> and the <strong>specific epithet</strong>.</li>
+      <li>Example: Mango — <i>Mangifera indica</i>. <i>Mangifera</i> = genus, <i>indica</i> = specific epithet.</li>
+    </ul>
+    <h3 class="subhead">4.1 Rules of nomenclature (frequently tested)</h3>
+    <ol>
+      <li>Biological names are generally in <strong>Latin</strong> and written in <strong>italics</strong>. They are Latinised or derived from Latin irrespective of their origin.</li>
+      <li>The first word is the <strong>genus</strong>; the second is the <strong>specific epithet</strong>.</li>
+      <li>When handwritten, both words are <strong>separately underlined</strong>; when printed, they are in italics.</li>
+      <li>The genus starts with a <strong>capital letter</strong>; the specific epithet starts with a <strong>small letter</strong>.</li>
+      <li>The name of the <strong>author</strong> appears after the specific epithet, in abbreviated form. Example: <i>Mangifera indica</i> <strong>Linn.</strong> — means the species was first described by Linnaeus.</li>
+    </ol>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>“<i>Mangifera Indica</i>” is WRONG (capital I). “<i>Mangifera indica</i>” is correct. When handwritten, underline “Mangifera” and “indica” separately, not as one continuous line.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="section" id="sec5">
+    <h2><span class="num">5</span>Taxonomic Categories &amp; Hierarchy</h2>
+    <ul>
+      <li>Classification is not a single step but a <strong>hierarchy of steps</strong>. Each step represents a <strong>rank or category</strong>.</li>
+      <li>Since each category is part of the overall taxonomic arrangement, it is called a <strong>taxonomic category</strong>, and all categories together form the <strong>taxonomic hierarchy</strong>.</li>
+      <li>Each category is a <strong>unit of classification</strong> and is called a <strong>taxon</strong>. Taxonomic groups are distinct biological entities, not merely morphological aggregates.</li>
+      <li>Obligate categories in ascending order: <strong>Species → Genus → Family → Order → Class → Phylum (Division in plants) → Kingdom</strong>.</li>
+      <li><strong>Species is the lowest category</strong> for all organisms.</li>
+    </ul>
+    <h3 class="subhead">5.1 Each category explained</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Category</th><th>Definition (NCERT)</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Species</strong></td><td>Group of individuals with fundamental similarities; distinguished from closely related species by distinct morphological differences.</td><td><i>indica</i> (mango), <i>tuberosum</i> (potato), <i>leo</i> (lion), <i>sapiens</i> (human)</td></tr>
+          <tr><td><strong>Genus</strong></td><td>Group of related species with more characters in common than species of other genera; aggregate of closely related species.</td><td><i>Solanum</i> (potato, brinjal, <i>S. nigrum</i>); <i>Panthera</i> (lion <i>P. leo</i>, leopard <i>P. pardus</i>, tiger <i>P. tigris</i>); <i>Felis</i> (cats)</td></tr>
+          <tr><td><strong>Family</strong></td><td>Group of related genera with fewer similarities than genus and species; characterised on both vegetative and reproductive features (in plants).</td><td>Solanaceae (<i>Solanum</i>, <i>Petunia</i>, <i>Datura</i>); Felidae (<i>Panthera</i>, <i>Felis</i>); Canidae (dog)</td></tr>
+          <tr><td><strong>Order</strong></td><td>Assemblage of families showing a few similar characters; identified on aggregates of characters.</td><td>Polymoniales (Convolvulaceae, Solanaceae — floral characters); Carnivora (Felidae, Canidae)</td></tr>
+          <tr><td><strong>Class</strong></td><td>Includes related orders.</td><td>Mammalia (orders Primata — monkey, gorilla, gibbon; Carnivora — tiger, cat, dog)</td></tr>
+          <tr><td><strong>Phylum / Division</strong></td><td>Classes with common features; “Division” is used for plants.</td><td>Chordata (fishes, amphibians, reptiles, birds, mammals — all have notochord and dorsal hollow neural system)</td></tr>
+          <tr><td><strong>Kingdom</strong></td><td>Highest category.</td><td>Animalia, Plantae</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">5.2 Trends in the hierarchy</h3>
+    <ul>
+      <li>Going <strong>up</strong> from species to kingdom, the <strong>number of common characteristics decreases</strong>.</li>
+      <li>Lower the taxon, <strong>more</strong> characteristics the members share.</li>
+      <li>Higher the category, <strong>greater the difficulty</strong> of determining relationships with other taxa at the same level — classification becomes more complex at higher levels.</li>
+      <li>Taxonomists have also developed <strong>sub-categories</strong> (e.g., sub-species, sub-family) for more precise placement.</li>
+    </ul>
+    <h3 class="subhead">5.3 Table 1.1 — Organisms with their taxonomic categories <em>(very frequently asked)</em></h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Common name</th><th>Biological name</th><th>Genus</th><th>Family</th><th>Order</th><th>Class</th><th>Phylum/Division</th></tr></thead>
+        <tbody>
+          <tr><td>Man</td><td><i>Homo sapiens</i></td><td><i>Homo</i></td><td>Hominidae</td><td>Primata</td><td>Mammalia</td><td>Chordata</td></tr>
+          <tr><td>Housefly</td><td><i>Musca domestica</i></td><td><i>Musca</i></td><td>Muscidae</td><td>Diptera</td><td>Insecta</td><td>Arthropoda</td></tr>
+          <tr><td>Mango</td><td><i>Mangifera indica</i></td><td><i>Mangifera</i></td><td>Anacardiaceae</td><td>Sapindales</td><td>Dicotyledonae</td><td>Angiospermae</td></tr>
+          <tr><td>Wheat</td><td><i>Triticum aestivum</i></td><td><i>Triticum</i></td><td>Poaceae</td><td>Poales</td><td>Monocotyledonae</td><td>Angiospermae</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>NEET has repeatedly asked to match organisms with their family, order or class from this table (e.g., Housefly – Muscidae – Diptera; Mango – Anacardiaceae – Sapindales; Wheat – Poaceae – Poales). Memorise this table fully.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section class="section" id="sec6">
+    <h2><span class="num">6</span>Five Kingdom Classification</h2>
+    <h3 class="subhead">6.1 History of classification systems</h3>
+    <ul>
+      <li><strong>Aristotle</strong> — earliest scientific attempt. Classified plants into <strong>trees, shrubs and herbs</strong> (simple morphological characters). Animals into those with <strong>red blood</strong> and those without.</li>
+      <li><strong>Linnaeus — Two Kingdom system:</strong> Plantae and Animalia.</li>
+      <li><strong>Drawbacks of the two kingdom system:</strong> did not distinguish eukaryotes from prokaryotes, unicellular from multicellular, or photosynthetic (green algae) from non-photosynthetic (fungi) organisms.</li>
+      <li>Earlier systems grouped bacteria, blue-green algae, fungi, mosses, ferns, gymnosperms and angiosperms under “Plants” only because they all had a <strong>cell wall</strong>.</li>
+      <li><strong>R.H. Whittaker (1969)</strong> proposed the <strong>Five Kingdom Classification</strong>: Monera, Protista, Fungi, Plantae and Animalia.</li>
+      <li><strong>Criteria used by Whittaker:</strong> cell structure, body organisation, mode of nutrition, reproduction and phylogenetic relationships.</li>
+      <li>A <strong>three-domain system</strong> has also been proposed. It divides Monera into two domains, leaving the eukaryotic kingdoms in the third domain — giving a <strong>six kingdom</strong> classification.</li>
+    </ul>
+    <div class="box keypoint">
+      <p class="box-label">🔑 Key Point</p>
+      <p>Why fungi were separated: fungi are heterotrophic with <strong>chitin</strong> walls, while green plants are autotrophic with <strong>cellulose</strong> walls. Kingdom Protista brought together <i>Chlamydomonas</i> and <i>Chlorella</i> (earlier algae/plants, with cell walls) with <i>Paramoecium</i> and <i>Amoeba</i> (earlier animals, without cell walls).</p>
+    </div>
+    <h3 class="subhead">6.2 Table 2.1 — Characteristics of the Five Kingdoms <em>(most important table of the unit)</em></h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Character</th><th>Monera</th><th>Protista</th><th>Fungi</th><th>Plantae</th><th>Animalia</th></tr></thead>
+        <tbody>
+          <tr><td>Cell type</td><td>Prokaryotic</td><td>Eukaryotic</td><td>Eukaryotic</td><td>Eukaryotic</td><td>Eukaryotic</td></tr>
+          <tr><td>Cell wall</td><td>Present, non-cellulosic (polysaccharide + amino acid)</td><td>Present in some</td><td>Present, with chitin</td><td>Present (cellulose)</td><td>Absent</td></tr>
+          <tr><td>Nuclear membrane</td><td>Absent</td><td>Present</td><td>Present</td><td>Present</td><td>Present</td></tr>
+          <tr><td>Body organisation</td><td>Cellular</td><td>Cellular</td><td>Multicellular / loose tissue</td><td>Tissue / organ</td><td>Tissue / organ / organ system</td></tr>
+          <tr><td>Mode of nutrition</td><td>Autotrophic (chemosynthetic &amp; photosynthetic) and heterotrophic (saprophytic/parasitic)</td><td>Autotrophic (photosynthetic) and heterotrophic</td><td>Heterotrophic (saprophytic/parasitic)</td><td>Autotrophic (photosynthetic)</td><td>Heterotrophic (holozoic/saprophytic etc.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section class="section" id="sec7">
+    <h2><span class="num">7</span>Kingdom Monera</h2>
+    <ul>
+      <li><strong>Bacteria</strong> are the sole members of Kingdom Monera.</li>
+      <li>Most abundant micro-organisms; found almost everywhere — hundreds in a handful of soil; also in extreme habitats like hot springs, deserts, snow and deep oceans. Many are parasites.</li>
+    </ul>
+    <h3 class="subhead">7.1 Shapes of bacteria</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Shape</th><th>Name (singular / plural)</th></tr></thead>
+        <tbody>
+          <tr><td>Spherical</td><td><i>Coccus</i> / cocci</td></tr>
+          <tr><td>Rod-shaped</td><td><i>Bacillus</i> / bacilli</td></tr>
+          <tr><td>Comma-shaped</td><td><i>Vibrio</i> / vibrio</td></tr>
+          <tr><td>Spiral</td><td><i>Spirillum</i> / spirilla</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">7.2 Nutrition</h3>
+    <ul>
+      <li>Bacteria as a group show the <strong>most extensive metabolic diversity</strong>.</li>
+      <li><strong>Autotrophic</strong> — photosynthetic or chemosynthetic autotrophs (make food from inorganic substrates).</li>
+      <li><strong>Heterotrophic</strong> — vast majority; depend on other organisms or dead organic matter.</li>
+    </ul>
+    <h3 class="subhead">7.3 Archaebacteria</h3>
+    <p>Live in the most harsh habitats: <strong>Halophiles</strong> (extreme salty areas), <strong>Thermoacidophiles</strong> (hot springs), <strong>Methanogens</strong> (marshy areas). They differ from other bacteria in having a <strong>different cell wall structure</strong>, responsible for survival in extreme conditions. <strong>Methanogens</strong> live in the <strong>gut of ruminants</strong> (cows, buffaloes) and produce <strong>methane (biogas)</strong> from dung.</p>
+    <h3 class="subhead">7.4 Eubacteria (“true bacteria”)</h3>
+    <p>Have a <strong>rigid cell wall</strong> and, if motile, a <strong>flagellum</strong>.</p>
+    <p><strong>(a) Cyanobacteria (blue-green algae):</strong> have <strong>chlorophyll a</strong> similar to green plants; photosynthetic autotrophs. Unicellular, colonial or filamentous; freshwater, marine or terrestrial. Colonies surrounded by a <strong>gelatinous sheath</strong>; often form <strong>blooms</strong> in polluted water. Some fix atmospheric nitrogen in specialised cells called <strong>heterocysts</strong>, e.g., <i>Nostoc</i> and <i>Anabaena</i>.</p>
+    <p><strong>(b) Chemosynthetic autotrophic bacteria:</strong> oxidise inorganic substances such as nitrates, nitrites and ammonia and use the released energy for ATP production. Important in <strong>recycling nutrients</strong> like nitrogen, phosphorus, iron and sulphur.</p>
+    <p><strong>(c) Heterotrophic bacteria:</strong> <strong>most abundant</strong> in nature; majority are important <strong>decomposers</strong>. Useful: making <strong>curd</strong> from milk, production of <strong>antibiotics</strong>, <strong>nitrogen fixation</strong> in legume roots. Harmful: pathogens causing <strong>cholera, typhoid, tetanus, citrus canker</strong>.</p>
+    <h3 class="subhead">7.5 Reproduction in bacteria</h3>
+    <p>Mainly by <strong>fission</strong>. Under unfavourable conditions, they produce <strong>spores</strong>. A sort of sexual reproduction occurs by a primitive type of <strong>DNA transfer</strong> from one bacterium to another.</p>
+    <h3 class="subhead">7.6 Mycoplasma</h3>
+    <p><strong>Completely lack a cell wall</strong>; the <strong>smallest living cells</strong> known; can survive <strong>without oxygen</strong>; many are pathogenic in animals and plants.</p>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>Cyanobacteria are called “blue-green algae” but they are NOT algae — they are prokaryotes in Kingdom Monera. Heterocysts are the nitrogen-fixing cells of cyanobacteria (<i>Nostoc</i>, <i>Anabaena</i>), not of true algae.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 8 -->
+  <section class="section" id="sec8">
+    <h2><span class="num">8</span>Kingdom Protista</h2>
+    <ul>
+      <li>All <strong>single-celled eukaryotes</strong> are placed under Protista. Boundaries are not well defined.</li>
+      <li>NCERT includes five groups: <strong>Chrysophytes, Dinoflagellates, Euglenoids, Slime moulds and Protozoans</strong>.</li>
+      <li>Primarily <strong>aquatic</strong>; forms a link with plants, animals and fungi.</li>
+      <li>Being eukaryotes, they have a well-defined nucleus and membrane-bound organelles. Some have flagella or cilia.</li>
+      <li>Reproduce <strong>asexually and sexually</strong> (by cell fusion and zygote formation).</li>
+    </ul>
+    <h3 class="subhead">8.1 Chrysophytes</h3>
+    <p>Include <strong>diatoms</strong> and <strong>golden algae (desmids)</strong>. Freshwater and marine; microscopic; float passively as <strong>plankton</strong>; most are photosynthetic. <strong>Diatoms:</strong> cell walls form two thin <strong>overlapping shells</strong> that fit together like a <strong>soap box</strong>, embedded with <strong>silica</strong> (indestructible). Accumulated diatom walls = <strong>diatomaceous earth</strong>, used in polishing and filtration of oils and syrups. Diatoms are the <strong>chief producers in the oceans</strong>.</p>
+    <h3 class="subhead">8.2 Dinoflagellates</h3>
+    <p>Mostly <strong>marine</strong> and photosynthetic; appear yellow, green, brown, blue or red depending on pigments. Cell wall has <strong>stiff cellulose plates</strong>. Most have <strong>two flagella</strong> — one longitudinal, one transverse in a furrow. Red dinoflagellates (e.g., <i>Gonyaulax</i>) multiply rapidly causing <strong>red tides</strong>; released toxins may kill fish and marine animals.</p>
+    <h3 class="subhead">8.3 Euglenoids</h3>
+    <p>Mostly <strong>freshwater</strong>, found in <strong>stagnant water</strong>. <strong>No cell wall</strong>; instead a protein-rich layer called <strong>pellicle</strong> makes the body flexible. Two flagella — one short, one long. <strong>Photosynthetic in sunlight</strong>; behave as heterotrophs (mixotrophic) when deprived of light. Pigments identical to higher plants. Example: <i>Euglena</i>.</p>
+    <h3 class="subhead">8.4 Slime moulds</h3>
+    <p><strong>Saprophytic</strong> protists; body moves along decaying twigs and leaves engulfing organic matter. Under suitable conditions form an aggregation called <strong>plasmodium</strong> (may spread over several feet). Under unfavourable conditions, form <strong>fruiting bodies</strong> bearing spores; spores have true walls, are resistant, survive for years and are dispersed by <strong>air currents</strong>.</p>
+    <h3 class="subhead">8.5 Protozoans</h3>
+    <p>All are <strong>heterotrophs</strong> — predators or parasites; believed to be primitive relatives of animals.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Group</th><th>Locomotion / key feature</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Amoeboid</strong></td><td>Pseudopodia (false feet) to move and capture prey. Live in fresh/sea water or moist soil. Marine forms have silica shells.</td><td><i>Amoeba</i>; parasitic <i>Entamoeba</i></td></tr>
+          <tr><td><strong>Flagellated</strong></td><td>Flagella; free-living or parasitic. Parasites cause sleeping sickness.</td><td><i>Trypanosoma</i></td></tr>
+          <tr><td><strong>Ciliated</strong></td><td>Thousands of cilia; a cavity called <strong>gullet</strong> opens to the outside; coordinated cilia steer food-laden water into the gullet.</td><td><i>Paramoecium</i></td></tr>
+          <tr><td><strong>Sporozoans</strong></td><td>Have an infectious spore-like stage in the life cycle.</td><td><i>Plasmodium</i> (malarial parasite)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box remember">
+      <p class="box-label">📌 Remember — protist one-liners</p>
+      <p>Soap-box silica wall = diatoms. Red tide = <i>Gonyaulax</i>. Pellicle = <i>Euglena</i>. Plasmodium (aggregation) = slime moulds. Gullet = <i>Paramoecium</i>. Sleeping sickness = <i>Trypanosoma</i>. Do not confuse “plasmodium” (slime mould stage) with “<i>Plasmodium</i>” (malarial parasite).</p>
+    </div>
+  </section>
+
+  <!-- SECTION 9 -->
+  <section class="section" id="sec9">
+    <h2><span class="num">9</span>Kingdom Fungi</h2>
+    <h3 class="subhead">9.1 General features</h3>
+    <ul>
+      <li>Unique kingdom of <strong>heterotrophic</strong> organisms; great diversity in morphology and habitat.</li>
+      <li>Seen on moist bread and rotten fruits; mushrooms and toadstools are fungi. <strong>White spots on mustard leaves</strong> — parasitic fungus (<i>Albugo</i>). <strong>Yeast</strong> (unicellular) — bread and beer. <i>Puccinia</i> — wheat rust. <i>Penicillium</i> — source of antibiotics.</li>
+      <li>Cosmopolitan; prefer <strong>warm and humid</strong> places (hence refrigeration prevents spoilage).</li>
+      <li>Except <strong>yeasts (unicellular)</strong>, fungi are <strong>filamentous</strong>. Body: thread-like <strong>hyphae</strong>; network of hyphae = <strong>mycelium</strong>. <strong>Coenocytic hyphae</strong> — continuous, multinucleate, no cross walls. <strong>Septate hyphae</strong> — with cross walls (septae).</li>
+      <li>Cell wall made of <strong>chitin and polysaccharides</strong>.</li>
+      <li>Nutrition: <strong>Saprophytes</strong> (most fungi, absorb from dead substrates), <strong>Parasites</strong> (on living plants/animals), <strong>Symbionts</strong> (with algae as lichens; with roots as mycorrhiza).</li>
+    </ul>
+    <h3 class="subhead">9.2 Reproduction in fungi</h3>
+    <ul>
+      <li><strong>Vegetative:</strong> fragmentation, fission and budding.</li>
+      <li><strong>Asexual:</strong> spores called <strong>conidia</strong>, <strong>sporangiospores</strong> or <strong>zoospores</strong>.</li>
+      <li><strong>Sexual:</strong> <strong>oospores, ascospores and basidiospores</strong>, produced in <strong>fruiting bodies</strong>. Three steps: (1) <strong>Plasmogamy</strong> — fusion of protoplasms; (2) <strong>Karyogamy</strong> — fusion of nuclei; (3) <strong>Meiosis</strong> in the zygote → haploid spores.</li>
+      <li>In <strong>ascomycetes and basidiomycetes</strong>, an intervening <strong>dikaryotic stage (n+n)</strong> — the <strong>dikaryophase</strong> — occurs before nuclei fuse.</li>
+      <li>Basis of dividing fungi into classes: morphology of mycelium, mode of spore formation, and fruiting bodies.</li>
+    </ul>
+    <h3 class="subhead">9.3 Classes of fungi <em>(very important comparison)</em></h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Phycomycetes</th><th>Ascomycetes (sac fungi)</th><th>Basidiomycetes</th><th>Deuteromycetes (imperfect fungi)</th></tr></thead>
+        <tbody>
+          <tr><td>Habitat</td><td>Aquatic; decaying wood in moist places; obligate parasites on plants</td><td>Saprophytic, decomposers, parasitic or coprophilous (on dung)</td><td>Soil, logs, tree stumps; parasites in living plants (rusts, smuts)</td><td>Saprophytes, parasites; many decompose litter</td></tr>
+          <tr><td>Mycelium</td><td><strong>Aseptate and coenocytic</strong></td><td>Branched and septate</td><td>Branched and septate</td><td>Septate and branched</td></tr>
+          <tr><td>Asexual spores</td><td><strong>Zoospores</strong> (motile) or <strong>aplanospores</strong> (non-motile), produced <strong>endogenously in sporangium</strong></td><td><strong>Conidia</strong>, produced <strong>exogenously</strong> on conidiophores</td><td>Generally <strong>not found</strong>; fragmentation common</td><td><strong>Only asexual</strong> — conidia</td></tr>
+          <tr><td>Sexual reproduction</td><td><strong>Zygospore</strong> by fusion of gametes — isogamous, anisogamous or oogamous</td><td><strong>Ascospores</strong>, produced endogenously in sac-like <strong>asci</strong>, arranged in <strong>ascocarps</strong></td><td><strong>Sex organs absent</strong>; plasmogamy by fusion of somatic cells of different strains → dikaryotic → <strong>basidium</strong> → 4 <strong>basidiospores</strong> exogenously; fruiting body = <strong>basidiocarp</strong></td><td><strong>Not known</strong> (hence “imperfect”)</td></tr>
+          <tr><td>Examples</td><td><i>Mucor</i>, <i>Rhizopus</i> (bread mould), <i>Albugo</i> (parasite on mustard)</td><td><i>Penicillium</i>, yeast (<i>Saccharomyces</i>), <i>Aspergillus</i>, <i>Claviceps</i>, <i>Neurospora</i>; morels and truffles</td><td><i>Agaricus</i> (mushroom), <i>Ustilago</i> (smut), <i>Puccinia</i> (rust); bracket fungi, puffballs</td><td><i>Alternaria</i>, <i>Colletotrichum</i>, <i>Trichoderma</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><i>Neurospora</i> is used extensively in <strong>biochemical and genetic work</strong>. <strong>Deuteromycetes:</strong> when the sexual (perfect) stage is discovered, members are moved to ascomycetes or basidiomycetes.</p>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>Frequently asked: (1) which fungus has aseptate coenocytic mycelium (Phycomycetes — <i>Mucor</i>, <i>Rhizopus</i>, <i>Albugo</i>); (2) exogenous vs endogenous spores (conidia and basidiospores are exogenous; ascospores and sporangiospores are endogenous); (3) matching <i>Puccinia</i>–rust, <i>Ustilago</i>–smut, <i>Albugo</i>–white rust of mustard; (4) “imperfect fungi” examples <i>Alternaria</i>, <i>Colletotrichum</i>, <i>Trichoderma</i>.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 10 -->
+  <section class="section" id="sec10">
+    <h2><span class="num">10</span>Kingdom Plantae &amp; Kingdom Animalia (overview)</h2>
+    <h3 class="subhead">Kingdom Plantae</h3>
+    <ul>
+      <li>All <strong>eukaryotic chlorophyll-containing</strong> organisms (plants).</li>
+      <li>A few are <strong>partially heterotrophic</strong>: insectivorous plants — <strong>Bladderwort</strong> and <strong>Venus fly trap</strong>; parasite — <i>Cuscuta</i>.</li>
+      <li>Cells have prominent chloroplasts and a <strong>cellulose</strong> cell wall.</li>
+      <li>Includes algae, bryophytes, pteridophytes, gymnosperms and angiosperms.</li>
+      <li>Life cycle alternates between a <strong>diploid sporophyte</strong> and <strong>haploid gametophyte</strong> — <strong>alternation of generations</strong>.</li>
+    </ul>
+    <h3 class="subhead">Kingdom Animalia</h3>
+    <ul>
+      <li><strong>Heterotrophic, eukaryotic, multicellular</strong>; cells <strong>lack cell walls</strong>.</li>
+      <li>Depend directly or indirectly on plants for food; digest food in an internal cavity; store food as <strong>glycogen or fat</strong>. Nutrition is <strong>holozoic</strong> (by ingestion).</li>
+      <li>Definite growth pattern; adults have a definite shape and size.</li>
+      <li>Higher forms show elaborate sensory and neuromotor mechanisms; most are capable of locomotion.</li>
+      <li>Sexual reproduction by copulation of male and female, followed by embryological development.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 11 -->
+  <section class="section" id="sec11">
+    <h2><span class="num">11</span>Viruses, Viroids, Prions &amp; Lichens</h2>
+    <p>These are <strong>not included</strong> in Whittaker's five kingdom classification.</p>
+    <h3 class="subhead">11.1 Viruses</h3>
+    <p>Not considered truly “living” if living means having a cell structure — they are <strong>non-cellular</strong> with an <strong>inert crystalline structure outside the living cell</strong>. Once inside a cell, they take over the host machinery to replicate, killing the host. “Virus” means <strong>venom or poisonous fluid</strong>.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Scientist</th><th>Contribution</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dmitri Ivanowsky (1892)</strong></td><td>Recognised microbes causing <strong>mosaic disease of tobacco</strong>; found them smaller than bacteria (passed through bacteria-proof filters)</td></tr>
+          <tr><td><strong>M.W. Beijerinck (1898)</strong></td><td>Showed extract of infected tobacco could infect healthy plants; named the pathogen “<strong>virus</strong>” and the fluid <i>Contagium vivum fluidum</i> (infectious living fluid)</td></tr>
+          <tr><td><strong>W.M. Stanley (1935)</strong></td><td>Showed viruses could be <strong>crystallised</strong>; crystals consist largely of <strong>proteins</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Viruses are <strong>obligate parasites</strong>; inert outside the specific host cell. Contain <strong>protein + genetic material (RNA or DNA)</strong> — <strong>no virus contains both RNA and DNA</strong>. A virus is a <strong>nucleoprotein</strong>; the <strong>genetic material is infectious</strong>.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Host</th><th>Usual genetic material</th></tr></thead>
+        <tbody>
+          <tr><td>Plant viruses</td><td><strong>Single-stranded RNA</strong></td></tr>
+          <tr><td>Animal viruses</td><td>Single- or double-stranded RNA, or double-stranded DNA</td></tr>
+          <tr><td>Bacteriophages (bacterial viruses)</td><td>Usually <strong>double-stranded DNA</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The protein coat is the <strong>capsid</strong>, made of subunits called <strong>capsomeres</strong>, arranged <strong>helically or polyhedrally</strong>, protecting the nucleic acid. Viral diseases in humans: <strong>mumps, small pox, herpes, influenza, AIDS</strong>. Symptoms in plants: <strong>mosaic formation, leaf rolling/curling, yellowing and vein clearing, dwarfing and stunted growth</strong>. Key examples: <strong>TMV</strong> (Tobacco Mosaic Virus, RNA virus) and <strong>Bacteriophage</strong> (head, collar, sheath, tail fibres).</p>
+    <h3 class="subhead">11.2 Viroids</h3>
+    <p>Discovered by <strong>T.O. Diener (1971)</strong>. Infectious agent <strong>smaller than viruses</strong>; caused <strong>potato spindle tuber disease</strong>. A <strong>free RNA</strong> lacking the protein coat (hence “viroid”), with low molecular weight.</p>
+    <h3 class="subhead">11.3 Prions</h3>
+    <p>Infectious agents made of <strong>abnormally folded protein</strong>; similar in size to viruses. Cause infectious neurological diseases: <strong>Bovine spongiform encephalopathy (BSE)</strong> — “mad cow disease” in cattle; <strong>Creutzfeldt–Jacob disease (CJD)</strong> — the analogous variant in humans.</p>
+    <h3 class="subhead">11.4 Lichens</h3>
+    <p><strong>Symbiotic (mutually useful) associations between algae and fungi</strong>. Algal partner = <strong>phycobiont</strong> (autotrophic); fungal partner = <strong>mycobiont</strong> (heterotrophic). Algae prepare food for fungi; fungi provide shelter and absorb minerals and water. Lichens are <strong>very good pollution indicators</strong> — they <strong>do not grow in polluted areas</strong> (sensitive to SO<sub>2</sub>).</p>
+    <div class="box tip">
+      <p class="box-label">🎯 Exam Tip</p>
+      <p>Virus = protein + nucleic acid (RNA or DNA). Viroid = only RNA (no protein coat). Prion = only protein (no nucleic acid). This three-way comparison is a favourite NEET question.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 12 -->
+  <section class="section" id="sec12">
+    <h2><span class="num">12</span>Plant Kingdom — Classification Systems</h2>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>System</th><th>Basis</th><th>Given by / Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Artificial</strong></td><td>Gross superficial morphology: habit, colour, number and shape of leaves; mainly vegetative characters or androecium structure</td><td><strong>Linnaeus</strong>. Gave equal weight to vegetative and sexual characters (not acceptable, since vegetative characters are easily affected by environment)</td></tr>
+          <tr><td><strong>Natural</strong></td><td>Natural affinities; external <strong>and internal</strong> features — ultrastructure, anatomy, embryology, phytochemistry</td><td><strong>George Bentham and Joseph Dalton Hooker</strong> (for flowering plants)</td></tr>
+          <tr><td><strong>Phylogenetic</strong></td><td>Evolutionary relationships; assumes members of a taxon have a common ancestor</td><td>Currently accepted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Other modern approaches:</strong></p>
+    <ul>
+      <li><strong>Numerical taxonomy</strong> — uses computers; based on all observable characteristics, each given <strong>equal importance</strong>; hundreds of characters considered.</li>
+      <li><strong>Cytotaxonomy</strong> — based on cytological information: chromosome number, structure, behaviour.</li>
+      <li><strong>Chemotaxonomy</strong> — uses the chemical constituents of the plant.</li>
+    </ul>
+    <div class="box note">
+      <p class="box-label">📝 Note</p>
+      <p>Fungi and the members of Monera and Protista that have cell walls are now excluded from Plantae. So cyanobacteria (blue-green algae) are not “algae” any more.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 13 -->
+  <section class="section" id="sec13">
+    <h2><span class="num">13</span>Algae</h2>
+    <h3 class="subhead">13.1 General features</h3>
+    <p>Chlorophyll-bearing, simple, <strong>thalloid</strong>, autotrophic, largely <strong>aquatic</strong> (fresh water and marine). Also on moist stones, soils and wood; with fungi (<strong>lichen</strong>) and with animals (e.g., on sloth bear). Form and size vary: colonial (<i>Volvox</i>), filamentous (<i>Ulothrix</i>, <i>Spirogyra</i>); marine <strong>kelps</strong> form massive plant bodies.</p>
+    <h3 class="subhead">13.2 Reproduction in algae</h3>
+    <p><strong>Vegetative:</strong> fragmentation. <strong>Asexual:</strong> spores, most commonly <strong>zoospores</strong> (flagellated, motile). <strong>Sexual:</strong> fusion of two gametes.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Type</th><th>Gametes</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Isogamous</strong></td><td>Similar in size; flagellated</td><td><i>Ulothrix</i></td></tr>
+          <tr><td><strong>Isogamous</strong></td><td>Similar in size; <strong>non-flagellated</strong></td><td><i>Spirogyra</i></td></tr>
+          <tr><td><strong>Anisogamous</strong></td><td>Dissimilar in size</td><td><i>Eudorina</i></td></tr>
+          <tr><td><strong>Oogamous</strong></td><td>Large non-motile female gamete + small motile male gamete</td><td><i>Volvox</i>, <i>Fucus</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">13.3 Economic importance of algae</h3>
+    <ul>
+      <li>At least <strong>half of the total CO<sub>2</sub> fixation</strong> on Earth is by algae through photosynthesis; they increase dissolved oxygen and are <strong>primary producers</strong> for aquatic food cycles.</li>
+      <li><strong>Food:</strong> ~70 species of marine algae used as food, e.g., <i>Porphyra</i>, <i>Laminaria</i>, <i>Sargassum</i>.</li>
+      <li><strong>Hydrocolloids:</strong> <strong>algin</strong> (brown algae) and <strong>carrageen</strong> (red algae). <strong>Agar</strong> — from <i>Gelidium</i> and <i>Gracilaria</i> (red algae); used to grow microbes and in ice-creams and jellies.</li>
+      <li><i>Chlorella</i> — unicellular alga rich in proteins; food supplement even for <strong>space travellers</strong>.</li>
+    </ul>
+    <h3 class="subhead">13.4 Classes of algae — Table 3.1 <em>(most asked table in plant kingdom)</em></h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Chlorophyceae</th><th>Phaeophyceae</th><th>Rhodophyceae</th></tr></thead>
+        <tbody>
+          <tr><td>Common name</td><td>Green algae</td><td>Brown algae</td><td>Red algae</td></tr>
+          <tr><td>Major pigments</td><td>Chlorophyll <strong>a, b</strong></td><td>Chlorophyll <strong>a, c</strong>, <strong>fucoxanthin</strong></td><td>Chlorophyll <strong>a, d</strong>, <strong>phycoerythrin</strong></td></tr>
+          <tr><td>Stored food</td><td><strong>Starch</strong></td><td><strong>Mannitol, laminarin</strong></td><td><strong>Floridean starch</strong></td></tr>
+          <tr><td>Cell wall</td><td>Cellulose</td><td><strong>Cellulose and algin</strong></td><td>Cellulose, pectin and <strong>polysulphate esters</strong></td></tr>
+          <tr><td>Flagella</td><td><strong>2–8, equal, apical</strong></td><td><strong>2, unequal, lateral</strong></td><td><strong>Absent</strong></td></tr>
+          <tr><td>Habitat</td><td>Fresh water, brackish, salt water</td><td>Fresh water (rare), brackish, salt water</td><td>Fresh water (some), brackish, salt water (most)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">13.5 Chlorophyceae (green algae)</h3>
+    <p>Plant body unicellular, colonial or filamentous. Grass green due to dominant chlorophyll a and b in definite chloroplasts (discoid, plate-like, reticulate). Cell wall: inner layer cellulose, outer layer pectose. Reproduction: fragmentation; asexual by flagellated zoospores; sexual isogamous, anisogamous or oogamous. Examples: <i>Chlamydomonas, Volvox, Ulothrix, Spirogyra, Chara</i>.</p>
+    <h3 class="subhead">13.6 Phaeophyceae (brown algae)</h3>
+    <p>Primarily <strong>marine</strong>; range from simple branched filaments (<i>Ectocarpus</i>) to profusely branched <strong>kelps</strong> (up to <strong>100 metres</strong>). Colour olive-green to brown from xanthophyll <strong>fucoxanthin</strong>. Food stored as <strong>laminarin or mannitol</strong>; cellulosic wall covered by gelatinous <strong>algin</strong>. Plant body: <strong>holdfast</strong>, <strong>stipe</strong> and <strong>frond</strong>. Asexual reproduction by pear-shaped <strong>biflagellate zoospores</strong>. Examples: <i>Ectocarpus, Dictyota, Laminaria, Sargassum, Fucus</i>.</p>
+    <h3 class="subhead">13.7 Rhodophyceae (red algae)</h3>
+    <p>Red due to <strong>r-phycoerythrin</strong>. Mostly <strong>marine</strong>, more in warmer areas; found near the surface and at great depths. Food: <strong>floridean starch</strong> (similar to amylopectin/glycogen). Vegetative: fragmentation; asexual: non-motile spores; sexual: non-motile gametes, <strong>oogamous</strong>. Examples: <i>Polysiphonia, Porphyra, Gracilaria, Gelidium</i>.</p>
+    <div class="box remember">
+      <p class="box-label">📌 Remember — algae examples by class</p>
+      <p>Green: <i>Chlamydomonas, Volvox, Ulothrix, Spirogyra, Chara</i>. Brown: <i>Ectocarpus, Dictyota, Laminaria, Sargassum, Fucus</i>. Red: <i>Polysiphonia, Porphyra, Gracilaria, Gelidium</i>. <i>Porphyra</i>, <i>Laminaria</i>, <i>Sargassum</i> = food. Algin = brown. Carrageen and agar = red.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 14 -->
+  <section class="section" id="sec14">
+    <h2><span class="num">14</span>Bryophytes</h2>
+    <h3 class="subhead">14.1 General features</h3>
+    <ul>
+      <li>Include <strong>mosses and liverworts</strong>; grow in <strong>moist shaded areas</strong> in the hills.</li>
+      <li>Called “<strong>amphibians of the plant kingdom</strong>” — live on soil but <strong>depend on water for sexual reproduction</strong>. Important in <strong>plant succession on bare rocks/soil</strong>.</li>
+      <li>Plant body thallus-like, prostrate or erect; attached by unicellular or multicellular rhizoids. <strong>Lack true roots, stem and leaves</strong>.</li>
+      <li><strong>Main plant body is haploid</strong> — the <strong>gametophyte</strong> (dominant phase). Sex organs are multicellular: Male — <strong>antheridium</strong> → biflagellate antherozoids; Female — <strong>archegonium</strong> (flask-shaped), produces a single egg.</li>
+      <li>Antherozoids released into <strong>water</strong> reach the archegonium; fusion with egg → zygote → multicellular <strong>sporophyte</strong>, which is <strong>not free-living</strong> — attached to and nourished by the gametophyte. Some sporophyte cells undergo <strong>meiosis</strong> → haploid spores → germinate into gametophytes.</li>
+    </ul>
+    <h3 class="subhead">14.2 Economic and ecological importance</h3>
+    <p>Some mosses are food for herbaceous mammals, birds and other animals. <i>Sphagnum</i> (moss) provides <strong>peat</strong> — used as fuel and as packing material (due to its water-holding capacity). Mosses with lichens are the <strong>first organisms to colonise rocks</strong> (pioneers), decomposing rock to prepare substrate for higher plants, and form dense mats that <strong>prevent soil erosion</strong>.</p>
+    <h3 class="subhead">14.3 Liverworts vs Mosses</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Liverworts</th><th>Mosses</th></tr></thead>
+        <tbody>
+          <tr><td>Habitat</td><td>Moist shady places — banks of streams, marshy ground, damp soil, tree bark, deep woods</td><td>Moist shaded areas</td></tr>
+          <tr><td>Gametophyte</td><td><strong>Thalloid</strong>, dorsiventral, closely appressed to substrate (e.g., <i>Marchantia</i>)</td><td>Two stages: (1) <strong>Protonema</strong> — creeping, filamentous, from spore; (2) <strong>Leafy stage</strong> — upright axes with spirally arranged leaves, bears sex organs</td></tr>
+          <tr><td>Asexual/vegetative</td><td>Fragmentation or <strong>gemmae</strong> in <strong>gemma cups</strong> on thalli</td><td>Fragmentation and budding in secondary protonema</td></tr>
+          <tr><td>Sex organs</td><td>On same or different thalli</td><td>Antheridia and archegonia at the apex of leafy shoots</td></tr>
+          <tr><td>Sporophyte</td><td>Foot, seta and capsule</td><td>Foot, seta and capsule — more elaborate spore dispersal mechanism</td></tr>
+          <tr><td>Examples</td><td><i>Marchantia</i></td><td><i>Funaria, Polytrichum, Sphagnum</i></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>In bryophytes the <strong>gametophyte is dominant and independent</strong>; the sporophyte is dependent on it. In pteridophytes and seed plants, the <strong>sporophyte is dominant</strong>. Gemmae are asexual (not spores, not gametes).</p>
+    </div>
+  </section>
+
+  <!-- SECTION 15 -->
+  <section class="section" id="sec15">
+    <h2><span class="num">15</span>Pteridophytes</h2>
+    <h3 class="subhead">15.1 General features</h3>
+    <ul>
+      <li>Include <strong>horsetails and ferns</strong>; used as medicine, soil-binders and ornamentals.</li>
+      <li><strong>First terrestrial plants to possess vascular tissues — xylem and phloem.</strong></li>
+      <li><strong>Main plant body is the sporophyte</strong> — true root, stem and leaves with vascular tissue. Leaves: <strong>microphylls</strong> (small, e.g., <i>Selaginella</i>) or <strong>macrophylls</strong> (large, ferns).</li>
+      <li>Sporangia are subtended by leaf-like <strong>sporophylls</strong>, which may form compact <strong>strobili/cones</strong> (<i>Selaginella</i>, <i>Equisetum</i>).</li>
+      <li>Spores (from meiosis) germinate into free-living, photosynthetic, thalloid gametophytes called <strong>prothallus</strong>, needing cool, damp, shady places — restricting pteridophytes to <strong>narrow geographical regions</strong> because of the water needed for fertilisation.</li>
+      <li>Gametophytes bear antheridia and archegonia; water carries antherozoids to the archegonium → zygote → multicellular sporophyte (dominant phase).</li>
+    </ul>
+    <h3 class="subhead">15.2 Homospory and heterospory</h3>
+    <ul>
+      <li><strong>Homosporous:</strong> all spores of one kind (majority of pteridophytes).</li>
+      <li><strong>Heterosporous:</strong> two kinds of spores — <strong>megaspores</strong> (large) and <strong>microspores</strong> (small). Examples: <i>Selaginella</i> and <i>Salvinia</i>.</li>
+      <li>Megaspores → female gametophyte; microspores → male gametophyte. Female gametophyte is <strong>retained on the parent sporophyte</strong>; zygote develops into a young embryo <strong>within</strong> it — a <strong>precursor to the seed habit</strong>, an important evolutionary step.</li>
+    </ul>
+    <h3 class="subhead">15.3 Classes of pteridophytes</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Class</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Psilopsida</td><td><i>Psilotum</i></td></tr>
+          <tr><td>Lycopsida</td><td><i>Selaginella</i>, <i>Lycopodium</i></td></tr>
+          <tr><td>Sphenopsida</td><td><i>Equisetum</i> (horsetail)</td></tr>
+          <tr><td>Pteropsida</td><td><i>Dryopteris, Pteris, Adiantum</i> (ferns)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend</p>
+      <p>Heterospory in <i>Selaginella</i> and <i>Salvinia</i> and its role as the “precursor of seed habit” is one of the most repeated NEET questions from this chapter.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 16 -->
+  <section class="section" id="sec16">
+    <h2><span class="num">16</span>Gymnosperms</h2>
+    <h3 class="subhead">16.1 General features</h3>
+    <ul>
+      <li><i>Gymnos</i> = naked, <i>sperma</i> = seeds. <strong>Ovules are not enclosed</strong> by any ovary wall and remain exposed before and after fertilisation — seeds are naked.</li>
+      <li>Medium or tall trees and shrubs; giant redwood <i>Sequoia</i> is one of the <strong>tallest tree species</strong>.</li>
+      <li>Roots generally <strong>tap roots</strong>: <i>Pinus</i> has fungal association as <strong>mycorrhiza</strong>; <i>Cycas</i> has specialised <strong>coralloid roots</strong> with N<sub>2</sub>-fixing cyanobacteria.</li>
+      <li>Stems unbranched (<i>Cycas</i>) or branched (<i>Pinus</i>, <i>Cedrus</i>). Conifers have <strong>needle-like leaves</strong>, <strong>thick cuticle</strong> and <strong>sunken stomata</strong> to reduce water loss.</li>
+    </ul>
+    <h3 class="subhead">16.2 Reproduction</h3>
+    <ul>
+      <li><strong>Heterosporous</strong> — microspores and megaspores in sporangia on sporophylls forming <strong>strobili/cones</strong>.</li>
+      <li><strong>Male strobili</strong> bear microsporangia → pollen grains (highly reduced male gametophyte). <strong>Female strobili</strong> bear megasporophylls with ovules.</li>
+      <li>Monoecious in <i>Pinus</i> (both cones on same tree); dioecious in <i>Cycas</i> (on different trees).</li>
+      <li>Megaspore mother cell in the nucellus → meiosis → 4 megaspores → one develops into a multicellular female gametophyte with two or more archegonia, retained within the megasporangium.</li>
+      <li>Male and female gametophytes have <strong>no independent free-living existence</strong>. <strong>Pollination by wind</strong>; pollen tube carries male gametes to archegonia → zygote → embryo; ovule → <strong>seed</strong> (not covered).</li>
+    </ul>
+    <div class="box keypoint">
+      <p class="box-label">🔑 Key Point</p>
+      <p>Examples in NCERT figures: <i>Cycas</i>, <i>Pinus</i>, <i>Ginkgo</i>. Other names in text: <i>Sequoia</i>, <i>Cedrus</i>. Gymnosperms do NOT need water for fertilisation — the pollen tube delivers the male gametes.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 17 -->
+  <section class="section" id="sec17">
+    <h2><span class="num">17</span>Angiosperms (brief)</h2>
+    <ul>
+      <li>Pollen grains and ovules develop in specialised structures called <strong>flowers</strong>; <strong>seeds are enclosed in fruits</strong>.</li>
+      <li>Very large group with a wide range of habitats. Size range: smallest <i>Wolffia</i> to tall <i>Eucalyptus</i> trees (over <strong>100 metres</strong>).</li>
+      <li>Provide food, fodder, fuel, medicines and commercial products. Two classes: <strong>dicotyledons</strong> and <strong>monocotyledons</strong>.</li>
+    </ul>
+    <h3 class="subhead">17.1 Comparison across plant groups (quick revision)</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Bryophytes</th><th>Pteridophytes</th><th>Gymnosperms</th><th>Angiosperms</th></tr></thead>
+        <tbody>
+          <tr><td>Dominant phase</td><td>Gametophyte (n)</td><td>Sporophyte (2n)</td><td>Sporophyte (2n)</td><td>Sporophyte (2n)</td></tr>
+          <tr><td>Vascular tissue</td><td>Absent</td><td>Present (first)</td><td>Present</td><td>Present</td></tr>
+          <tr><td>True roots, stem, leaves</td><td>Absent</td><td>Present</td><td>Present</td><td>Present</td></tr>
+          <tr><td>Water for fertilisation</td><td>Needed</td><td>Needed</td><td>Not needed (pollen tube)</td><td>Not needed (pollen tube)</td></tr>
+          <tr><td>Seeds</td><td>No</td><td>No (heterospory is precursor)</td><td>Naked seeds</td><td>Seeds enclosed in fruit</td></tr>
+          <tr><td>Gametophyte</td><td>Free-living, dominant</td><td>Free-living prothallus</td><td>Dependent, reduced</td><td>Highly reduced, dependent</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 18 -->
+  <section class="section" id="sec18">
+    <h2><span class="num">18</span>Animal Kingdom — Basis of Classification</h2>
+    <p>Over a million species of animals have been described. Common fundamental features used for classification: arrangement of cells, body symmetry, nature of coelom, and patterns of digestive, circulatory or reproductive systems.</p>
+    <h3 class="subhead">18.1 Levels of organisation</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Level</th><th>Description</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cellular</strong></td><td>Cells arranged as loose aggregates; some division of labour</td><td>Sponges (Porifera)</td></tr>
+          <tr><td><strong>Tissue</strong></td><td>Cells performing the same function arranged into tissues</td><td>Coelenterates (and Ctenophores)</td></tr>
+          <tr><td><strong>Organ</strong></td><td>Tissues grouped to form organs</td><td>Platyhelminthes</td></tr>
+          <tr><td><strong>Organ system</strong></td><td>Organs form functional systems</td><td>Annelids, Arthropods, Molluscs, Echinoderms, Chordates (and Aschelminthes)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Digestive system:</strong> <strong>Incomplete</strong> — single opening for mouth and anus (Platyhelminthes). <strong>Complete</strong> — separate mouth and anus.</li>
+      <li><strong>Circulatory system:</strong> <strong>Open type</strong> — blood pumped out of the heart, bathing cells/tissues directly. <strong>Closed type</strong> — blood circulates through vessels (arteries, veins, capillaries).</li>
+    </ul>
+    <h3 class="subhead">18.2 Symmetry</h3>
+    <p><strong>Asymmetrical</strong> — no plane divides into equal halves (most sponges). <strong>Radial</strong> — any plane through the central axis divides into identical halves (coelenterates, ctenophores, echinoderms). <strong>Bilateral</strong> — identical left and right halves in only one plane (annelids, arthropods, etc.).</p>
+    <h3 class="subhead">18.3 Diploblastic and triploblastic</h3>
+    <p><strong>Diploblastic:</strong> two germ layers — <strong>ectoderm</strong> and <strong>endoderm</strong>, with mesoglea between (coelenterates, ctenophores). <strong>Triploblastic:</strong> third germ layer <strong>mesoderm</strong> between ectoderm and endoderm (Platyhelminthes to chordates).</p>
+    <h3 class="subhead">18.4 Coelom</h3>
+    <p><strong>Coelom</strong> = body cavity between body wall and gut wall, <strong>lined by mesoderm</strong>. <strong>Coelomates:</strong> annelids, molluscs, arthropods, echinoderms, hemichordates, chordates. <strong>Pseudocoelomates:</strong> body cavity not lined by mesoderm, e.g., <strong>Aschelminthes</strong>. <strong>Acoelomates:</strong> body cavity absent, e.g., <strong>Platyhelminthes</strong>.</p>
+    <h3 class="subhead">18.5 Segmentation</h3>
+    <p>Body externally and internally divided into segments with serial repetition of organs = <strong>metameric segmentation (metamerism)</strong>, e.g., earthworm. First seen in <strong>Annelida</strong>.</p>
+    <h3 class="subhead">18.6 Notochord</h3>
+    <p><strong>Mesodermally derived rod-like structure</strong> on the <strong>dorsal side</strong> during embryonic development. Animals with a notochord = <strong>chordates</strong>; without = <strong>non-chordates</strong> (Porifera to Echinodermata, plus Hemichordata).</p>
+  </section>
+
+  <!-- SECTION 19 -->
+  <section class="section" id="sec19">
+    <h2><span class="num">19</span>Non-chordate Phyla</h2>
+    <h3 class="subhead">19.1 Phylum Porifera (sponges)</h3>
+    <p>Generally <strong>marine</strong>, mostly <strong>asymmetrical</strong>; primitive multicellular animals with <strong>cellular level</strong> organisation. Water enters through <strong>ostia</strong> → central cavity <strong>spongocoel</strong> → exits through <strong>osculum</strong> (feeding, respiration, waste removal). <strong>Choanocytes (collar cells)</strong> line the spongocoel. Digestion <strong>intracellular</strong>. Skeleton of <strong>spicules</strong> or <strong>spongin fibres</strong>. <strong>Hermaphrodite</strong>; internal fertilisation, indirect development. Examples: <i>Sycon</i> (<i>Scypha</i>), <i>Spongilla</i> (freshwater sponge), <i>Euspongia</i> (bath sponge).</p>
+    <h3 class="subhead">19.2 Phylum Coelenterata (Cnidaria)</h3>
+    <p>Aquatic, mostly marine; sessile or free-swimming; <strong>radially symmetrical</strong>. Named from <strong>cnidoblasts/cnidocytes</strong> with stinging <strong>nematocysts</strong> (anchorage, defence, prey capture). <strong>Tissue level</strong>, <strong>diploblastic</strong>. Central <strong>gastro-vascular cavity</strong> with a single opening on the <strong>hypostome</strong>. Digestion extracellular and intracellular. Corals have a <strong>calcium carbonate</strong> skeleton. Two body forms: <strong>polyp</strong> (sessile, e.g., <i>Hydra</i>) and <strong>medusa</strong> (free-swimming, e.g., <i>Aurelia</i>). Alternation of generations (<strong>metagenesis</strong>) in <i>Obelia</i>: polyps produce medusae asexually, medusae form polyps sexually. Other examples: <i>Physalia</i>, <i>Adamsia</i> (sea anemone), <i>Pennatula</i>, <i>Gorgonia</i>, <i>Meandrina</i> (brain coral).</p>
+    <h3 class="subhead">19.3 Phylum Ctenophora</h3>
+    <p>Commonly <strong>sea walnuts or comb jellies</strong>; exclusively marine, radially symmetrical, diploblastic, tissue level. <strong>Eight rows of ciliated comb plates</strong> for locomotion. <strong>Bioluminescence</strong> well-marked. Hermaphrodite; only sexual reproduction, external fertilisation, indirect development. Examples: <i>Pleurobrachia</i>, <i>Ctenoplana</i>.</p>
+    <h3 class="subhead">19.4 Phylum Platyhelminthes (flatworms)</h3>
+    <p><strong>Dorso-ventrally flattened</strong>; mostly <strong>endoparasites</strong>. <strong>Bilateral, triploblastic, acoelomate, organ level</strong>. Hooks and suckers in parasitic forms. <strong>Flame cells</strong> — osmoregulation/excretion. Internal fertilisation; many larval stages. <i>Planaria</i> shows high <strong>regeneration</strong>. Examples: <i>Taenia</i> (tapeworm), <i>Fasciola</i> (liver fluke).</p>
+    <h3 class="subhead">19.5 Phylum Aschelminthes (roundworms)</h3>
+    <p>Body <strong>circular in cross-section</strong>; free-living or parasitic. <strong>Organ-system level</strong>, bilateral, triploblastic, <strong>pseudocoelomate</strong>. Complete alimentary canal with muscular pharynx. Excretory pore removes wastes. <strong>Sexes separate</strong>; females often longer (sexual dimorphism). Examples: <i>Ascaris</i>, <i>Wuchereria</i> (filaria worm), <i>Ancylostoma</i> (hookworm).</p>
+    <h3 class="subhead">19.6 Phylum Annelida</h3>
+    <p>Aquatic or terrestrial; organ-system, bilateral, triploblastic, <strong>metamerically segmented</strong>, <strong>coelomate</strong> (Latin <i>annulus</i> = little ring). Longitudinal and circular muscles for locomotion. <i>Nereis</i> has <strong>parapodia</strong> for swimming. <strong>Closed circulatory system</strong>; <strong>nephridia</strong> for excretion. Double ventral nerve cord. <i>Nereis</i> is dioecious; earthworms and leeches are monoecious. Examples: <i>Nereis</i>, <i>Pheretima</i> (earthworm), <i>Hirudinaria</i> (leech).</p>
+    <h3 class="subhead">19.7 Phylum Arthropoda</h3>
+    <p><strong>Largest phylum</strong> of Animalia — over two-thirds of all named species are arthropods. Organ-system, bilateral, triploblastic, segmented, coelomate. <strong>Chitinous exoskeleton</strong>; body: head, thorax, abdomen; <strong>jointed appendages</strong>. Respiration: gills, book gills, book lungs or tracheae. <strong>Open circulatory system</strong>. Sense organs: antennae, compound/simple eyes, statocysts. Excretion via <strong>Malpighian tubules</strong>. Mostly dioecious, oviparous.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Economically important insects</td><td><i>Apis</i> (honey bee), <i>Bombyx</i> (silkworm), <i>Laccifer</i> (lac insect)</td></tr>
+          <tr><td>Vectors</td><td><i>Anopheles, Culex, Aedes</i> (mosquitoes)</td></tr>
+          <tr><td>Gregarious pest</td><td><i>Locusta</i> (locust)</td></tr>
+          <tr><td>Living fossil</td><td><i>Limulus</i> (king crab)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">19.8 Phylum Mollusca</h3>
+    <p><strong>Second largest</strong> animal phylum. Body covered by a <strong>calcareous shell</strong>; unsegmented, with head, muscular foot and visceral hump. <strong>Mantle</strong> covers the hump; <strong>mantle cavity</strong> contains feather-like gills. Mouth has a rasping <strong>radula</strong>. Usually dioecious, oviparous, indirect development. Examples: <i>Pila</i> (apple snail), <i>Pinctada</i> (pearl oyster), <i>Sepia</i> (cuttlefish), <i>Loligo</i> (squid), <i>Octopus</i>, <i>Aplysia</i>, <i>Dentalium</i>, <i>Chaetopleura</i> (chiton).</p>
+    <div class="box mistake">
+      <p class="box-label">⚠️ Common Mistake</p>
+      <p>Cuttlefish (<i>Sepia</i>), devil fish (<i>Octopus</i>), silverfish and starfish are NOT fishes. Cuttlefish and devil fish are molluscs; starfish is an echinoderm.</p>
+    </div>
+    <h3 class="subhead">19.9 Phylum Echinodermata</h3>
+    <p><strong>Endoskeleton of calcareous ossicles</strong> — “spiny bodied”. <strong>All marine</strong>; organ-system level. <strong>Adults radially symmetrical, larvae bilaterally symmetrical</strong>. Triploblastic, coelomate. Mouth on lower (ventral) side, anus on upper (dorsal) side. Distinctive: <strong>water vascular system</strong> (locomotion, food capture, respiration). <strong>Excretory system absent</strong>. Sexes separate; usually external fertilisation, indirect development with free-swimming larva. Examples: <i>Asterias</i> (star fish), <i>Echinus</i> (sea urchin), <i>Antedon</i>, <i>Cucumaria</i>, <i>Ophiura</i>.</p>
+    <h3 class="subhead">19.10 Phylum Hemichordata</h3>
+    <p>Earlier a sub-phylum of Chordata; now a <strong>separate phylum under non-chordata</strong>. Has a rudimentary <strong>stomochord</strong> (similar to notochord) in the collar region. Worm-like marine animals; body: <strong>proboscis, collar and trunk</strong>. Open circulatory system; respiration through gills; excretory organ = <strong>proboscis gland</strong>. Examples: <i>Balanoglossus</i>, <i>Saccoglossus</i>.</p>
+    <h3 class="subhead">19.11 Table 4.2 — Salient features of animal phyla <em>(master table)</em></h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Phylum</th><th>Organisation</th><th>Symmetry</th><th>Coelom</th><th>Segmentation</th><th>Digestive</th><th>Circulatory</th><th>Respiratory</th><th>Distinctive feature</th></tr></thead>
+        <tbody>
+          <tr><td>Porifera</td><td>Cellular</td><td>Various</td><td>Absent</td><td>Absent</td><td>Absent</td><td>Absent</td><td>Absent</td><td>Body with pores &amp; canals</td></tr>
+          <tr><td>Coelenterata</td><td>Tissue</td><td>Radial</td><td>Absent</td><td>Absent</td><td>Incomplete</td><td>Absent</td><td>Absent</td><td>Cnidoblasts present</td></tr>
+          <tr><td>Ctenophora</td><td>Tissue</td><td>Radial</td><td>Absent</td><td>Absent</td><td>Incomplete</td><td>Absent</td><td>Absent</td><td>Comb plates for locomotion</td></tr>
+          <tr><td>Platyhelminthes</td><td>Organ / organ system</td><td>Bilateral</td><td>Absent</td><td>Absent</td><td>Incomplete</td><td>Absent</td><td>Absent</td><td>Flat body, suckers</td></tr>
+          <tr><td>Aschelminthes</td><td>Organ system</td><td>Bilateral</td><td>Pseudocoelomate</td><td>Absent</td><td>Complete</td><td>Absent</td><td>Absent</td><td>Often worm-shaped, elongated</td></tr>
+          <tr><td>Annelida</td><td>Organ system</td><td>Bilateral</td><td>Coelomate</td><td>Present</td><td>Complete</td><td>Present</td><td>Absent</td><td>Body segmented like rings</td></tr>
+          <tr><td>Arthropoda</td><td>Organ system</td><td>Bilateral</td><td>Coelomate</td><td>Present</td><td>Complete</td><td>Present</td><td>Present</td><td>Exoskeleton, jointed appendages</td></tr>
+          <tr><td>Mollusca</td><td>Organ system</td><td>Bilateral</td><td>Coelomate</td><td>Absent</td><td>Complete</td><td>Present</td><td>Present</td><td>External skeleton of shell usually present</td></tr>
+          <tr><td>Echinodermata</td><td>Organ system</td><td>Radial</td><td>Coelomate</td><td>Absent</td><td>Complete</td><td>Present</td><td>Present</td><td>Water vascular system, radial symmetry</td></tr>
+          <tr><td>Hemichordata</td><td>Organ system</td><td>Bilateral</td><td>Coelomate</td><td>Absent</td><td>Complete</td><td>Present</td><td>Present</td><td>Worm-like: proboscis, collar, trunk</td></tr>
+          <tr><td>Chordata</td><td>Organ system</td><td>Bilateral</td><td>Coelomate</td><td>Present</td><td>Complete</td><td>Present</td><td>Present</td><td>Notochord, dorsal hollow nerve cord, gill slits, limbs/fins</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 20 -->
+  <section class="section" id="sec20">
+    <h2><span class="num">20</span>Phylum Chordata</h2>
+    <h3 class="subhead">20.1 Fundamental characters</h3>
+    <ol>
+      <li><strong>Notochord</strong></li>
+      <li><strong>Dorsal hollow nerve cord</strong></li>
+      <li><strong>Paired pharyngeal gill slits</strong></li>
+    </ol>
+    <p>Also: bilateral, triploblastic, coelomate, organ-system level, <strong>post-anal tail</strong>, <strong>closed circulatory system</strong>.</p>
+    <h3 class="subhead">20.2 Table 4.1 — Chordates vs Non-chordates</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>No.</th><th>Chordates</th><th>Non-chordates</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Notochord present</td><td>Notochord absent</td></tr>
+          <tr><td>2</td><td>CNS <strong>dorsal, hollow, single</strong></td><td>CNS <strong>ventral, solid, double</strong></td></tr>
+          <tr><td>3</td><td>Pharynx perforated by gill slits</td><td>Gill slits absent</td></tr>
+          <tr><td>4</td><td>Heart is <strong>ventral</strong></td><td>Heart is <strong>dorsal</strong> (if present)</td></tr>
+          <tr><td>5</td><td>Post-anal part (tail) present</td><td>Post-anal tail absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="subhead">20.3 Subphyla of Chordata</h3>
+    <ul>
+      <li><strong>Urochordata (Tunicata)</strong> and <strong>Cephalochordata</strong> = <strong>protochordates</strong>; exclusively marine. <strong>Urochordata:</strong> notochord only in the larval tail, e.g., <i>Ascidia, Salpa, Doliolum</i>. <strong>Cephalochordata:</strong> notochord persists head to tail throughout life, e.g., <i>Branchiostoma</i> (Amphioxus/lancelet).</li>
+      <li><strong>Vertebrata:</strong> notochord present in the embryo, replaced by a cartilaginous or bony vertebral column in adults. <strong>All vertebrates are chordates, but all chordates are not vertebrates.</strong> Vertebrates also have a ventral muscular heart (2, 3 or 4 chambers), kidneys, and paired appendages (fins or limbs).</li>
+    </ul>
+    <h3 class="subhead">20.4 Classification of Vertebrata</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Division</th><th>Super class</th><th>Classes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Agnatha</strong> (lacks jaw)</td><td>—</td><td>Cyclostomata</td></tr>
+          <tr><td rowspan="2"><strong>Gnathostomata</strong> (bears jaw)</td><td><strong>Pisces</strong> (bears fins)</td><td>Chondrichthyes, Osteichthyes</td></tr>
+          <tr><td><strong>Tetrapoda</strong> (bears limbs)</td><td>Amphibia, Reptilia, Aves, Mammalia</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 21 -->
+  <section class="section" id="sec21">
+    <h2><span class="num">21</span>Classes of Vertebrates</h2>
+    <h3 class="subhead">21.1 Class Cyclostomata</h3>
+    <p>All living members are <strong>ectoparasites on some fishes</strong>. Elongated body with <strong>6–15 pairs of gill slits</strong>; <strong>sucking, circular mouth without jaws</strong>; no scales or paired fins. Cranium and vertebral column cartilaginous; closed circulation. Marine but migrate to fresh water for spawning, dying soon after. Examples: <i>Petromyzon</i> (lamprey), <i>Myxine</i> (hagfish).</p>
+    <h3 class="subhead">21.2 Class Chondrichthyes (cartilaginous fishes)</h3>
+    <p><strong>Marine</strong>, streamlined, <strong>cartilaginous endoskeleton</strong>. Mouth ventral; notochord persistent throughout life. Gill slits separate, <strong>without operculum</strong>. Placoid scales; teeth are modified placoid scales. <strong>No air bladder</strong> → must swim constantly. <strong>Two-chambered heart</strong>. Electric organs in <i>Torpedo</i>; poison sting in <i>Trygon</i>. Cold-blooded. Males have <strong>claspers</strong>; internal fertilisation; many viviparous. Examples: <i>Scoliodon</i> (dog fish), <i>Pristis</i> (saw fish), <i>Carcharodon</i> (great white shark), <i>Trygon</i> (sting ray).</p>
+    <h3 class="subhead">21.3 Class Osteichthyes (bony fishes)</h3>
+    <p>Marine and freshwater; <strong>bony endoskeleton</strong>; streamlined; mouth mostly terminal. <strong>Four pairs of gills</strong> covered by an <strong>operculum</strong>. Cycloid/ctenoid scales. <strong>Air bladder present</strong> — regulates buoyancy. Two-chambered heart; cold-blooded. External fertilisation; mostly oviparous, direct development. Examples: marine — <i>Exocoetus</i> (flying fish), <i>Hippocampus</i> (sea horse); freshwater — <i>Labeo</i>, <i>Catla</i>, <i>Clarias</i>; aquarium — <i>Betta</i>, <i>Pterophyllum</i>.</p>
+    <h3 class="subhead">21.4 Class Amphibia</h3>
+    <p><i>Amphi</i> = dual, <i>bios</i> = life — aquatic and terrestrial habitats. Usually two pairs of limbs. Skin moist, without scales; eyes have eyelids; <strong>tympanum</strong> represents the ear. Digestive, urinary and reproductive tracts open into a <strong>cloaca</strong>. Respiration by gills, lungs and skin. <strong>Three-chambered heart</strong> (2 auricles, 1 ventricle); cold-blooded. External fertilisation, oviparous, indirect development. Examples: <i>Bufo</i> (toad), <i>Rana</i> (frog), <i>Hyla</i> (tree frog), <i>Salamandra</i>, <i>Ichthyophis</i> (limbless amphibian).</p>
+    <h3 class="subhead">21.5 Class Reptilia</h3>
+    <p>Latin <i>repere</i> = to creep/crawl; mostly terrestrial. Dry, cornified skin with epidermal scales/scutes. No external ear openings. Heart usually three-chambered, <strong>four-chambered in crocodiles</strong>. Poikilothermous; snakes/lizards shed skin as a cast. Internal fertilisation, oviparous, direct development. Examples: <i>Chelone</i> (turtle), <i>Testudo</i> (tortoise), <i>Calotes</i> (garden lizard), <i>Crocodilus</i>, <i>Hemidactylus</i> (wall lizard); poisonous snakes <i>Naja</i> (cobra), <i>Bangarus</i> (krait), <i>Vipera</i>.</p>
+    <h3 class="subhead">21.6 Class Aves (birds)</h3>
+    <p>Presence of <strong>feathers</strong>; most fly except flightless birds (e.g., ostrich); possess a beak. <strong>Forelimbs modified into wings</strong>. Skin dry, without glands except the oil gland at the tail base. Endoskeleton fully ossified; bones <strong>hollow/pneumatic</strong>. Digestive tract has <strong>crop and gizzard</strong>. Heart <strong>completely four-chambered</strong>; <strong>warm-blooded</strong>. Air sacs supplement respiration. Internal fertilisation, oviparous, direct development. Examples: <i>Corvus</i> (crow), <i>Columba</i> (pigeon), <i>Psittacula</i> (parrot), <i>Struthio</i> (ostrich), <i>Pavo</i> (peacock), <i>Aptenodytes</i> (penguin), <i>Neophron</i> (vulture).</p>
+    <h3 class="subhead">21.7 Class Mammalia</h3>
+    <p>Found in all habitats. <strong>Most unique feature: mammary glands.</strong> Two pairs of limbs for walking, running, climbing, burrowing, swimming or flying. Skin has <strong>hair</strong>; external ears (<strong>pinnae</strong>) present; heterodont teeth. Four-chambered heart; warm-blooded; lungs. Internal fertilisation; <strong>viviparous with few exceptions</strong>; direct development. <strong>Oviparous:</strong> <i>Ornithorhynchus</i> (platypus). <strong>Viviparous:</strong> <i>Macropus</i> (kangaroo), <i>Pteropus</i> (flying fox), <i>Camelus</i>, <i>Macaca</i>, <i>Rattus</i>, <i>Canis</i>, <i>Felis</i>, <i>Elephas</i>, <i>Equus</i>, <i>Delphinus</i>, <i>Balaenoptera</i> (blue whale), <i>Panthera tigris</i>, <i>Panthera leo</i>.</p>
+    <h3 class="subhead">21.8 Vertebrate classes — comparison table</h3>
+    <div class="table-scroll">
+      <table class="wide">
+        <thead><tr><th>Feature</th><th>Cyclostomata</th><th>Chondrichthyes</th><th>Osteichthyes</th><th>Amphibia</th><th>Reptilia</th><th>Aves</th><th>Mammalia</th></tr></thead>
+        <tbody>
+          <tr><td>Habitat</td><td>Marine (spawn in fresh water)</td><td>Marine</td><td>Marine &amp; freshwater</td><td>Water &amp; land</td><td>Mostly terrestrial</td><td>Air/land</td><td>All habitats</td></tr>
+          <tr><td>Skin covering</td><td>No scales</td><td>Placoid scales</td><td>Cycloid/ctenoid scales</td><td>Moist, no scales</td><td>Dry, cornified scales/scutes</td><td>Feathers</td><td>Hair</td></tr>
+          <tr><td>Endoskeleton</td><td>Cartilaginous</td><td>Cartilaginous</td><td>Bony</td><td>Bony</td><td>Bony</td><td>Bony, pneumatic</td><td>Bony</td></tr>
+          <tr><td>Heart chambers</td><td>—</td><td>2</td><td>2</td><td>3</td><td>3 (4 in crocodile)</td><td>4</td><td>4</td></tr>
+          <tr><td>Body temperature</td><td>Cold</td><td>Cold</td><td>Cold</td><td>Cold</td><td>Cold</td><td>Warm</td><td>Warm</td></tr>
+          <tr><td>Fertilisation</td><td>—</td><td>Internal</td><td>External</td><td>External</td><td>Internal</td><td>Internal</td><td>Internal</td></tr>
+          <tr><td>Special feature</td><td>Jawless, circular mouth; 6–15 pairs gill slits</td><td>No air bladder; claspers; no operculum</td><td>Air bladder; operculum; 4 pairs of gills</td><td>Cloaca; tympanum; 3 modes of respiration</td><td>No external ear; skin cast</td><td>Air sacs, crop, gizzard, oil gland</td><td>Mammary glands, pinnae</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box pyq">
+      <p class="box-label">📊 PYQ Trend — frequently asked from Chapter 4</p>
+      <ul>
+        <li>Match the animal to its phylum or class (e.g., <i>Pteropus</i> – mammal; <i>Hippocampus</i> – bony fish; <i>Ichthyophis</i> – limbless amphibian; <i>Limulus</i> – living fossil arthropod; <i>Balanoglossus</i> – Hemichordata).</li>
+        <li>Features: flame cells (Platyhelminthes), nephridia (Annelida), Malpighian tubules (Arthropoda), water vascular system (Echinodermata), radula (Mollusca), comb plates &amp; bioluminescence (Ctenophora), choanocytes (Porifera), cnidoblasts (Coelenterata), proboscis gland (Hemichordata).</li>
+        <li>Exceptions: four-chambered heart in crocodile; oviparous mammal <i>Ornithorhynchus</i>; excretory system absent in echinoderms; air bladder absent in cartilaginous fishes.</li>
+        <li>Metagenesis in <i>Obelia</i>; sexual dimorphism in <i>Ascaris</i>; bilateral larva but radial adult in echinoderms.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 22 -->
+  <section class="section" id="sec22">
+    <h2><span class="num">22</span>Quick Revision — High-Yield One-liners</h2>
+    <ul class="revision">
+      <li>Number of described species: <strong>1.7–1.8 million</strong>.</li>
+      <li>Binomial nomenclature: <strong>Linnaeus</strong>. Codes: <strong>ICBN</strong> (plants), <strong>ICZN</strong> (animals).</li>
+      <li>Lowest taxonomic category: <strong>species</strong>. Plants use <strong>Division</strong> instead of phylum.</li>
+      <li>Five kingdom classification: <strong>R.H. Whittaker (1969)</strong>.</li>
+      <li>Chitin cell wall: <strong>Fungi</strong>. Non-cellulosic wall: <strong>Monera</strong>.</li>
+      <li>Methane from cattle dung: <strong>methanogens</strong> (archaebacteria).</li>
+      <li>Heterocysts: <i>Nostoc</i>, <i>Anabaena</i>.</li>
+      <li>Smallest living cells; no cell wall: <strong>Mycoplasma</strong>.</li>
+      <li>Diatomaceous earth: <strong>diatoms</strong> (silica walls).</li>
+      <li>Red tides: <i>Gonyaulax</i> (dinoflagellate).</li>
+      <li>Pellicle, mixotrophic: <i>Euglena</i>.</li>
+      <li>Sleeping sickness: <i>Trypanosoma</i>. Malaria: <i>Plasmodium</i>.</li>
+      <li>Dikaryophase: <strong>Ascomycetes and Basidiomycetes</strong>.</li>
+      <li>Aseptate coenocytic mycelium: <strong>Phycomycetes</strong>.</li>
+      <li>Imperfect fungi: <strong>Deuteromycetes</strong> — <i>Alternaria, Colletotrichum, Trichoderma</i>.</li>
+      <li><i>Neurospora</i>: biochemical and genetic work.</li>
+      <li>Viruses named by <strong>Beijerinck</strong>; crystallised by <strong>Stanley</strong>; TMV mosaic by <strong>Ivanowsky</strong>.</li>
+      <li>Viroid (free RNA): <strong>T.O. Diener, 1971</strong>, potato spindle tuber disease.</li>
+      <li>Prions: <strong>mad cow disease (BSE)</strong>, <strong>CJD</strong>.</li>
+      <li>Lichens: phycobiont + mycobiont; pollution indicators.</li>
+      <li>Algin: brown algae. Carrageen: red algae. Agar: <i>Gelidium, Gracilaria</i>.</li>
+      <li>Food supplement for space travellers: <i>Chlorella</i>.</li>
+      <li>Floridean starch: red algae. Laminarin/mannitol: brown algae.</li>
+      <li>Amphibians of plant kingdom: <strong>bryophytes</strong>. Peat: <i>Sphagnum</i>.</li>
+      <li>Gemma cups: <i>Marchantia</i> (liverwort). Protonema: mosses.</li>
+      <li>First vascular plants: <strong>pteridophytes</strong>. Heterosporous: <i>Selaginella</i>, <i>Salvinia</i>.</li>
+      <li>Coralloid roots with cyanobacteria: <i>Cycas</i>. Mycorrhiza: <i>Pinus</i>.</li>
+      <li>Tallest gymnosperm: <i>Sequoia</i>. Smallest angiosperm: <i>Wolffia</i>. Tall angiosperm: <i>Eucalyptus</i>.</li>
+      <li>Largest animal phylum: <strong>Arthropoda</strong>. Second largest: <strong>Mollusca</strong>.</li>
+      <li>Living fossil: <i>Limulus</i>.</li>
+      <li>Metagenesis: <i>Obelia</i>. High regeneration: <i>Planaria</i>.</li>
+      <li>Stomochord: Hemichordata.</li>
+      <li>Notochord only in larval tail: <strong>Urochordata</strong>; head to tail throughout life: <strong>Cephalochordata</strong>.</li>
+      <li>Electric organ: <i>Torpedo</i>. Poison sting: <i>Trygon</i>.</li>
+      <li>Oviparous mammal: <i>Ornithorhynchus</i>.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 23 -->
+  <section class="section" id="sec23">
+    <h2><span class="num">23</span>Practice Questions (NEET pattern)</h2>
+    <ol class="quiz">
+      <li>Which one of the following is NOT a defining feature of living organisms?
+        <ul class="opts"><li>a) Metabolism</li><li>b) Cellular organisation</li><li>c) Consciousness</li><li>d) Growth</li></ul>
+      </li>
+      <li>The correct sequence of taxonomic categories in ascending order is:
+        <ul class="opts"><li>a) Species – Order – Genus – Family</li><li>b) Species – Genus – Family – Order</li><li>c) Genus – Species – Order – Family</li><li>d) Species – Family – Genus – Order</li></ul>
+      </li>
+      <li>Wheat belongs to the order:
+        <ul class="opts"><li>a) Sapindales</li><li>b) Diptera</li><li>c) Polymoniales</li><li>d) Poales</li></ul>
+      </li>
+      <li>Which group of archaebacteria is found in the gut of ruminants?
+        <ul class="opts"><li>a) Halophiles</li><li>b) Thermoacidophiles</li><li>c) Methanogens</li><li>d) Cyanobacteria</li></ul>
+      </li>
+      <li>The protist with a protein-rich pellicle and two unequal flagella is:
+        <ul class="opts"><li>a) <i>Gonyaulax</i></li><li>b) <i>Paramoecium</i></li><li>c) <i>Euglena</i></li><li>d) Diatom</li></ul>
+      </li>
+      <li>In which class of fungi are basidiospores produced exogenously after karyogamy and meiosis?
+        <ul class="opts"><li>a) Basidiomycetes</li><li>b) Ascomycetes</li><li>c) Phycomycetes</li><li>d) Deuteromycetes</li></ul>
+      </li>
+      <li>Match the pigment with the algal class: Fucoxanthin — ?
+        <ul class="opts"><li>a) Chlorophyceae</li><li>b) Phaeophyceae</li><li>c) Rhodophyceae</li><li>d) Cyanophyceae</li></ul>
+      </li>
+      <li>The precursor to the seed habit is seen in:
+        <ul class="opts"><li>a) <i>Selaginella</i></li><li>b) <i>Marchantia</i></li><li>c) <i>Funaria</i></li><li>d) <i>Dryopteris</i></li></ul>
+      </li>
+      <li>Which of the following has an infectious agent made only of abnormally folded protein?
+        <ul class="opts"><li>a) Viroid</li><li>b) TMV</li><li>c) Bacteriophage</li><li>d) Prion</li></ul>
+      </li>
+      <li>Flame cells are the excretory structures of:
+        <ul class="opts"><li>a) Annelida</li><li>b) Platyhelminthes</li><li>c) Aschelminthes</li><li>d) Arthropoda</li></ul>
+      </li>
+      <li>Which fish lacks an air bladder and has claspers in males?
+        <ul class="opts"><li>a) <i>Catla</i></li><li>b) <i>Hippocampus</i></li><li>c) <i>Labeo</i></li><li>d) <i>Scoliodon</i></li></ul>
+      </li>
+      <li>Notochord persists from head to tail throughout life in:
+        <ul class="opts"><li>a) <i>Ascidia</i></li><li>b) <i>Branchiostoma</i></li><li>c) <i>Petromyzon</i></li><li>d) <i>Balanoglossus</i></li></ul>
+      </li>
+    </ol>
+    <details class="answer-key">
+      <summary>Show Answer Key</summary>
+      <p>1–d, 2–b, 3–d, 4–c, 5–c, 6–a, 7–b, 8–a, 9–d, 10–b, 11–d, 12–b</p>
+    </details>
+  </section>
+
+</div>
+</div>
+
+<footer>
+  SIVAGANGAI PG TEACHERS' RESOURCE PORTAL
+</footer>
+
+<div class="fab-stack">
+  <a class="fab" href="#toc" title="Jump to Contents" aria-label="Jump to Contents">☰</a>
+  <a class="fab" href="#top" title="Back to top" aria-label="Back to top">↑</a>
+</div>
+
+<script>
+  // Route all in-page "#section" links through a manual scroll instead of
+  // normal link navigation, so mobile webviews don't treat them as external links.
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
+      var el = id ? document.getElementById(id) : document.body;
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+</script>
+</body>
+</html>
